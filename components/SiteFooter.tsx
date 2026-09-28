@@ -25,7 +25,7 @@ export function SiteFooter() {
               GitHub
             </a>
             <a
-              href="mailto:hello@example.com"
+              href="mailto:YOUR_EMAIL"
               className="inline-flex items-center gap-2 rounded-md bg-[#5EEAD4] px-4 py-2 text-sm font-medium text-[#0B0F14] hover:bg-[#2DD4BF] transition-colors"
             >
               <Mail size={16} />

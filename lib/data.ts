@@ -1,17 +1,11 @@
 export const profile = {
   name: "Ayush Halpati",
-  tagline: "Full-Stack Developer with GenAI/RAG integration experience",
+  tagline: "Full-Stack Developer building AI-powered products",
   grad: "B.Tech Computer Engineering, BVM Engineering College, Anand — 2026",
   location: "Gujarat, India",
   relocate: ["Bangalore", "Hyderabad", "Pune", "Delhi-NCR", "Mumbai"],
   github: "https://github.com/ayush22cp008",
 };
-
-export const proofStats = [
-  { value: "5", label: "shipped products" },
-  { value: "2", label: "hackathons built solo" },
-  { value: "3", label: "RAG pipelines in production use" },
-];
 
 export type Project = {
   slug: string;
@@ -19,7 +13,7 @@ export type Project = {
   tagline: string;
   description: string;
   stack: string[];
-  category: "Full-Stack" | "GenAI/RAG" | "Computer Vision";
+  category: "Full-Stack" | "GenAI" | "Computer Vision";
   liveUrl?: string;
   repoUrl: string;
   featured: boolean;
@@ -47,7 +41,7 @@ export const projects: Project[] = [
     description:
       "An evidence-first accountability layer for freight: captures the chronological timeline of a trip and uses AI to summarize raw events into a defensible narrative for dispute resolution.",
     stack: ["Next.js", "React", "Supabase", "Postgres", "Groq", "Vercel"],
-    category: "GenAI/RAG",
+    category: "GenAI",
     liveUrl: "https://deliveryproofhackathon.vercel.app",
     repoUrl: "https://github.com/ayush22cp008/DeliveryProof_hackathon",
     featured: true,
@@ -56,11 +50,11 @@ export const projects: Project[] = [
   {
     slug: "zeni",
     name: "ZENI",
-    tagline: "A thinking-partner AI — RAG-backed conversational agent for working through ideas, not just answering questions.",
+    tagline: "A thinking-partner AI for working through ideas, not just answering questions.",
     description:
-      "A RAG-backed conversational thinking partner built on LangChain and ChromaDB, designed to help reason through a problem rather than hand over a single answer.",
+      "A conversational thinking partner designed to help reason through a problem rather than hand over a single answer.",
     stack: ["Python", "LangChain", "ChromaDB", "Groq API"],
-    category: "GenAI/RAG",
+    category: "GenAI",
     repoUrl: "https://github.com/ayush22cp008/ZENI-thinking-partner",
     featured: false,
     status: "Personal project",
@@ -72,7 +66,7 @@ export const projects: Project[] = [
     description:
       "A retrieval-augmented tutor that answers student questions strictly from NCERT textbook content, avoiding the hallucination risk of an ungrounded chatbot.",
     stack: ["Python", "RAG", "ChromaDB", "LangChain"],
-    category: "GenAI/RAG",
+    category: "GenAI",
     repoUrl: "https://github.com/ayush22cp008/NCERT-AI-Tutor",
     featured: false,
     status: "Personal project",
@@ -98,7 +92,7 @@ export const skillGroups = [
   },
   {
     label: "AI / ML",
-    items: ["LangChain", "RAG pipelines", "ChromaDB", "Groq API", "Ollama", "PyTorch", "YOLOv8", "SAM", "DINOv2"],
+    items: ["LangChain", "RAG", "ChromaDB", "Groq API", "Ollama", "PyTorch", "YOLOv8", "SAM", "DINOv2"],
   },
   {
     label: "Tools",

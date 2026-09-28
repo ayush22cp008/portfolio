@@ -15,9 +15,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ayush Halpati — Full-Stack Developer, GenAI/RAG",
+  title: "Ayush Halpati — Full-Stack & GenAI Developer",
   description:
-    "Ayush Halpati builds full-stack products with generative AI and RAG pipelines woven in — TableFlow, DeliveryProof, and more.",
+    "Ayush Halpati builds full-stack products with generative AI built in — TableFlow, DeliveryProof, and more.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

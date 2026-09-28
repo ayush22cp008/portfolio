@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { projects, type Project } from "@/lib/data";
 
-const filters = ["All", "Full-Stack", "GenAI/RAG", "Computer Vision"] as const;
+const filters = ["All", "Full-Stack", "GenAI", "Computer Vision"] as const;
 type Filter = (typeof filters)[number];
 
 const secondary = projects.filter((p) => !p.featured);

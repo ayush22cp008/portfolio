@@ -20,7 +20,7 @@ export default function DeliveryProofPage() {
       <SiteHeader />
       <main className="flex-1">
         <CaseStudyHeader
-          eyebrow="GenAI/RAG · Solo build"
+          eyebrow="GenAI · Solo build"
           title="DeliveryProof — AI-Assisted Evidence & Accountability Platform"
           tagline="An evidence-first accountability layer for logistics: a verifiable, chronological timeline of every facility interaction, summarized by AI into a narrative that can settle a dispute."
           liveUrl="https://deliveryproofhackathon.vercel.app"
