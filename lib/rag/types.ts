@@ -104,3 +104,34 @@ export interface RateLimitResult {
   request_count: number;
   retry_after: number;   // seconds until window resets; 0 if allowed
 }
+
+// ---------------------------------------------------------------------------
+// Phase 3 — Retrieval types
+// ---------------------------------------------------------------------------
+
+/** Source of the retrieval result: normal threshold match or fallback */
+export type RetrievalSource = "threshold" | "fallback";
+
+/** Structured result returned by the Phase 3 retrieval pipeline */
+export interface RetrievalResult {
+  chunks: MatchedChunk[];
+  source: RetrievalSource;
+  query_embedding_dimensions: number;
+  threshold_used: number;
+  total_chunks_in_db: number;
+  question: string;
+}
+
+/** Result of question validation */
+export interface ValidationResult {
+  valid: boolean;
+  question: string;
+  error?: string;
+}
+
+/** Result of a rate-limit check */
+export interface RateLimitCheckResult {
+  allowed: boolean;
+  request_count: number;
+  retry_after: number;
+}
