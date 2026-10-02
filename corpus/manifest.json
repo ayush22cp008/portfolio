@@ -1,0 +1,167 @@
+[
+  {
+    "id": "tf_handoff",
+    "project": "TableFlow",
+    "local_path": "corpus/tableflow/TableFlow_Final_Project_Handoff.md",
+    "original_repository": "local-download (curated from ayush22cp008/TableFlow_Records)",
+    "original_source_path": "TableFlow_Final_Project_Handoff.md",
+    "source_type": "curated-record",
+    "git_commit": "unknown",
+    "content_hash": "18b8e91f9602615cbeb5dc46e71c1b836d7d566249c29237a967033b974ed6db",
+    "size_bytes": 8560
+  },
+  {
+    "id": "tf_verification",
+    "project": "TableFlow",
+    "local_path": "corpus/tableflow/TableFlow_Final_Verification.md",
+    "original_repository": "local-download (curated from ayush22cp008/TableFlow_Records)",
+    "original_source_path": "TableFlow_Final_Verification.md",
+    "source_type": "curated-record",
+    "git_commit": "unknown",
+    "content_hash": "3dd805215f5e9ff0a1a617ca3cde558e7c22d48e0268d64d06023a996be4ec85",
+    "size_bytes": 10021
+  },
+  {
+    "id": "tf_challenges",
+    "project": "TableFlow",
+    "local_path": "corpus/tableflow/TableFlow_Major_Verified_Challenges_and_Fixes.md",
+    "original_repository": "local-download (curated from ayush22cp008/TableFlow_Records)",
+    "original_source_path": "TableFlow_Major_Verified_Challenges_and_Fixes.md",
+    "source_type": "curated-record",
+    "git_commit": "unknown",
+    "content_hash": "d590407f8128b72405c515259c24b3ddb572381cfe093c2cfdc449ef4595be3f",
+    "size_bytes": 11965
+  },
+  {
+    "id": "tf_decisions",
+    "project": "TableFlow",
+    "local_path": "corpus/tableflow/TableFlow_Important_Technical_Decisions.md",
+    "original_repository": "local-download (curated from ayush22cp008/TableFlow_Records)",
+    "original_source_path": "TableFlow_Important_Technical_Decisions.md",
+    "source_type": "curated-record",
+    "git_commit": "unknown",
+    "content_hash": "4236c7c3b101510692cdfcbbdcdd33304404fc610856a34912d7458ddacefc43",
+    "size_bytes": 9035
+  },
+  {
+    "id": "tf_architecture",
+    "project": "TableFlow",
+    "local_path": "corpus/tableflow/TableFlow_Approved_Final_Architecture.md",
+    "original_repository": "local-download (curated from ayush22cp008/TableFlow_Records)",
+    "original_source_path": "TableFlow_Approved_Final_Architecture.md",
+    "source_type": "curated-record",
+    "git_commit": "unknown",
+    "content_hash": "e871ae7ef9449cae2ab3f3fdd2814e91a54a8c59d937ace27283ac93a3a7929d",
+    "size_bytes": 14600
+  },
+  {
+    "id": "dp_handoff",
+    "project": "DeliveryProof",
+    "local_path": "corpus/deliveryproof/DeliveryProof_Final_Project_Handoff.md",
+    "original_repository": "local-download (curated from ayush22cp008/Freight_Records)",
+    "original_source_path": "DeliveryProof_Final_Project_Handoff.md",
+    "source_type": "curated-record",
+    "git_commit": "unknown",
+    "content_hash": "28be6f80109eb6870baf3ac8316c7305b82397c92c166759af471f40109d1a71",
+    "size_bytes": 10127
+  },
+  {
+    "id": "dp_verification",
+    "project": "DeliveryProof",
+    "local_path": "corpus/deliveryproof/DeliveryProof_Final_Verification.md",
+    "original_repository": "local-download (curated from ayush22cp008/Freight_Records)",
+    "original_source_path": "DeliveryProof_Final_Verification.md",
+    "source_type": "curated-record",
+    "git_commit": "unknown",
+    "content_hash": "c61f50d7093119c3b44e22812fbacd5498ff6fe03fa67c2dda023f86ae840456",
+    "size_bytes": 10170
+  },
+  {
+    "id": "dp_challenges",
+    "project": "DeliveryProof",
+    "local_path": "corpus/deliveryproof/DeliveryProof_Major_Verified_Challenges_and_Fixes.md",
+    "original_repository": "local-download (curated from ayush22cp008/Freight_Records)",
+    "original_source_path": "DeliveryProof_Major_Verified_Challenges_and_Fixes.md",
+    "source_type": "curated-record",
+    "git_commit": "unknown",
+    "content_hash": "aebf0f6875bd68fd1b455780bb660655516538328487f42207aca4e4554d6da4",
+    "size_bytes": 9561
+  },
+  {
+    "id": "dp_decisions",
+    "project": "DeliveryProof",
+    "local_path": "corpus/deliveryproof/DeliveryProof_Important_Technical_Decisions.md",
+    "original_repository": "local-download (curated from ayush22cp008/Freight_Records)",
+    "original_source_path": "DeliveryProof_Important_Technical_Decisions.md",
+    "source_type": "curated-record",
+    "git_commit": "unknown",
+    "content_hash": "c3ea0782c3bd989ef244e7876c4ff9c719974bbe2df61ecfc9e521453fb3d7e2",
+    "size_bytes": 10176
+  },
+  {
+    "id": "dp_architecture",
+    "project": "DeliveryProof",
+    "local_path": "corpus/deliveryproof/DeliveryProof_Approved_Final_Architecture.md",
+    "original_repository": "local-download (curated from ayush22cp008/Freight_Records)",
+    "original_source_path": "DeliveryProof_Approved_Final_Architecture.md",
+    "source_type": "curated-record",
+    "git_commit": "unknown",
+    "content_hash": "ce14d157ca2bd00a20d9d660063b01bffcd19aa56a3842e7bd9ea09eb02d7dd0",
+    "size_bytes": 14052
+  },
+  {
+    "id": "mech_readme",
+    "project": "Mechanical Part Detection",
+    "local_path": "corpus/mechanical/README.md",
+    "original_repository": "https://github.com/ayush22cp008/AI-Based-Mechanical-Part-Detection",
+    "original_source_path": "README.md",
+    "source_type": "canonical-readme",
+    "git_commit": "unknown",
+    "content_hash": "6ec13a69d62b299642346648d0f79d4987e46c9db56baa2c75799ae76e285120",
+    "size_bytes": 7178
+  },
+  {
+    "id": "mech_report",
+    "project": "Mechanical Part Detection",
+    "local_path": "corpus/mechanical/Technical_Report_Approved.md",
+    "original_repository": "local-download (4CP33_PROJECT_22CP008_REPORT.pdf, approved technical sections only)",
+    "original_source_path": "4CP33_PROJECT_22CP008_REPORT.pdf",
+    "source_type": "technical-report-derived",
+    "git_commit": "unknown",
+    "content_hash": "9d9f6bf87198b2df90ef1635551ff30e1fd8f485e459e9f4d47e23fe54b2cbff",
+    "size_bytes": 48690
+  },
+  {
+    "id": "zeni_readme",
+    "project": "ZENI",
+    "local_path": "corpus/zeni/README.md",
+    "original_repository": "https://github.com/ayush22cp008/ZENI-thinking-partner",
+    "original_source_path": "README.md",
+    "source_type": "canonical-readme",
+    "git_commit": "unknown",
+    "content_hash": "2969c9f0b39d64d137c1cf11e74f7c3f121d9adb7ea9463af37c1148f455ffe2",
+    "size_bytes": 13415
+  },
+  {
+    "id": "ncert_readme",
+    "project": "NCERT AI Tutor",
+    "local_path": "corpus/ncert-ai-tutor/README.md",
+    "original_repository": "https://github.com/ayush22cp008/NCERT-AI-Tutor",
+    "original_source_path": "README.md",
+    "source_type": "canonical-readme",
+    "git_commit": "unknown",
+    "content_hash": "7b2c9e481b82279105ce289d4816a25825762f5a0543bc7e4cad1e3d2be59352",
+    "size_bytes": 10344
+  },
+  {
+    "id": "profile_data",
+    "project": "Profile",
+    "local_path": "corpus/profile/data.ts",
+    "original_repository": "local-portfolio (ayush22cp008/portfolio)",
+    "original_source_path": "lib/data.ts",
+    "source_type": "canonical-typescript",
+    "git_commit": "unknown",
+    "content_hash": "c4a6f82e2563eba5f602e4bac4361d02d05e40c2f58646ef5b47a294b0adb55d",
+    "size_bytes": 4062
+  }
+]
