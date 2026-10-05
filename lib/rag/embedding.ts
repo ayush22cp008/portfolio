@@ -10,7 +10,7 @@
  * It uses @huggingface/transformers which is a server-side library.
  */
 
-import { pipeline } from "@huggingface/transformers";
+import { pipeline, env } from "@huggingface/transformers";
 import { RAG_CONFIG } from "./config";
 
 /**
@@ -32,6 +32,7 @@ async function getEmbeddingPipeline(): Promise<{
   }>;
 }> {
   if (!globalCache.__ragEmbeddingPipeline) {
+    env.cacheDir = "/tmp/transformers-cache";
     globalCache.__ragEmbeddingPipeline = await pipeline(
       "feature-extraction",
       RAG_CONFIG.embeddingModel
