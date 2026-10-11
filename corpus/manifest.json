@@ -163,5 +163,16 @@
     "git_commit": "unknown",
     "content_hash": "c4a6f82e2563eba5f602e4bac4361d02d05e40c2f58646ef5b47a294b0adb55d",
     "size_bytes": 4062
+  },
+  {
+    "id": "ayush_engineering_ai_agent_architecture",
+    "project": "Profile",
+    "local_path": "corpus/profile/AYUSH_CANONICAL_ENGINEERING_AI_AGENT_ARCHITECTURE_FINAL.md",
+    "original_repository": "self-authored canonical source",
+    "original_source_path": "AYUSH_CANONICAL_ENGINEERING_AI_AGENT_ARCHITECTURE_FINAL.md",
+    "source_type": "canonical-markdown",
+    "git_commit": "unknown",
+    "content_hash": "5dc6b129771a8938ca86754fc0bad601e0ec01b7889b68a2bd441e00c5f40065",
+    "size_bytes": 23290
   }
 ]

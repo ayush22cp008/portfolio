@@ -241,7 +241,26 @@ async function runIngestion() {
 
   let totalChunks = 0;
 
-  for (const record of manifest) {
+  const targetArg = process.argv[2]?.replace(/\\/g, '/');
+  const recordsToProcess = targetArg
+    ? manifest.filter(
+        (r) =>
+          r.local_path === targetArg ||
+          r.id === targetArg ||
+          r.original_source_path === targetArg ||
+          r.local_path.endsWith(targetArg)
+      )
+    : manifest;
+
+  if (targetArg) {
+    console.log(`Filtered ingestion to target "${targetArg}": found ${recordsToProcess.length} record(s).\n`);
+    if (recordsToProcess.length === 0) {
+      console.error(`❌ No manifest record matched "${targetArg}".`);
+      process.exit(1);
+    }
+  }
+
+  for (const record of recordsToProcess) {
     console.log(`Processing [${record.project}] ${record.original_source_path}...`);
 
     const fullPath = path.join(process.cwd(), record.local_path);

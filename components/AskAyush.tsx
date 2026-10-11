@@ -321,10 +321,23 @@ export function AskAyush() {
       <h2 className="mt-3 font-display text-2xl font-semibold text-[#E6E8EB]">
         Have a question about my work?
       </h2>
-      <p className="mt-2 max-w-md text-[15px] leading-relaxed text-[#8B93A1]">
-        Ask anything about my projects, tech stack, or approach. Powered by a
-        RAG pipeline built directly into this portfolio.
-      </p>
+      <div className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[#8B93A1]">
+        <p>
+          Ask Ayush is a grounded AI assistant built to answer questions about Ayush's selected portfolio projects and engineering methodology. Rather than exposing every repository, Ask Ayush focuses on five selected projects that represent key areas of Ayush's work, along with his documented engineering and AI-agent methodology.
+        </p>
+
+        <div className="mt-5 rounded-lg border border-[#232B36] bg-[#121821]/50 p-4">
+          <p className="text-sm leading-relaxed">
+            <strong className="font-medium text-[#E6E8EB]">Covers:</strong> ZENI &middot; TableFlow &middot; DeliveryProof &middot; NCERT AI Tutor &middot; Mechanical Part Detection
+          </p>
+          <p className="mt-3 text-sm leading-relaxed">
+            <strong className="font-medium text-[#E6E8EB]">You can ask about:</strong> project architecture, technologies used, engineering decisions, challenges and how they were addressed, comparisons between the selected projects, how Ayush plans and builds projects, how he works with AI coding agents, and how he investigates and verifies engineering work.
+          </p>
+          <p className="mt-3 text-sm italic text-[#8B93A1]/90 leading-relaxed">
+            Current scope: these five selected projects and Ayush's documented engineering / AI-agent methodology. Other repositories, unrelated general questions, and information outside the portfolio knowledge base are not currently covered.
+          </p>
+        </div>
+      </div>
 
       {/* ── Example prompts ─────────────────────────────────────────────── */}
       <div className="mt-6 flex flex-wrap gap-2" aria-label="Example questions">

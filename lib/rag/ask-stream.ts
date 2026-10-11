@@ -28,6 +28,7 @@
 
 import { retrieve } from "./retrieval";
 import { generateAnswer, buildSourceMeta } from "./llm";
+import { ScopeError } from "./types";
 
 // ---------------------------------------------------------------------------
 // Wire protocol types
@@ -98,6 +99,18 @@ export function createAskStream(
         controller.enqueue(encodeFrame({ type: "done" }));
         controller.close();
       } catch (err: unknown) {
+        if (err instanceof ScopeError) {
+          try {
+            // Emulate a standard fast LLM response
+            controller.enqueue(encodeFrame({ type: "token", content: err.message }));
+            controller.enqueue(encodeFrame({ type: "done" }));
+            controller.close();
+          } catch {
+             // Ignore
+          }
+          return;
+        }
+
         const message =
           err instanceof Error ? err.message : "Unknown error occurred.";
         try {

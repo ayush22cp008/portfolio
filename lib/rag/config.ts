@@ -48,6 +48,18 @@ export const RAG_CONFIG = {
   fallbackChunkCount: getEnvNumber("RAG_FALLBACK_CHUNK_COUNT", 3),
 
   /**
+   * The large candidate pool size before applying the per-source cap.
+   * Default: 40
+   */
+  candidatePoolSize: getEnvNumber("RAG_CANDIDATE_POOL_SIZE", 40),
+
+  /**
+   * Maximum chunks allowed from a single source.
+   * Default: 3
+   */
+  maxChunksPerSource: getEnvNumber("RAG_MAX_CHUNKS_PER_SOURCE", 3),
+
+  /**
    * Embedding model — MUST match Phase 2 ingestion.
    * Default: Xenova/gte-small
    */

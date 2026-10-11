@@ -88,8 +88,9 @@ README is the canonical Node 1 source. This is the portfolio's explicitly docume
 | File | Source Type | Original Source |
 |---|---|---|
 | `data.ts` | canonical-typescript | `lib/data.ts` in this repository |
+| `AYUSH_CANONICAL_ENGINEERING_AI_AGENT_ARCHITECTURE_FINAL.md` | canonical-markdown | self-authored canonical source |
 
-Used for profile information, project metadata, and current portfolio-facing structured data.
+Used for profile information, project metadata, current portfolio-facing structured data, and Ayush's canonical cross-project engineering and AI-agent development methodology.
 
 ---
 

@@ -135,3 +135,32 @@ export interface RateLimitCheckResult {
   request_count: number;
   retry_after: number;
 }
+
+// ---------------------------------------------------------------------------
+// Phase 3 — Decision Layer types
+// ---------------------------------------------------------------------------
+
+export interface QueryDecision {
+  scope: "in_scope" | "out_of_scope" | "ambiguous";
+  shape: "ENTITY" | "MULTI_ENTITY" | "GENERAL";
+  entities: Array<{
+    project: string;
+    matchedAlias: string;
+  }>;
+  cues: Array<"methodology" | "project_list" | "compare">;
+  retrievalPolicy:
+    | "methodology"
+    | "project_specific"
+    | "project_methodology"
+    | "project_list"
+    | "cross_project"
+    | "broad";
+  reason: string;
+}
+
+export class ScopeError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "ScopeError";
+  }
+}
