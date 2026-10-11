@@ -152,9 +152,11 @@ export interface QueryDecision {
     | "methodology"
     | "project_specific"
     | "project_methodology"
+    | "project_list_ai_ml"
+    | "project_list_full_stack"
     | "project_list"
+    | "broad"
     | "cross_project"
-    | "broad";
   reason: string;
 }
 

@@ -41,7 +41,7 @@ export const projects: Project[] = [
     description:
       "An evidence-first accountability layer for freight: captures the chronological timeline of a trip and uses AI to summarize raw events into a defensible narrative for dispute resolution.",
     stack: ["Next.js", "React", "Supabase", "Postgres", "Groq", "Vercel"],
-    category: "GenAI",
+    category: "Full-Stack",
     liveUrl: "https://deliveryproofhackathon.vercel.app",
     repoUrl: "https://github.com/ayush22cp008/DeliveryProof_hackathon",
     featured: true,

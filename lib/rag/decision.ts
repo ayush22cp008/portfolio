@@ -97,9 +97,15 @@ export function makeQueryDecision(query: string): QueryDecision {
 
   // 2. Cue Extraction
   const cues: QueryDecision["cues"] = [];
+  // Category‑specific list patterns
+  const AI_ML_LIST_PATTERN = /\b(ai\/ml|machine learning|ai and ml|ai|ml)\s+projects?\b/i;
+  const FULL_STACK_LIST_PATTERN = /\bfull[-\s]?stack\s+projects?\b/i;
   if (METHODOLOGY_PATTERN.test(q)) cues.push("methodology");
   if (PROJECT_LIST_PATTERN.test(q)) cues.push("project_list");
   if (COMPARE_PATTERN.test(q)) cues.push("compare");
+  // Detect category cues for project‑list queries
+  const wantsAiMl = AI_ML_LIST_PATTERN.test(q);
+  const wantsFullStack = FULL_STACK_LIST_PATTERN.test(q);
 
   const hasEntities = matchedEntities.length > 0;
   const hasCues = cues.length > 0;
@@ -148,7 +154,13 @@ export function makeQueryDecision(query: string): QueryDecision {
     if (cues.includes("methodology")) {
       policy = "methodology";
     } else if (cues.includes("project_list")) {
-      policy = "project_list";
+      if (wantsAiMl) {
+        policy = "project_list_ai_ml";
+      } else if (wantsFullStack) {
+        policy = "project_list_full_stack";
+      } else {
+        policy = "project_list";
+      }
     } else {
       policy = "broad";
     }

@@ -21,6 +21,7 @@ import { validateQuestion } from "./validation";
 import { checkRateLimits } from "./rate-limit";
 import { embedQuery, formatEmbeddingForSql } from "./embedding";
 import { makeQueryDecision, getMethodologyAuthorityTier, AUTHORITY_BONUS_BY_TIER } from "./decision";
+import { projects } from "../../corpus/profile/data";
 import { ScopeError } from "./types";
 import type {
   MatchedChunk,
@@ -118,6 +119,15 @@ export async function retrieve(
   }
 
   // Apply methodology-authority weighting ONLY for methodology-oriented policies.
+
+// Category-aware filtering for project list queries
+if (decision.retrievalPolicy === "project_list_ai_ml") {
+  const aiMlProjects = new Set(projects.filter(p => p.category === "GenAI" || p.category === "Computer Vision").map(p => p.name));
+  chunks = chunks.filter(c => aiMlProjects.has((c.metadata as any)?.project));
+} else if (decision.retrievalPolicy === "project_list_full_stack") {
+  const fullStackProjects = new Set(projects.filter(p => p.category === "Full-Stack").map(p => p.name));
+  chunks = chunks.filter(c => fullStackProjects.has((c.metadata as any)?.project));
+}
   // This re-sorts the candidate pool by an adjusted score before the final slice,
   // preserving semantic similarity as the primary signal.
   let topKChunks: MatchedChunk[];
@@ -135,9 +145,31 @@ export async function retrieve(
     topKChunks = chunks
       .filter((c) => (c.metadata as Record<string, unknown>)?.project === targetProject)
       .slice(0, RAG_CONFIG.matchCount);
-  } else {
-    topKChunks = chunks.slice(0, RAG_CONFIG.matchCount);
+} else {
+  topKChunks = chunks.slice(0, RAG_CONFIG.matchCount);
+  if (decision.retrievalPolicy === "project_list") {
+    const allProjectNames = new Set(projects.map(p => p.name));
+    // Keep only chunks belonging to allowed projects
+    topKChunks = topKChunks.filter(c => allProjectNames.has((c.metadata as any)?.project));
+    const present = new Set(topKChunks.map(c => (c.metadata as any)?.project));
+    const missing = [...allProjectNames].filter(p => !present.has(p));
+    if (missing.length > 0) {
+      const extraChunks = await Promise.all(
+        missing.map(proj =>
+          retrieveChunks(
+            embeddingStr,
+            RAG_CONFIG.similarityThreshold,
+            1,
+            [proj],
+            null,
+            false
+          )
+        )
+      );
+      topKChunks = topKChunks.concat(extraChunks.flat()).slice(0, RAG_CONFIG.matchCount);
+    }
   }
+}
 
   // Step 6: Determine Fallback
   let source: RetrievalSource;
