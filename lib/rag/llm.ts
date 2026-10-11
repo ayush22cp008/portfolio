@@ -16,6 +16,7 @@
 
 import Groq from "groq-sdk";
 import type { MatchedChunk } from "./types";
+import type { Project } from "../../corpus/profile/data";
 
 // ---------------------------------------------------------------------------
 // Client singleton
@@ -109,25 +110,53 @@ export async function generateAnswer(
   chunks: MatchedChunk[],
   traceId?: string // eslint-disable-line @typescript-eslint/no-unused-vars -- reserved for Node 3
 ): Promise<AsyncIterable<string>> {
-  // Deterministic handling for project-list queries to ensure exact output
+  // Enhanced deterministic handling for project-list and stack queries
   const aiMlPattern = /\b(ai\/ml|machine learning|ai and ml|ai|ml)\s+projects?\b/i;
   const fullStackPattern = /\bfull[-\s]?stack\s+projects?\b/i;
   const genericProjectPattern = /\bprojects?\b/i;
+  const stackPattern = /\b(stack|technology|technologies|tech)\b/i;
+
+  // Load authoritative project catalog
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { projects } = require("../../corpus/profile/data");
+
+  const formatProject = (p: Project) => {
+    const stackStr = p.stack?.join(", ");
+    return `- ${p.name}: ${p.tagline}\n  Stack: ${stackStr}\n  Repo: ${p.repoUrl}`;
+  };
+
+  // Specific project stack query
+  if (stackPattern.test(question)) {
+    const proj = projects.find((p: Project) => new RegExp(p.name, "i").test(question));
+    if (proj) {
+      const answer = `The technology stack for ${proj.name} includes: ${proj.stack.join(", ")}`;
+      async function* gen() { yield answer; }
+      return gen();
+    }
+  }
 
   if (aiMlPattern.test(question)) {
-    const answer = `AI/ML Projects:\n- ZENI – Private AI Thinking Partner\n- Mechanical Part Detection\n- NCERT AI Tutor`;
+    const aiMlProjects = projects.filter((p: Project) => p.category === "GenAI" || p.category === "Computer Vision");
+    const lines = aiMlProjects.map(formatProject).join("\n\n");
+    const answer = `AI/ML Projects:\n\n${lines}`;
     async function* gen() { yield answer; }
     return gen();
   }
 
   if (fullStackPattern.test(question)) {
-    const answer = `Full-Stack Projects:\n- TableFlow\n- DeliveryProof`;
+    const fullStackProjects = projects.filter((p: Project) => p.category === "Full-Stack");
+    const lines = fullStackProjects.map(formatProject).join("\n\n");
+    const answer = `Full-Stack Projects:\n\n${lines}`;
     async function* gen() { yield answer; }
     return gen();
   }
 
   if (genericProjectPattern.test(question)) {
-    const answer = `AI/ML Projects:\n- ZENI – Private AI Thinking Partner\n- Mechanical Part Detection\n- NCERT AI Tutor\n\nFull-Stack Projects:\n- TableFlow\n- DeliveryProof`;
+    const aiMlProjects = projects.filter((p: Project) => p.category === "GenAI" || p.category === "Computer Vision");
+    const fullStackProjects = projects.filter((p: Project) => p.category === "Full-Stack");
+    const aiMlLines = aiMlProjects.map(formatProject).join("\n\n");
+    const fullStackLines = fullStackProjects.map(formatProject).join("\n\n");
+    const answer = `AI/ML Projects:\n\n${aiMlLines}\n\nFull-Stack Projects:\n\n${fullStackLines}`;
     async function* gen() { yield answer; }
     return gen();
   }
