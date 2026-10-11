@@ -40,6 +40,10 @@ import {
   type ClientSourceMeta,
 } from "@/lib/rag/stream-parser";
 
+// Markdown rendering
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
@@ -478,7 +482,7 @@ export function AskAyush() {
               aria-busy={status === "streaming"}
               className="whitespace-pre-wrap text-[15px] leading-relaxed text-[#E6E8EB]"
             >
-              {answer}
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{answer}</ReactMarkdown>
               {/* Blinking cursor during streaming */}
               {status === "streaming" && (
                 <span
