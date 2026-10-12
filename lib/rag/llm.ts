@@ -161,24 +161,212 @@ export async function generateAnswer(
     return gen();
   }
 
-  // Fallback to LLM generation
+  // Fallback to LLM generation with error handling
   const model = getLlmModel();
   const systemPrompt = buildSystemPrompt();
   const userMessage = buildUserMessage(question, chunks);
 
-  const stream = await groq.chat.completions.create({
-    model,
-    messages: [
-      { role: "system", content: systemPrompt },
-      { role: "user", content: userMessage },
-    ],
-    stream: true,
-    temperature: 0.3,
-    max_tokens: 1024,
-  });
+  // Define approved tools
+  const tools = [
+    {
+      type: "function",
+      function: {
+        name: "get_project_details",
+        description: "Retrieve static project details from the portfolio catalog.",
+        parameters: {
+          type: "object",
+          properties: {
+            projectId: { type: "string", description: "Canonical project identifier (e.g., 'tableflow').", enum: ["tableflow","deliveryproof","zeni","ncert_ai_tutor","mechanical_part_detection"] },
+          },
+          required: ["projectId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "fetch_github_stats",
+        description: "Fetch public GitHub repository statistics for a given project ID.",
+        parameters: {
+          type: "object",
+          properties: {
+            projectId: { type: "string", description: "Canonical project identifier (e.g., 'tableflow').", enum: ["tableflow","deliveryproof","zeni","ncert_ai_tutor","mechanical_part_detection"] },
+          },
+          required: ["projectId"],
+        },
+      },
+    },
+  ];
 
-  return tokenStream(stream);
-}
+  let response;
+  try {
+    // First request without streaming to capture any tool calls
+    response = await groq.chat.completions.create({
+      model,
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userMessage },
+      ],
+      tools,
+
+      stream: false,
+    });
+  } catch (error) {
+    // If tool-call request fails (e.g., empty output error), fallback to a plain streaming request without tools
+    try {
+      const fallbackStream = await groq.chat.completions.create({
+        model,
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userMessage },
+        ],
+        stream: true,
+        temperature: 0.3,
+        max_tokens: 1024,
+      });
+      const rawIter = tokenStream(fallbackStream);
+      let emitted = false;
+      async function* safeIter() {
+        for await (const token of rawIter) {
+          emitted = true;
+          yield token;
+        }
+        if (!emitted) {
+          yield "I’m sorry, I couldn’t generate a response at this time. Please try rephrasing your question.";
+        }
+      }
+      return safeIter();
+    } catch (fallbackError) {
+      async function* fallbackGen() {
+        const msg = "I’m sorry, I couldn’t generate a response at this time. Please try rephrasing your question.";
+        yield msg;
+      }
+      return fallbackGen();
+    }
+
+    // SDK error – fallback to simple generator
+    async function* fallbackGen() {
+      const msg = "I’m sorry, I couldn’t generate a response at this time. Please try rephrasing your question.";
+      yield msg;
+    }
+    return fallbackGen();
+  }
+
+  const toolCalls = response?.choices?.[0]?.message?.tool_calls ?? [];
+  const directContent = response?.choices?.[0]?.message?.content;
+  if (!toolCalls || toolCalls.length === 0) {
+    if (!directContent || directContent.trim() === "") {
+      // Empty response – fallback to streaming request without tools
+      try {
+        const fallbackStream = await groq.chat.completions.create({
+          model,
+          messages: [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: userMessage },
+          ],
+          stream: true,
+          tool_choice: "none",
+          temperature: 0.3,
+          max_tokens: 1024,
+        });
+        const rawIter = tokenStream(fallbackStream);
+        let emitted = false;
+        async function* safeIter() {
+          for await (const token of rawIter) {
+            emitted = true;
+            yield token;
+          }
+          if (!emitted) {
+            yield "I’m sorry, I couldn’t generate a response at this time. Please try rephrasing your question.";
+          }
+        }
+        return safeIter();
+      } catch (fallbackError) {
+        async function* fallbackGen() {
+          const msg = "I’m sorry, I couldn’t generate a response at this time. Please try rephrasing your question.";
+          yield msg;
+        }
+        return fallbackGen();
+      }
+    } else {
+      // Model provided a direct answer without tool usage
+      async function* gen() { if (directContent) { yield directContent; } }
+      return gen();
+    }
+  } else {
+    // Enforce maximum of two tool calls per request
+    if (toolCalls.length > 2) {
+      async function* errGen() {
+        yield `Tool call limit exceeded (max 2, got ${toolCalls.length})`;
+      }
+      return errGen();
+    }
+    // Dynamically import tool implementations
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { get_project_details, fetch_github_stats } = require("./tools");
+    const toolMessages = [];
+    const assistantMessage = response.choices[0].message;
+    for (const call of toolCalls) {
+      const functionName = call.function?.name;
+      const argsJson = call.function?.arguments ?? "{}";
+      let result;
+      try {
+        const args = JSON.parse(argsJson);
+        if (functionName === "get_project_details") {
+          result = get_project_details(args);
+        } else if (functionName === "fetch_github_stats") {
+          result = await fetch_github_stats(args);
+        } else {
+          throw new Error(`Unsupported tool: ${functionName}`);
+        }
+      } catch (e) {
+        result = `Error executing ${functionName}: ${e instanceof Error ? e.message : String(e)}`;
+      }
+      toolMessages.push({ role: "tool", name: functionName, tool_call_id: call.id, content: String(result) } as import("groq-sdk").Chat.ChatCompletionMessageToolParam);
+    }
+    // Second request: stream final answer
+    let finalStream;
+    try {
+      finalStream = await groq.chat.completions.create({
+        model,
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userMessage },
+          assistantMessage,
+          ...toolMessages,
+        ],
+        stream: true,
+        tool_choice: "none",
+        temperature: 0.3,
+        max_tokens: 1024,
+      });
+    } catch (finalError) {
+      // If final request fails (e.g., empty output), return apology generator
+      async function* errGen() {
+        const msg = "I’m sorry, I couldn’t generate a response at this time. Please try rephrasing your question.";
+        yield msg;
+      }
+      return errGen();
+    }
+    const rawIterable = tokenStream(finalStream);
+    // duplicate rawIterable removed
+    let emitted = false;
+    async function* safeIterable() {
+      for await (const token of rawIterable) {
+        emitted = true;
+        yield token;
+      }
+      if (!emitted) {
+        yield "I’m sorry, I couldn’t generate a response at this time. Please try rephrasing your question.";
+      }
+    }
+    return safeIterable();
+  }
+
+
+  }
+
+
 
 /**
  * Extract text tokens from the Groq streaming response.
