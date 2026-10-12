@@ -15,6 +15,7 @@
  */
 
 import Groq from "groq-sdk";
+import type { ChatCompletionToolMessageParam } from "groq-sdk/resources/chat/completions";
 import type { MatchedChunk } from "./types";
 import type { Project } from "../../corpus/profile/data";
 
@@ -114,7 +115,10 @@ export async function generateAnswer(
   const aiMlPattern = /\b(ai\/ml|machine learning|ai and ml|ai|ml)\s+projects?\b/i;
   const fullStackPattern = /\bfull[-\s]?stack\s+projects?\b/i;
   const genericProjectPattern = /\bprojects?\b/i;
+  // Detect natural-language requests for specific project details that should bypass the generic shortcut
+  const explicitProjectDetailRequest = /\b(details? of|retrieve the details of|project details?)\b/i;
   const stackPattern = /\b(stack|technology|technologies|tech)\b/i;
+const explicitToolRequest = /\b(get_project_details|fetch_github_stats)\b/i;
 
   // Load authoritative project catalog
   // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -151,7 +155,7 @@ export async function generateAnswer(
     return gen();
   }
 
-  if (genericProjectPattern.test(question)) {
+  if (!explicitToolRequest.test(question) && !explicitProjectDetailRequest.test(question) && genericProjectPattern.test(question)) {
     const aiMlProjects = projects.filter((p: Project) => p.category === "GenAI" || p.category === "Computer Vision");
     const fullStackProjects = projects.filter((p: Project) => p.category === "Full-Stack");
     const aiMlLines = aiMlProjects.map(formatProject).join("\n\n");
@@ -322,7 +326,7 @@ export async function generateAnswer(
       } catch (e) {
         result = `Error executing ${functionName}: ${e instanceof Error ? e.message : String(e)}`;
       }
-      toolMessages.push({ role: "tool", name: functionName, tool_call_id: call.id, content: String(result) } as import("groq-sdk").Chat.ChatCompletionMessageToolParam);
+      toolMessages.push({ role: "tool", name: functionName, tool_call_id: call.id, content: String(result) } as ChatCompletionToolMessageParam);
     }
     // Second request: stream final answer
     let finalStream;
