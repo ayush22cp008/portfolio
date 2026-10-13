@@ -129,7 +129,11 @@ export function AskAyush() {
   const [errorMessage, setErrorMessage] = useState("");
   const [inputError, setInputError] = useState("");
   const [showSources, setShowSources] = useState(false);
-
+  // New trace viewer state
+  const [activityEvents, setActivityEvents] = useState<Array<{stage: "retrieval" | "llm_generation"; status: "started" | "completed" | "failed"; timestamp: number; durationMs?: number; errorCode?: string}>>([]);
+  const [toolEvents, setToolEvents] = useState<Array<{name: string; status: "success" | "error"; durationMs: number; errorCode?: string}>>([]);
+  const [traceInfo, setTraceInfo] = useState<null | {traceId: string; overallDurationMs: number; stageDurations: {retrieval?: number; llm_generation?: number}}>(null);
+  const [showTrace, setShowTrace] = useState(false);
   // ── Refs ─────────────────────────────────────────────────────────────────
 
   const abortRef = useRef<AbortController | null>(null);
@@ -230,6 +234,11 @@ export function AskAyush() {
     setErrorKind(null);
     setErrorMessage("");
     setInputError("");
+    // Reset trace viewer state
+    setActivityEvents([]);
+    setToolEvents([]);
+    setTraceInfo(null);
+    setShowTrace(false);
 
     try {
       const res = await fetch("/api/ask", {
@@ -298,6 +307,42 @@ export function AskAyush() {
             setStatus("done");
             break;
           }
+
+          case "activity": {
+            setActivityEvents((prev) => [
+              ...prev,
+              {
+                stage: frame.stage,
+                status: frame.status,
+                timestamp: frame.timestamp,
+                durationMs: frame.durationMs,
+                errorCode: frame.errorCode,
+              },
+            ]);
+            break;
+          }
+
+          case "tool": {
+            setToolEvents((prev) => [
+              ...prev,
+              {
+                name: frame.name,
+                status: frame.status,
+                durationMs: frame.durationMs,
+                errorCode: frame.errorCode,
+              },
+            ]);
+            break;
+          }
+
+          case "trace": {
+            setTraceInfo({
+              traceId: frame.traceId,
+              overallDurationMs: frame.overallDurationMs,
+              stageDurations: frame.stageDurations,
+            });
+            break;
+          }
         }
       }
     } catch (err: unknown) {
@@ -327,7 +372,7 @@ export function AskAyush() {
       </h2>
       <div className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[#8B93A1]">
         <p>
-          Ask Ayush is a grounded AI assistant built to answer questions about Ayush's selected portfolio projects and engineering methodology. Rather than exposing every repository, Ask Ayush focuses on five selected projects that represent key areas of Ayush's work, along with his documented engineering and AI-agent methodology.
+          Ask Ayush is a grounded AI assistant built to answer questions about Ayush&apos;s selected portfolio projects and engineering methodology. Rather than exposing every repository, Ask Ayush focuses on five selected projects that represent key areas of Ayush&apos;s work, along with his documented engineering and AI-agent methodology.
         </p>
 
         <div className="mt-5 rounded-lg border border-[#232B36] bg-[#121821]/50 p-4">
@@ -338,7 +383,7 @@ export function AskAyush() {
             <strong className="font-medium text-[#E6E8EB]">You can ask about:</strong> project architecture, technologies used, engineering decisions, challenges and how they were addressed, comparisons between the selected projects, how Ayush plans and builds projects, how he works with AI coding agents, and how he investigates and verifies engineering work.
           </p>
           <p className="mt-3 text-sm italic text-[#8B93A1]/90 leading-relaxed">
-            Current scope: these five selected projects and Ayush's documented engineering / AI-agent methodology. Other repositories, unrelated general questions, and information outside the portfolio knowledge base are not currently covered.
+            Current scope: these five selected projects and Ayush&apos;s documented engineering / AI-agent methodology. Other repositories, unrelated general questions, and information outside the portfolio knowledge base are not currently covered.
           </p>
         </div>
       </div>
@@ -532,6 +577,92 @@ export function AskAyush() {
                   </p>
                 )}
               </div>
+            </div>
+          )}
+
+          {/* Trace viewer — toggle and details */}
+          {status === "done" && (activityEvents.length > 0 || toolEvents.length > 0 || traceInfo) && (
+            <div className="mt-5 border-t border-[#232B36] pt-4">
+              <button
+                type="button"
+                onClick={() => setShowTrace((s) => !s)}
+                className="flex items-center gap-1.5 text-xs text-[#8B93A1] transition-colors hover:text-[#5EEAD4]"
+                aria-expanded={showTrace}
+                aria-controls="trace-viewer"
+                aria-label="Toggle trace viewer"
+              >
+                {showTrace ? "Hide trace" : "Show trace"}
+              </button>
+              {showTrace && (
+                <div id="trace-viewer" className="mt-3 space-y-4 text-xs text-[#8B93A1]">
+                  {/* Trace Summary */}
+                  {traceInfo && (
+                    <div className="border-b border-[#232B36] pb-2">
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium">Trace ID:</span>
+                        <code className="bg-[#232B36] rounded px-1 py-0.5">{traceInfo.traceId.slice(0, 8)}…</code>
+                        <button
+                          type="button"
+                          onClick={() => navigator.clipboard.writeText(traceInfo.traceId)}
+                          className="text-[#5EEAD4] hover:underline"
+                          aria-label="Copy trace ID"
+                        >
+                          Copy
+                        </button>
+                      </div>
+                      <div>Total duration: {traceInfo.overallDurationMs} ms</div>
+                      {traceInfo.stageDurations && (
+                        <div className="mt-1">
+                          {Object.entries(traceInfo.stageDurations).map(([stage, ms]) => (
+                            <div key={stage}>{stage}: {ms} ms</div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Activity Timeline */}
+                  {activityEvents.length > 0 && (
+                    <div className="border-b border-[#232B36] pb-2">
+                      <div className="font-medium mb-1">Activity</div>
+                      <ul className="list-disc list-inside space-y-1">
+                        {Object.values(
+                          activityEvents.reduce((acc, ev) => {
+                            const key = ev.stage;
+                            const existing = acc[key] || {};
+                            const status = ev.status === "completed" ? "completed" : existing.status || ev.status;
+                            const duration = ev.durationMs ?? existing.duration;
+                            const error = ev.errorCode ?? existing.error;
+                            acc[key] = { stage: ev.stage, status, duration, error };
+                            return acc;
+                          }, {} as Record<string, { stage: string; status: string; duration?: number; error?: string }>)
+                        ).map((item) => (
+                          <li key={item.stage}>
+                            <span className="capitalize">{item.stage.replace("_", " ")}</span>: {item.status}
+                            {item.duration !== undefined && <span> ({item.duration} ms)</span>}
+                            {item.error && <span className="text-red-400"> – error: {item.error}</span>}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Tool Activity */}
+                  {toolEvents.length > 0 && (
+                    <div>
+                      <div className="font-medium mb-1">Tools</div>
+                      <ul className="list-disc list-inside space-y-1">
+                        {toolEvents.map((t, i) => (
+                          <li key={i}>
+                            <span className="font-medium">{t.name}</span>: {t.status} {t.durationMs} ms
+                            {t.errorCode && <span className="text-red-400"> – error: {t.errorCode}</span>}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
 

@@ -12,9 +12,9 @@
 
 | Node | Description | Status |
 |------|-------------|--------|
-| **Node 1** | Basic grounded RAG agent | Completed and closed |
-| **Node 2** | Backend tool calling | Implementation and runtime tests reported as successful; local changes awaiting final review, commit, and push |
-| **Node 3** | Trace viewer and observability | Planned (next node) |
+| **Node 1** | Basic grounded RAG agent | Completed and published |
+| **Node 2** | Backend tool calling | Completed and published |
+| **Node 3** | Trace viewer and observability | Implemented locally, ready for release review |
 | **Node 4** | JD‑fit workflow | Planned |
 | **Node 5** | Admin, analytics, and stronger rate limiting | Planned |
 | **Node 6** | Architecture pages | Planned |

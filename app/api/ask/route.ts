@@ -97,13 +97,26 @@ export async function POST(req: NextRequest): Promise<Response> {
   }
 
   // --- Extract tracing context (reserved for Node 3) ----------------------
-  const traceId = req.headers.get("x-trace-id") ?? undefined;
+  const rawTraceId = req.headers.get("x-trace-id");
+  const TRACE_ID_REGEX = /^[a-f0-9]{8,32}$/i;
+  const traceId = rawTraceId && TRACE_ID_REGEX.test(rawTraceId)
+    ? rawTraceId
+    : crypto.randomUUID();
 
   // --- Client IP for rate limiting ----------------------------------------
   const clientIp = getClientIp(req);
 
+  // --- Abort handling ------------------------------------------------------
+  const abortCtrl = new AbortController();
+  const onRequestAbort = () => abortCtrl.abort();
+  if (req.signal.aborted) {
+    onRequestAbort();
+  } else {
+    req.signal.addEventListener("abort", onRequestAbort, { once: true });
+  }
+
   // --- Create the NDJSON stream -------------------------------------------
-  const stream = createAskStream(body, clientIp, traceId);
+  const stream = createAskStream(body, clientIp, traceId, abortCtrl);
 
   // --- Return streaming response ------------------------------------------
   return new Response(stream, {
@@ -113,6 +126,7 @@ export async function POST(req: NextRequest): Promise<Response> {
       "Transfer-Encoding": "chunked",
       "Cache-Control": "no-store",
       "X-Content-Type-Options": "nosniff",
+      "X-Trace-Id": traceId,
     },
   });
 }

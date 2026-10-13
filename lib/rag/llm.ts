@@ -109,7 +109,9 @@ export interface SourceMeta {
 export async function generateAnswer(
   question: string,
   chunks: MatchedChunk[],
-  traceId?: string // eslint-disable-line @typescript-eslint/no-unused-vars -- reserved for Node 3
+  traceId?: string, // eslint-disable-line @typescript-eslint/no-unused-vars -- reserved for Node 3
+  abortSignal?: AbortSignal,
+  onToolEvent?: (toolName: string, status: "success" | "error", durationMs: number, errorCode?: string) => void
 ): Promise<AsyncIterable<string>> {
   // Enhanced deterministic handling for project-list and stack queries
   const aiMlPattern = /\b(ai\/ml|machine learning|ai and ml|ai|ml)\s+projects?\b/i;
@@ -214,7 +216,7 @@ const explicitToolRequest = /\b(get_project_details|fetch_github_stats)\b/i;
       tools,
 
       stream: false,
-    });
+    }, { signal: abortSignal });
   } catch (error) {
     // If tool-call request fails (e.g., empty output error), fallback to a plain streaming request without tools
     try {
@@ -224,6 +226,7 @@ const explicitToolRequest = /\b(get_project_details|fetch_github_stats)\b/i;
           { role: "system", content: systemPrompt },
           { role: "user", content: userMessage },
         ],
+
         stream: true,
         temperature: 0.3,
         max_tokens: 1024,
@@ -314,6 +317,7 @@ const explicitToolRequest = /\b(get_project_details|fetch_github_stats)\b/i;
       const functionName = call.function?.name;
       const argsJson = call.function?.arguments ?? "{}";
       let result;
+      const toolStart = Date.now();
       try {
         const args = JSON.parse(argsJson);
         if (functionName === "get_project_details") {
@@ -323,8 +327,12 @@ const explicitToolRequest = /\b(get_project_details|fetch_github_stats)\b/i;
         } else {
           throw new Error(`Unsupported tool: ${functionName}`);
         }
+        // success event
+        onToolEvent?.(functionName, "success", Date.now() - toolStart);
       } catch (e) {
         result = `Error executing ${functionName}: ${e instanceof Error ? e.message : String(e)}`;
+        const errorCode = e instanceof Error ? e.name : "UNKNOWN_ERROR";
+        onToolEvent?.(functionName, "error", Date.now() - toolStart, errorCode);
       }
       toolMessages.push({ role: "tool", name: functionName, tool_call_id: call.id, content: String(result) } as ChatCompletionToolMessageParam);
     }

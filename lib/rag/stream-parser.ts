@@ -41,7 +41,11 @@ export type ClientStreamFrame =
   | { type: "token"; content: string }
   | { type: "sources"; sources: ClientSourceMeta[] }
   | { type: "done" }
-  | { type: "error"; message: string };
+  | { type: "error"; message: string }
+  // New observability frames
+  | { type: "activity"; stage: "retrieval" | "llm_generation"; status: "started" | "completed" | "failed"; timestamp: number; durationMs?: number; errorCode?: string }
+  | { type: "tool"; name: string; status: "success" | "error"; durationMs: number; errorCode?: string }
+  | { type: "trace"; traceId: string; overallDurationMs: number; stageDurations: { retrieval: number; llm_generation: number } };
 
 // ---------------------------------------------------------------------------
 // Parser
@@ -130,6 +134,7 @@ function tryParseFrame(line: string): ClientStreamFrame | null {
 function isClientStreamFrame(value: unknown): value is ClientStreamFrame {
   if (typeof value !== "object" || value === null) return false;
   const obj = value as Record<string, unknown>;
+  const sd = obj.stageDurations as Record<string, unknown>;
   if (typeof obj.type !== "string") return false;
 
   switch (obj.type) {
@@ -145,6 +150,37 @@ function isClientStreamFrame(value: unknown): value is ClientStreamFrame {
 
     case "error":
       return typeof obj.message === "string";
+
+    case "activity":
+      return (
+        typeof obj.stage === "string" &&
+        (obj.stage === "retrieval" || obj.stage === "llm_generation") &&
+        typeof obj.status === "string" &&
+        (obj.status === "started" || obj.status === "completed" || obj.status === "failed") &&
+        typeof obj.timestamp === "number" && Number.isFinite(obj.timestamp) && obj.timestamp >= 0 &&
+        (obj.durationMs === undefined || (typeof obj.durationMs === "number" && Number.isFinite(obj.durationMs) && obj.durationMs >= 0)) &&
+        (obj.errorCode === undefined || (typeof obj.errorCode === "string" && obj.errorCode.length <= 100))
+      );
+
+    case "tool":
+      return (
+        typeof obj.name === "string" &&
+        (obj.name === "get_project_details" || obj.name === "fetch_github_stats") &&
+        typeof obj.status === "string" && (obj.status === "success" || obj.status === "error") &&
+        typeof obj.durationMs === "number" && Number.isFinite(obj.durationMs) && obj.durationMs >= 0 &&
+        (obj.errorCode === undefined || (typeof obj.errorCode === "string" && obj.errorCode.length <= 100))
+      );
+
+    case "trace":
+      return (
+        typeof obj.traceId === "string" && obj.traceId.length > 0 && obj.traceId.length <= 64 && ( /^[a-f0-9]{8,32}$/i.test(obj.traceId) || /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(obj.traceId) ) &&
+        typeof obj.overallDurationMs === "number" && Number.isFinite(obj.overallDurationMs) && obj.overallDurationMs >= 0 &&
+        typeof obj.stageDurations === "object" && obj.stageDurations !== null &&
+        // each key must be a known stage and value a non‑negative finite number (or undefined)
+        (Object.keys(sd).every(k => k === "retrieval" || k === "llm_generation")) &&
+        (sd.retrieval === undefined || (typeof sd.retrieval === "number" && Number.isFinite(sd.retrieval) && sd.retrieval >= 0)) &&
+        (sd.llm_generation === undefined || (typeof sd.llm_generation === "number" && Number.isFinite(sd.llm_generation) && sd.llm_generation >= 0))
+      );
 
     default:
       // Unknown frame type — silently drop
