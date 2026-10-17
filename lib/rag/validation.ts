@@ -8,7 +8,7 @@
  * or any other database identifiers through this validation.
  */
 
-import { RAG_CONFIG } from "./config";
+import { RAG_CONFIG } from "./config.ts";
 
 export interface ValidationResult {
   valid: boolean;

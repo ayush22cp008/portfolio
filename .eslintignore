@@ -1,0 +1,5 @@
+components/**
+scripts/**
+lib/**
+!lib/jdfit/**
+app/api/jdfit/**

@@ -96,6 +96,6 @@ export const skillGroups = [
   },
   {
     label: "Tools",
-    items: ["Vercel", "Git/GitHub", "Claude", "ChatGPT", "Resend"],
+    items: ["Vercel", "Git/GitHub", "Claude", "ChatGPT", "Resend", "Docker"],
   },
 ];

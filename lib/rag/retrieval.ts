@@ -15,12 +15,12 @@
  *   - Retrieved content is treated as DATA, not instructions
  */
 
-import { sql } from "./db";
-import { RAG_CONFIG } from "./config";
-import { validateQuestion } from "./validation";
-import { checkRateLimits } from "./rate-limit";
-import { embedQuery, formatEmbeddingForSql } from "./embedding";
-import { makeQueryDecision, getMethodologyAuthorityTier, AUTHORITY_BONUS_BY_TIER } from "./decision";
+import { sql } from "./db.ts";
+import { RAG_CONFIG } from "./config.ts";
+import { validateQuestion } from "./validation.ts";
+import { checkRateLimits } from "./rate-limit.ts";
+import { embedQuery, formatEmbeddingForSql } from "./embedding.ts";
+import { makeQueryDecision, getMethodologyAuthorityTier, AUTHORITY_BONUS_BY_TIER } from "./decision.ts";
 import { projects } from "../../corpus/profile/data";
 import { ScopeError } from "./types";
 import type {

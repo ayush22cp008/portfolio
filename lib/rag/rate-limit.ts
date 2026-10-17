@@ -14,8 +14,11 @@
  */
 
 import crypto from "crypto";
-import { sql } from "./db";
-import { RAG_CONFIG } from "./config";
+import { sql } from "./db.ts";
+
+// Detect mock mode for tests; when enabled, bypass actual DB calls.
+const __isMock = process.env.RAG_DB_MOCK === '1' || process.env.JDFIT_DB_MOCK === '1';
+import { RAG_CONFIG } from "./config.ts";
 import type { RateLimitResult } from "./types";
 
 export interface RateLimitCheckResult {
@@ -47,6 +50,10 @@ async function checkRateLimit(
   maxRequests: number,
   windowSeconds: number
 ): Promise<RateLimitResult> {
+  if (__isMock) {
+    // Return a permissive result for mock mode.
+    return { allowed: true, request_count: 0, retry_after: 0 } as any;
+  }
   const result = await sql`
     SELECT * FROM check_and_increment_rate_limit(${key}, ${maxRequests}, ${windowSeconds});
   `;
@@ -62,16 +69,11 @@ async function checkRateLimit(
  * @param clientIp - The client's IP address (will be HMAC-hashed)
  * @returns RateLimitCheckResult
  */
-export async function checkRateLimits(
-  clientIp: string
-): Promise<RateLimitCheckResult> {
-  // Allow tests to isolate rate-limit state via env override.
-  // In production, this is undefined and the HMAC-hashed IP is used.
-  const rateLimitKey = process.env.RATE_LIMIT_KEY || hashClientIdentifier(clientIp);
 
-  // Check per-IP rate limit
+export async function checkRateLimits(clientIp: string): Promise<RateLimitCheckResult> {
+  const ipKey = hashClientIdentifier(clientIp);
   const ipResult = await checkRateLimit(
-    rateLimitKey,
+    ipKey,
     RAG_CONFIG.rateLimit.perIpMax,
     RAG_CONFIG.rateLimit.perIpWindowSeconds
   );
@@ -85,7 +87,6 @@ export async function checkRateLimits(
   }
 
   // Check global rate limit
-  // Read the key dynamically so tests can isolate rate-limit state
   const globalKey = process.env.RATE_LIMIT_GLOBAL_KEY || "__global__";
   const globalResult = await checkRateLimit(
     globalKey,
@@ -107,3 +108,4 @@ export async function checkRateLimits(
     retry_after: 0,
   };
 }
+

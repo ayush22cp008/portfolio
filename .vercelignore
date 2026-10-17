@@ -1,0 +1,19 @@
+﻿# Vercel upload ignore file
+# Exclude temporary test & diagnostic scripts
+integration_test.ts
+run_ask_test.ts
+run_ask_test2.ts
+test_tool_call.ts
+scripts/apply_migration.ts
+scripts/check_dev_rag.ts
+scripts/prod_audit.ts
+scripts/regression_test.ts
+scripts/run_consent_tests.ts
+scripts/run_rag_regressions.ts
+scripts/verify_answers.ts
+# Exclude env files (already ignored by .gitignore but double‑ensure)
+.env
+.env.*
+.env.local
+# Exclude Vercel config directory itself
+.vercel

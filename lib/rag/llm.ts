@@ -18,6 +18,7 @@ import Groq from "groq-sdk";
 import type { ChatCompletionToolMessageParam } from "groq-sdk/resources/chat/completions";
 import type { MatchedChunk } from "./types";
 import type { Project } from "../../corpus/profile/data";
+import { projects } from "../../corpus/profile/data";
 
 // ---------------------------------------------------------------------------
 // Client singleton
@@ -109,7 +110,7 @@ export interface SourceMeta {
 export async function generateAnswer(
   question: string,
   chunks: MatchedChunk[],
-  traceId?: string, // eslint-disable-line @typescript-eslint/no-unused-vars -- reserved for Node 3
+  traceId?: string,  
   abortSignal?: AbortSignal,
   onToolEvent?: (toolName: string, status: "success" | "error", durationMs: number, errorCode?: string) => void
 ): Promise<AsyncIterable<string>> {
@@ -123,8 +124,8 @@ export async function generateAnswer(
 const explicitToolRequest = /\b(get_project_details|fetch_github_stats)\b/i;
 
   // Load authoritative project catalog
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { projects } = require("../../corpus/profile/data");
+   
+  
 
   const formatProject = (p: Project) => {
     const stackStr = p.stack?.join(", ");
@@ -206,17 +207,23 @@ const explicitToolRequest = /\b(get_project_details|fetch_github_stats)\b/i;
 
   let response;
   try {
-    // First request without streaming to capture any tool calls
-    response = await groq.chat.completions.create({
+    // First request; include tools only if the question explicitly requests them
+    const useTools = explicitToolRequest.test(question);
+    const requestOptions: any = {
       model,
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: userMessage },
       ],
-      tools,
-
       stream: false,
-    }, { signal: abortSignal });
+    };
+    if (useTools) {
+      requestOptions.tools = tools;
+    } else {
+      requestOptions.tool_choice = "none";
+    }
+
+    response = await groq.chat.completions.create(requestOptions, { signal: abortSignal });
   } catch (error) {
     // If tool-call request fails (e.g., empty output error), fallback to a plain streaming request without tools
     try {
@@ -309,7 +316,7 @@ const explicitToolRequest = /\b(get_project_details|fetch_github_stats)\b/i;
       return errGen();
     }
     // Dynamically import tool implementations
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+     
     const { get_project_details, fetch_github_stats } = require("./tools");
     const toolMessages = [];
     const assistantMessage = response.choices[0].message;

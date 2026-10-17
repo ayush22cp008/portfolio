@@ -11,7 +11,7 @@
  */
 
 import { pipeline, env } from "@huggingface/transformers";
-import { RAG_CONFIG } from "./config";
+import { RAG_CONFIG } from "./config.ts";
 
 /**
  * Cache the embedding pipeline globally to avoid reloading on every request.

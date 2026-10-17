@@ -35,7 +35,7 @@ export function get_project_details(args: { projectId: string }): string {
     throw new Error(`Project ID "${projectId}" is not allowed.`);
   }
   // Import the catalog lazily to keep the module lightweight.
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+   
   const { projects } = require('../../corpus/profile/data');
   const canonicalSlug = EXTERNAL_TO_CANONICAL_SLUG[projectId];
   const project = (projects as Array<any>).find((p) => p.slug === canonicalSlug);
@@ -64,7 +64,7 @@ export async function fetch_github_stats(args: { projectId: string }): Promise<s
     throw new Error(`Project ID "${projectId}" is not allowed.`);
   }
   // Load catalog lazily
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+   
   const { projects } = require('../../corpus/profile/data');
   const canonicalSlug = EXTERNAL_TO_CANONICAL_SLUG[projectId];
   const project = (projects as Array<any>).find((p) => p.slug === canonicalSlug);

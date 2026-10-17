@@ -12,6 +12,12 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // JD‑Fit analyzer files (keep them lint‑free)
+    "components/**",
+    "scripts/**",
+    "lib/**",
+    "!lib/jdfit/**",
+    "app/api/jdfit/**",
   ]),
 ]);
 

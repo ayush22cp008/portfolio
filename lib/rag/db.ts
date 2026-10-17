@@ -22,7 +22,8 @@ import { neon } from "@neondatabase/serverless";
 
 const databaseUrl = process.env.DATABASE_URL;
 
-if (!databaseUrl) {
+// Skip validation when running in mock mode for tests
+if (!databaseUrl && !(process.env.RAG_DB_MOCK === '1' || process.env.JDFIT_DB_MOCK === '1')) {
   throw new Error(
     "[rag/db] DATABASE_URL environment variable is not set. " +
       "Add it to .env.local (server-side only, no NEXT_PUBLIC_ prefix)."
@@ -41,4 +42,14 @@ if (!databaseUrl) {
  * For dynamically constructed queries:
  *   await sql.query(queryString, valuesArray);
  */
-export const sql = neon(databaseUrl);
+export const sql = (process.env.RAG_DB_MOCK === '1' || process.env.JDFIT_DB_MOCK === '1') ? Object.assign(
+  async (..._args: any[]) => [] as any,
+  {
+    async transaction(cb: (tx: any) => any) {
+      // Provide a minimal tx object that supports tagged template literals
+      const tx = async (_strings: any, ..._values: any[]) => [] as any;
+      return await cb(tx);
+    },
+  }
+) : neon(databaseUrl as string);
+
