@@ -3,12 +3,12 @@
 ## 1. Project Overview
 
 - **Repository:** `ayush22cp008/portfolio`
-- **Product:** Ask Ayush, the portfolio's grounded RAG assistant.
+- **Product:** Ask Ayush, the portfolio's grounded RAG assistant, plus the JD-Fit workflow.
 - **Goal:** Build a portfolio that demonstrates real, verifiable AI engineering capabilities.
 - **Implementation executor:** Antigravity.
 - **Final decision authority:** Ayush.
 - **Source of truth:** This file is the central project handoff. Update this existing file at each approved milestone; do not create duplicate handoff files.
-- **Default release process:** Work on a dedicated feature branch, verify changes locally, deploy/test through Vercel Preview, open a PR to `main`, merge only after checks and manual acceptance, then verify Production.
+- **Default release process:** Work on a dedicated feature branch, verify changes locally, deploy/test through Vercel Preview, open a PR to `main`, merge only after checks and manual acceptance, then verify Production. **Node 4 was pushed directly to `main` in the reported release; treat this as an exception to the default process.**
 
 ## 2. Node Roadmap
 
@@ -17,7 +17,7 @@
 | **Node 1** | Basic grounded RAG agent | Completed and published |
 | **Node 2** | Backend controlled tool calling | Completed and published |
 | **Node 3** | Trace Viewer and observability | Merged into `main`, deployed to Production, and manually verified |
-| **Node 4** | JD-fit workflow | Completed and verified on Development; ready for manual review |
+| **Node 4** | JD-fit workflow | Deployed to Production; manual testing found two user-facing errors. Root causes remain unconfirmed; investigation in progress. |
 | **Node 5** | Admin, analytics, and stronger rate limiting | Planned |
 | **Node 6** | Architecture pages | Planned |
 
@@ -84,18 +84,20 @@
 ## 6. Git and Release State
 
 - **Default branch:** `main`
-- **Latest confirmed Node 3 merge commit:** `77db2f8`
-- **Pull request #1:** Merged and closed.
-- **Production:** Vercel showed a **Ready** deployment sourced from `main` at `77db2f8`; a live Ask Ayush answer and Trace Viewer were manually verified.
-- **Important:** The local working-tree state has not been inspected in this handoff update. Before any local Git operation, Antigravity must re-check `git status --short --branch`, current branch, `git log`, and the relationship with `origin/main`. Do not assume there are no uncommitted or untracked files.
-- Do not use destructive commands such as `git reset --hard`, `git clean`, or force-push to “synchronize” the checkout. Preserve any local changes and investigate discrepancies first.
-- The prior handoff's Git state snapshot (HEAD `23f57f0`, modified `lib/rag/llm.ts`, and untracked scripts) is stale and must not be treated as current state.
+- **Node 3 merge commit:** `77db2f8`
+- **Node 4 reported commit:** `279f747d9d414c667d0b9e9dd95c28e861444ece` (short SHA `279f747d`)
+- **Node 4 release:** Antigravity reported `git push origin main` succeeded with exit code 0. Vercel Deployments screenshot subsequently showed a Ready Production deployment for `279f747`.
+- **Preview deployment:** At the time of the latest supplied Vercel Deployments screenshot, the visible Preview deployments were based on older commit `8f06734`; a Preview deployment of `279f747d` had not yet been verified.
+- **Local worktree note:** Antigravity created a detached worktree at `C:\Users\ayush\Downloads\portfolio\preview-worktree` for commit `279f747d9d414c667d0b9e9dd95c28e861444ece`. The attempt to run `vercel link` from the main project directory successfully linked that main directory to the existing `ayushhalpati09-gmailcoms-projects/portfolio` Vercel project and updated its local `.env.local`; no Preview deployment was reported from that attempt. Do not expose or commit any local environment values.
+- Before any subsequent Git/deployment action, re-check `git status --short --branch`, current branch, `git log`, and relationship with `origin/main`. Do not assume there are no uncommitted or untracked files.
+- Do not use destructive commands such as `git reset --hard`, `git clean`, or force-push to “synchronize” the checkout. Preserve local changes and investigate discrepancies first.
 
 ## 7. Node 4 — JD-Fit Workflow
 
-**Status: Implemented and verified on Development branch (`br-delicate-wave-b3pevv04`). Production impact audited.**
+**Status: Implemented and pushed to `main`; Production deployment reported Ready; manual Production testing exposed two errors. Root-cause investigation is in progress. Do not mark Node 4 fully validated until the errors are diagnosed and retested safely.**
 
 ### Implementation Summary
+
 - **Routes & UI:**
   - Candidate-facing fit analysis UI at `/fit` (`app/fit/page.tsx`).
   - Fit analysis API at `/api/jdfit/analyze` (`app/api/jdfit/analyze/route.ts`).
@@ -104,42 +106,88 @@
   - Admin auth & API routes: `/api/jdfit/admin/login`, `/api/jdfit/admin/data`, `/api/jdfit/admin/delete`.
 - **Database Layer (`lib/jdfit/db.ts`):**
   - Migration `db/migrations/003_jdfit.sql` defining `jdfit_submissions`, `jdfit_skill_aggregates`, and `jdfit_aggregate_counters`.
-  - Schema migration and four consent combinations (FullOff_AnalyticsOff, FullOff_AnalyticsOn, FullOn_AnalyticsOff, FullOn_AnalyticsOn) verified passing on Development branch.
-  - Safe submission deletion (`deleteSubmission`) leaving anonymous skill aggregates and aggregate counters intact.
+  - Four consent combinations were reported passing with mocked/unit or Development tests. This does not prove current deployed persistence succeeds.
+  - Safe submission deletion (`deleteSubmission`) is intended to remove an individual candidate record while leaving anonymous skill aggregates and counters intact.
 - **Admin Security:**
   - Token-based session management (`lib/jdfit/admin.ts`) using HMAC-SHA256 tokens in `HttpOnly`, `SameSite=Lax`, `Secure` cookies.
-  - Failing closed on unauthenticated access and missing admin secrets.
+  - Unauthenticated access to the admin data and delete APIs is intended to fail closed with HTTP 401.
 
-### Production Read-Only Impact Audit Findings & Reconciliation
-A strictly read-only audit script (`scripts/prod_audit.ts`) was executed directly against the verified Neon Production branch:
-- **Production Branch ID:** `br-lively-king-b3sz4a2d` (Project: `polished-firefly-21555879`).
-- **Production Endpoint:** `ep-lucky-shadow-b3j5eyco-pooler.c-4.ap-southeast-1.aws.neon.tech`.
-- **Exit Code:** `0` (Success).
-- **Public Tables on Production:** `["rag_chunks", "rag_rate_limits", "rag_sources"]`.
-- **JD-Fit Tables Found:** `[]` (`jdfit_submissions`, `jdfit_skill_aggregates`, and `jdfit_aggregate_counters` do **not** exist on Production).
-- **Submissions on Production:** `0` (Table does not exist).
-- **Synthetic Test Submissions:** `0`.
-- **Aggregate Counters / Skills:** `0` rows (Tables do not exist).
+### Node 4 — reported local verification
 
-#### Closure Verification & Quality Checks
-- **Admin Security & Cookie Policy:**
-  - Authenticated sessions use `jdfit_admin_token` cookie configured with `httpOnly: true`, `secure: process.env.NODE_ENV === 'production'`, `sameSite: 'lax'` (matching approved specification), and `maxAge: 8 * 60 * 60` (8 hours).
-  - Unauthenticated requests to `/api/jdfit/admin/data` and `/api/jdfit/admin/delete` fail closed (`401 Unauthorized`).
-- **Consent Combinations & Aggregate Preservation:**
-  - 4 consent combinations (`FullOff_AnalyticsOff`, `FullOff_AnalyticsOn`, `FullOn_AnalyticsOff`, `BothOn`) verified passing on Development.
-  - Deletion of an individual submission via `/api/jdfit/admin/delete` deletes the candidate record from `jdfit_submissions` without altering or corrupting anonymous skill aggregates or aggregate counters.
-- **RAG & Stream Observability Regressions:**
-  - Offline parser regression test (`scripts/node3_parser_offline_test.cjs`) verified passing (`All offline parser tests passed`, exit code `0`).
-  - Production build (`npm run build`) succeeded across all 14 routes with Turbopack (exit code `0`).
-  - Live RAG execution checks via `scripts/run_rag_regressions.ts` (testing normal questions, `get_project_details`, and `fetch_github_stats`) are currently **BLOCKED**: while the Neon Production endpoint responds cleanly in <1s for read-only audits, requests against the Development compute (`ep-round-wave-b3rxgk6k-pooler`) stall/timeout during Postgres connection/rate-limit checks under the current environment setup.
-- **Code Quality & Lint Status:**
-  - `npx eslint "app/api/jdfit/**/*.{ts,tsx}" "app/fit/**/*.{ts,tsx}" "app/jdfit/**/*.{ts,tsx}" "lib/jdfit/**/*.{ts,tsx}" "scripts/prod_audit.ts"` passes cleanly with exit code `0` (0 errors, 0 warnings).
-  - TypeScript compilation (`npx tsc --noEmit --pretty false`) passes cleanly with exit code `0` (0 type errors).
-  - `npm run lint --silent` repository-wide exit code is `1` due to pre-existing Node 1–3 lint warnings/errors in legacy files (`SiteHeader.tsx`, `llm.ts`, `tools.ts`, `retrieval.ts`, and test scripts) documented in prior handoffs. All Node 4 code is 100% clean.
+The latest reported local checks before/around the Node 4 push were:
+
+| Check | Reported result | Limitation |
+|------|------------------|-------------|
+| `node tests/jdfit/consent.test.ts` | Exit code 0; report says four consent scenarios passed | Test used mock persistence; not a live Preview DB write test |
+| `npm test --silent` | Exit code 0; 4 Jest suites, 12 test cases passed | Standalone consent test is excluded from Jest and run separately |
+| `npx tsc --noEmit --pretty false` | Exit code 0 | Local type-check only |
+| `npm run build` | Later follow-up reported exit code 0 | This is a local build result, not proof of deployed API success |
+
+These are reports of local results and should not be treated as proof that every Production/Preview runtime flow works.
+
+### Node 4 — Deployed UI observations (manual Production test)
+
+The user tested `https://portfolio-nu-five-5a7rlm4q24.vercel.app/fit` after Node 4 was pushed to `main`. The UI page loaded and returned a structured JSON-like analysis result on screen, but the following errors were observed:
+
+#### Issue A — Analyze error
+
+- **Observed UI symptom:** Clicking **Analyze** can display a long error containing `Failed to validate JSON` and `json_validate_failed`.
+- **Reported request path:** `POST /api/jdfit/analyze`.
+- **Source-code path reported by inspection:** `app/api/jdfit/analyze/route.ts` calls `analyzeJobDescription` in `lib/jdfit/analyze.ts`. The Groq SDK call reportedly uses model `openai/gpt-oss-20b` and `response_format: { type: "json_object" }`. The route catches thrown provider errors and returns an application-level error response.
+- **What this evidence establishes:** A user-facing analysis failure was observed; the code path and JSON response-format option have been inspected in source.
+- **What remains unproven:** The precise reason Groq rejects the generation/request. No captured browser Network response or correlated Vercel runtime log was available during the reported investigation. Do not assume the prompt is wrong or claim malformed generated text without provider evidence.
+
+#### Issue B — Save Choices error
+
+- **Observed UI symptom:** Clicking **Save Choices** displays `Save error` in each tested selection:
+  1. Only `Contribute anonymous insights` selected.
+  2. Both `Save full submission` and `Contribute anonymous insights` selected.
+  3. Only `Save full submission` selected.
+- **Reported request path:** `POST /api/jdfit`.
+- **Source-code path reported by inspection:** In `app/api/jdfit/route.ts`, `analyzeJobDescription(jobDescription)` is called before the consent-specific persistence branches. If this analysis call throws, the route returns HTTP 500 before reaching either `insertSubmission` or `applyAnonAnalytics`. If analysis succeeds, the full-save branch calls `insertSubmission` and the anonymous branch calls `applyAnonAnalytics`.
+- **What this evidence establishes:** Both the shared analysis-stage path and two separate persistence paths exist in source. The same analysis function is called by the Save Choices route before persistence.
+- **What remains unproven:** Which stage caused the actual deployed Save error. There was no saved Network/HAR response and no correlated Vercel runtime stack/log in the workspace at the time of investigation. Therefore a shared root cause is plausible but unconfirmed; a separate persistence failure is also possible.
+- **Important UI detail:** The UI handler can fall back to the generic string `Save error` if the response is not JSON or does not contain an `error` field. The visible message alone does not prove a database failure.
+
+### Node 4 — Environment and safe diagnostics status
+
+- The user inspected Vercel project Environment Variables and confirmed the Preview and Production `DATABASE_URL` entries point to different databases. Do not disclose either value.
+- The supplied screenshot showed `GROQ_API_KEY` configured for Production and Preview and showed separate Preview/Production entries for `DATABASE_URL`; this does not prove the values are valid or that Preview's JD-Fit schema has been applied.
+- The screenshot did not show `JDFIT_DB_MOCK=1`. Absence from that visible list is not by itself a complete configuration audit.
+- The supplied Vercel Deployments screenshot showed:
+  - Node 4 `279f747` — Production — Ready.
+  - Visible Preview deployments were on older commit `8f06734`.
+- A Preview environment must be verified to contain Node 4 commit `279f747d` or a descendant before collecting diagnostic runtime evidence.
+- The Preview database's applied migration state, including `003_jdfit.sql`, has **not yet been verified** by the evidence in this handoff.
+- No more consent-enabled requests should be sent to Production for debugging. Do not run migrations or perform Preview writes until Preview URL/source, isolated database, and schema readiness are verified.
+
+### Node 4 — Diagnosis workflow (current next steps)
+
+1. Create or identify a Vercel **Preview** deployment built from commit `279f747d` or a descendant. Current visible Preview deployments were older. A detached Git worktree exists at `C:\Users\ayush\Downloads\portfolio\preview-worktree` at commit `279f747d9d414c667d0b9e9dd95c28e861444ece`, but it was not yet successfully deployed to Preview in the reported status.
+2. Verify the exact Preview URL/commit and the Preview database's isolation and `003_jdfit.sql` schema, using read-only evidence. Do not assume a distinct `DATABASE_URL` guarantees migration readiness.
+3. On verified Preview, first capture a safe **Analyze** request's actual status and sanitized response, plus correlated runtime logs if available.
+4. Only after verifying that the no-consent `POST /api/jdfit` path does not perform consent/persistence writes, use a no-consent request if needed to observe its shared analysis path. Note that it still calls the external model API and may have rate-limit side effects.
+5. For consent-enabled persistence debugging, use only the verified isolated Preview database after schema readiness is confirmed. Record the actual status, sanitized response, and relevant runtime error. Never test this on Production again.
+6. Diagnose both issues from evidence first. Classify the root cause as confirmed, strongly supported, or unresolved. Then fix one issue at a time, run focused tests, and re-verify Preview before considering a Production update.
+7. Keep the candidate-facing visual redesign separate and out of scope until the current functionality has been diagnosed and validated. Admin UX is also out of scope for this current bug investigation.
+
+### Node 4 — Current status summary
+
+| Item | State |
+|------|-------|
+| Feature implementation pushed to `main` | Reported complete |
+| Production deployment of commit `279f747` | Vercel screenshot showed Ready |
+| Local Jest/consent/TypeScript/build checks | Reported passing at local checkpoint |
+| Manual deployed UI test | **Failed:** Analyze JSON-validation error and Save Choices error observed |
+| Exact Analyze root cause | **Unresolved** pending runtime evidence |
+| Exact Save Choices failure stage | **Unresolved** pending runtime evidence |
+| Latest Preview using Node 4 commit | Not yet verified; visible previews were older |
+| Preview migration readiness | Not yet verified |
+| Production changes for error fixes | None reported; do not patch Production blindly |
 
 ## 8. Future Nodes
 
-- **Node 5:** Admin, analytics, and stronger rate limiting — planned.
+- **Node 5:** Admin, analytics, and stronger rate limiting — planned; separate from the existing Node 4 admin UI/API implementation.
 - **Node 6:** Architecture pages — planned.
 
 ## 9. Working Rules
@@ -150,10 +198,10 @@ A strictly read-only audit script (`scripts/prod_audit.ts`) was executed directl
 4. Preserve uncommitted changes and unknown files. Never overwrite, delete, reset, or clean files without an explicit, evidence-based reason and approval.
 5. Do not invent project facts, skills, test results, or deployment status. Distinguish observed results from assumptions.
 6. Run relevant tests and inspect the final diff before commit.
-7. Use a feature branch, Preview validation, and a PR to `main`; merge only after required checks and manual acceptance.
+7. Use a feature branch, Preview validation, and a PR to `main`; merge only after required checks and manual acceptance, except where a documented explicit release decision authorizes another path.
 8. Verify the Production deployment and its key user flows after merge.
 9. Ayush is the final decision authority; stop for approval at the agreed review gates.
 
 ---
-*Central handoff updated with verified Node 4 development status and verified read-only production audit.*
 
+*Central handoff updated with reported Node 4 release state and evidence-based record of the two deployed JD-Fit errors. Root causes remain unresolved pending verified Preview runtime evidence.*
