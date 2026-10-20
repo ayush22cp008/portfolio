@@ -73,7 +73,7 @@ export default function DeliveryProofPage() {
 
         <CaseStudySection title="Tech decisions & why">
           <p>
-            <strong className="text-[#E6E8EB]">
+            <strong className="text-[#111111]">
               Three role-aware portals, one shared system.
             </strong>{" "}
             Driver, Company (Sender/Receiver), and Reviewer each see only
@@ -81,7 +81,7 @@ export default function DeliveryProofPage() {
             and routing layer instead of three separate apps.
           </p>
           <p>
-            <strong className="text-[#E6E8EB]">
+            <strong className="text-[#111111]">
               Sender and Receiver are trip-specific hats, not account types.
             </strong>{" "}
             A company can be a Sender on one trip and a Receiver on another —
@@ -89,7 +89,7 @@ export default function DeliveryProofPage() {
             handshake enforceable as a state transition.
           </p>
           <p>
-            <strong className="text-[#E6E8EB]">
+            <strong className="text-[#111111]">
               Onboarding verification is fully separate from the delivery
               chain.
             </strong>{" "}
@@ -98,13 +98,13 @@ export default function DeliveryProofPage() {
             never leak permissions into the other.
           </p>
           <p>
-            <strong className="text-[#E6E8EB]">Atomic driver claim.</strong>{" "}
+            <strong className="text-[#111111]">Atomic driver claim.</strong>{" "}
             The marketplace-claim transaction guarantees a trip is claimed by
             exactly one driver — no race condition where two drivers claim
             the same load.
           </p>
           <p>
-            <strong className="text-[#E6E8EB]">
+            <strong className="text-[#111111]">
               AI is scoped to summarization only.
             </strong>{" "}
             The AI generates a post-completion evidence summary from
@@ -143,11 +143,11 @@ export default function DeliveryProofPage() {
               <ul className="list-disc space-y-1.5 pl-5">
                 <li>
                   Fail after step 1 of Approve → evidence shows{" "}
-                  <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+                  <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
                     APPROVED
                   </code>
                   , identity still{" "}
-                  <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+                  <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
                     PENDING
                   </code>
                   .
@@ -159,7 +159,7 @@ export default function DeliveryProofPage() {
                 </li>
                 <li>
                   Fail after step 2 of Reject → identity is{" "}
-                  <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+                  <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
                     REJECTED
                   </code>{" "}
                   but no history row exists — breaks the audit trail the
@@ -167,11 +167,11 @@ export default function DeliveryProofPage() {
                 </li>
               </ul>
               <p>
-                <strong className="text-[#E6E8EB]">Fix:</strong> move the
+                <strong className="text-[#111111]">Fix:</strong> move the
                 whole decision sequence into a Postgres stored procedure and
                 call that RPC from the route — a failure anywhere rolls the
                 applicant back to{" "}
-                <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
                   PENDING
                 </code>{" "}
                 instead of leaving a half-committed record.

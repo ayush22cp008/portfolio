@@ -26,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} h-full scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-[#0B0F14] text-[#E6E8EB] antialiased selection:bg-[#5EEAD4] selection:text-[#0B0F14]">
+      <body className="min-h-full flex flex-col bg-[#F9F8F6] text-[#111111] antialiased selection:bg-[#0047FF] selection:text-white">
         {children}
       </body>
     </html>

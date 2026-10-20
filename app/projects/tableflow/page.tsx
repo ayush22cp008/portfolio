@@ -58,30 +58,30 @@ export default function TableFlowPage() {
             to ground the feature set in real pain points instead of
             assumptions.
           </p>
-          <div className="mt-4 overflow-hidden rounded-lg border border-[#232B36]">
+          <div className="mt-4 overflow-hidden border border-[#111111] bg-white">
             <table className="w-full text-left text-sm">
-              <thead className="bg-[#161D28] text-[#E6E8EB]">
+              <thead className="border-b border-[#111111] bg-[#F2EFE9] text-[#111111]">
                 <tr>
-                  <th className="px-4 py-2.5 font-medium">Research finding</th>
-                  <th className="px-4 py-2.5 font-medium">Feature it drove</th>
+                  <th className="px-4 py-2.5 font-bold uppercase tracking-wider text-xs">Research finding</th>
+                  <th className="px-4 py-2.5 font-bold uppercase tracking-wider text-xs">Feature it drove</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#232B36]">
+              <tbody className="divide-y divide-[#111111]/15">
                 <tr>
                   <td className="px-4 py-2.5">Post-order dish unavailability</td>
-                  <td className="px-4 py-2.5">Real-Time Menu & Live Availability</td>
+                  <td className="px-4 py-2.5 font-semibold text-[#0047FF]">Real-Time Menu & Live Availability</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5">Opaque queues, long waits</td>
-                  <td className="px-4 py-2.5">Digital Ordering + Queue/Table Management</td>
+                  <td className="px-4 py-2.5 font-semibold text-[#0047FF]">Digital Ordering + Queue/Table Management</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5">~75% of restaurants over-prep nightly</td>
-                  <td className="px-4 py-2.5">Menu Intelligence AI (demand forecasting)</td>
+                  <td className="px-4 py-2.5 font-semibold text-[#0047FF]">Menu Intelligence AI (demand forecasting)</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5">Billing delays, hidden charges</td>
-                  <td className="px-4 py-2.5">Transparent Itemized Billing</td>
+                  <td className="px-4 py-2.5 font-semibold text-[#0047FF]">Transparent Itemized Billing</td>
                 </tr>
               </tbody>
             </table>
@@ -96,42 +96,42 @@ export default function TableFlowPage() {
 
         <CaseStudySection title="Tech decisions & why">
           <p>
-            <strong className="text-[#E6E8EB]">Single-restaurant model.</strong>{" "}
+            <strong className="text-[#111111]">Single-restaurant model.</strong>{" "}
             No multi-tenancy — simplifies the schema and matches the scope
             instead of building a tenant-isolation layer under time pressure.
           </p>
           <p>
-            <strong className="text-[#E6E8EB]">Seat-level occupancy via one atomic RPC.</strong>{" "}
-            <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+            <strong className="text-[#111111]">Seat-level occupancy via one atomic RPC.</strong>{" "}
+            <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
               restaurant_tables.occupied_seats
             </code>{" "}
             tracks real-time occupancy per table; orders carry a{" "}
-            <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+            <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
               party_size
             </code>
             . Rather than insert-then-update from the client — a race
             condition waiting to happen — a single Postgres RPC,{" "}
-            <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+            <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
               place_order_and_occupy_table
             </code>
             , does both atomically.
           </p>
           <p>
-            <strong className="text-[#E6E8EB]">Reservations reuse the live-table system.</strong>{" "}
-            A <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">reserved_from</code> timestamp on
+            <strong className="text-[#111111]">Reservations reuse the live-table system.</strong>{" "}
+            A <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">reserved_from</code> timestamp on
             each table blocks it from normal allocation during its window —
             reusing the same display/allocation logic already built for live
             tables, instead of a parallel reservation-only system.
           </p>
           <p>
-            <strong className="text-[#E6E8EB]">Status derived, never duplicated.</strong>{" "}
+            <strong className="text-[#111111]">Status derived, never duplicated.</strong>{" "}
             Table status is always computed from occupancy and reservation
             state — never stored as a separate flag. Two representations of
             the same fact drift apart eventually; one source of truth
             doesn&apos;t.
           </p>
           <p>
-            <strong className="text-[#E6E8EB]">OTP over magic links.</strong>{" "}
+            <strong className="text-[#111111]">OTP over magic links.</strong>{" "}
             Email verification uses a numeric OTP entered in the same browser
             session that started signup — magic links break the moment
             someone opens their email on a different device.
@@ -152,7 +152,7 @@ export default function TableFlowPage() {
             <BugCard title="A 'fixed' mobile navbar took down three roles' dashboards in production">
               <p>
                 A mobile-responsive pass duplicated the{" "}
-                <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
                   NotificationBell
                 </code>{" "}
                 component — one instance for desktop nav, one for mobile —
@@ -172,9 +172,9 @@ export default function TableFlowPage() {
                 &quot;something&apos;s wrong with mobile CSS.&quot;
               </p>
               <p>
-                <strong className="text-[#E6E8EB]">Fix:</strong> exactly one
+                <strong className="text-[#111111]">Fix:</strong> exactly one
                 mounted{" "}
-                <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
                   NotificationBell
                 </code>{" "}
                 per navbar, with responsive positioning instead of two
@@ -185,20 +185,20 @@ export default function TableFlowPage() {
             <BugCard title="A manager-only RLS policy that recursively queried its own table">
               <p>
                 A policy to let managers see staff profiles queried{" "}
-                <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
                   profiles
                 </code>{" "}
                 from within its own{" "}
-                <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
                   USING
                 </code>{" "}
                 clause on{" "}
-                <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
                   profiles
                 </code>{" "}
                 — evaluating the policy re-triggered the policy, forever.
                 Postgres threw{" "}
-                <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
                   42P17: infinite recursion detected
                 </code>
                 .
@@ -207,23 +207,23 @@ export default function TableFlowPage() {
                 The blast radius was bigger than it looked: middleware
                 queries the user&apos;s profile on every request to route by
                 role, falling back to{" "}
-                <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
                   customer
                 </code>{" "}
                 if that query fails. So every authenticated role — Owner,
                 Manager, Cook, Waiter — silently fell back to customer and got
-                redirected to <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">/order</code> on
+                redirected to <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">/order</code> on
                 refresh, with no visible error, just repeated 500s in the
                 Supabase logs.
               </p>
               <p>
-                <strong className="text-[#E6E8EB]">Fix:</strong> route the
+                <strong className="text-[#111111]">Fix:</strong> route the
                 policy through the existing{" "}
-                <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
                   has_role()
                 </code>{" "}
                 helper, marked{" "}
-                <code className="rounded bg-[#161D28] px-1.5 py-0.5 text-xs text-[#E6E8EB]">
+                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
                   SECURITY DEFINER
                 </code>{" "}
                 — it runs with the function owner&apos;s privileges, bypassing

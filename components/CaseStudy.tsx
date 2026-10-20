@@ -18,47 +18,54 @@ export function CaseStudyHeader({
   status: string;
 }) {
   return (
-    <header className="mx-auto max-w-3xl px-6 pb-10 pt-14">
-      <Link
-        href="/#work"
-        className="inline-flex items-center gap-1.5 text-sm text-[#8B93A1] hover:text-[#5EEAD4] transition-colors"
-      >
-        <ArrowLeft size={14} />
-        Back to work
-      </Link>
+    <header className="border-b border-[#111111]/15 bg-[#F9F8F6]">
+      <div className="mx-auto max-w-4xl px-6 pb-12 pt-14">
+        <Link
+          href="/#work"
+          className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#555555] transition-colors hover:text-[#0047FF]"
+        >
+          <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" />
+          <span>Back to Case Studies</span>
+        </Link>
 
-      <p className="mt-6 text-xs font-medium uppercase tracking-wide text-[#5EEAD4]">
-        {eyebrow}
-      </p>
-      <h1 className="mt-3 font-display text-3xl font-semibold leading-tight text-[#E6E8EB] sm:text-4xl">
-        {title}
-      </h1>
-      <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#8B93A1]">
-        {tagline}
-      </p>
+        <div className="mt-8 flex items-center justify-between border-b border-[#111111]/15 pb-4">
+          <span className="text-xs font-black uppercase tracking-widest text-[#0047FF]">
+            {eyebrow}
+          </span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#555555]">
+            {status}
+          </span>
+        </div>
 
-      <div className="mt-6 flex flex-wrap items-center gap-3">
-        {liveUrl && (
+        <h1 className="mt-6 font-display text-4xl font-extrabold uppercase leading-[1.05] tracking-tight text-[#111111] sm:text-5xl">
+          {title}
+        </h1>
+        <p className="mt-6 text-lg leading-relaxed text-[#444444] sm:text-xl">
+          {tagline}
+        </p>
+
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          {liveUrl && (
+            <a
+              href={liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 border border-[#111111] bg-[#111111] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-all hover:border-[#0047FF] hover:bg-[#0047FF]"
+            >
+              <span>Live Application</span>
+              <ExternalLink size={14} />
+            </a>
+          )}
           <a
-            href={liveUrl}
+            href={repoUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-md bg-[#5EEAD4] px-4 py-2 text-sm font-medium text-[#0B0F14] hover:bg-[#2DD4BF] transition-colors"
+            className="inline-flex items-center gap-2 border border-[#111111] bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#111111] transition-all hover:border-[#0047FF] hover:text-[#0047FF]"
           >
-            Live demo
-            <ExternalLink size={14} />
+            <GitBranch size={14} />
+            <span>Source Code</span>
           </a>
-        )}
-        <a
-          href={repoUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 rounded-md border border-[#232B36] px-4 py-2 text-sm text-[#E6E8EB] hover:border-[#5EEAD4]/50 hover:text-[#5EEAD4] transition-colors"
-        >
-          <GitBranch size={14} />
-          Source
-        </a>
-        <span className="text-xs text-[#8B93A1]">{status}</span>
+        </div>
       </div>
     </header>
   );
@@ -72,9 +79,13 @@ export function CaseStudySection({
   children: ReactNode;
 }) {
   return (
-    <section className="mx-auto max-w-3xl px-6 py-8">
-      <h2 className="font-display text-xl font-semibold text-[#E6E8EB]">{title}</h2>
-      <div className="mt-4 space-y-4 text-[15px] leading-relaxed text-[#8B93A1]">
+    <section className="mx-auto max-w-4xl px-6 py-10 border-b border-[#111111]/10">
+      <div className="border-b border-[#111111]/15 pb-3">
+        <h2 className="font-display text-2xl font-bold uppercase tracking-tight text-[#111111]">
+          {title}
+        </h2>
+      </div>
+      <div className="mt-6 space-y-5 text-base leading-relaxed text-[#333333]">
         {children}
       </div>
     </section>
@@ -83,16 +94,21 @@ export function CaseStudySection({
 
 export function StackRow({ stack }: { stack: string[] }) {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-6">
-      <div className="flex flex-wrap gap-2 border-y border-[#232B36] py-5">
-        {stack.map((tech) => (
-          <span
-            key={tech}
-            className="rounded-full border border-[#232B36] px-3 py-1 text-xs text-[#8B93A1]"
-          >
-            {tech}
-          </span>
-        ))}
+    <div className="border-b border-[#111111]/15 bg-white">
+      <div className="mx-auto max-w-4xl px-6 py-6">
+        <span className="text-[11px] font-bold uppercase tracking-widest text-[#777777]">
+          VERIFIED STACK ARCHITECTURE
+        </span>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {stack.map((tech) => (
+            <span
+              key={tech}
+              className="border border-[#111111]/20 bg-[#F9F8F6] px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-[#111111]"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -106,13 +122,17 @@ export function BugCard({
   children: ReactNode;
 }) {
   return (
-    <div className="rounded-xl border border-[#232B36] bg-[#121821] p-6">
-      <h3 className="font-display text-base font-semibold text-[#E6E8EB]">
-        {title}
-      </h3>
-      <div className="mt-3 space-y-3 text-sm leading-relaxed text-[#8B93A1]">
+    <div className="border border-[#111111] bg-white p-7 shadow-[6px_6px_0px_0px_#111111]">
+      <div className="flex items-center gap-2 border-b border-[#111111]/15 pb-3">
+        <span className="inline-block h-2 w-2 bg-[#0047FF]" />
+        <h3 className="font-display text-base font-bold uppercase tracking-tight text-[#111111]">
+          {title}
+        </h3>
+      </div>
+      <div className="mt-4 space-y-3 text-sm leading-relaxed text-[#444444]">
         {children}
       </div>
     </div>
   );
 }
+

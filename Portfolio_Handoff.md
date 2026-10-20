@@ -185,12 +185,42 @@ The user tested `https://portfolio-nu-five-5a7rlm4q24.vercel.app/fit` after Node
 | Preview migration readiness | Not yet verified |
 | Production changes for error fixes | None reported; do not patch Production blindly |
 
-## 8. Future Nodes
+## 8. Option 4 — Bold Swiss Editorial Redesign
+
+**Status: Implemented and locally verified on dedicated feature branch `feat/bold-swiss-editorial`. Awaiting Production release approval.**
+
+### Implementation Summary
+- **Design System & Foundations (`app/globals.css`, `app/layout.tsx`):**
+  - High-contrast Bold Swiss Editorial aesthetic: warm ivory/off-white background (`#F9F8F6`), deep black text and structural borders (`#111111`), subtle grid lines (`#111111`/15), and pure cobalt blue accents (`#0047FF`).
+  - Text selection styled with cobalt blue highlight and crisp white text.
+- **Navigation & Footer (`components/SiteHeader.tsx`, `components/SiteFooter.tsx`):**
+  - Minimalist uppercase editorial header with active dot indicators and smooth section anchors (`#work`, `#stack`, `#ask`, `#about`, `#contact`).
+  - Solid 2px architectural boundary footer featuring direct inquiries, verified GitHub profile, and verified placeholder contact email (`mailto:YOUR_EMAIL`) safely retained.
+- **Hero & Case Studies (`components/Hero.tsx`, `components/FeaturedProjects.tsx`, `components/FeaturedProjectCard.tsx`, `components/MoreProjects.tsx`):**
+  - Oversized editorial typography (`sm:text-7xl lg:text-8xl`), metadata status bar (`FIG. 01`, `SYS // ONLINE`), and grayscale-to-color hover portrait.
+  - Numbered case studies (`CASE // 01`, `CASE // 02`), offset box shadows (`8px 8px 0px 0px #0047FF`), and archived experiments gallery (`ARCHIVE // 03+`).
+  - Case study deep-dive templates and project pages (`CaseStudy.tsx`, `tableflow/page.tsx`, `deliveryproof/page.tsx`) updated to light editorial styling with structured finding-to-feature tables and high-contrast bug cards.
+- **Ask Ayush RAG Presentation (`components/AskAyush.tsx`, `lib/rag/llm.ts`):**
+  - Upgraded Markdown answer presentation for GitHub-Flavored Markdown: custom typographic styles for headings (`h1`, `h2`, `h3`), lists, code blocks (monospaced syntax block styling), blockquotes with cobalt borders, formatted tables, and inline links.
+  - LLM system prompt enhanced to format structured, readable Markdown with clear headings and concise bullets.
+  - All RAG guarantees preserved: streaming NDJSON pipeline, request validation, rate limiting, grounding retrieval, and request-scoped Trace Viewer with timings and sources.
+- **Resume and Contact Guardrails:**
+  - Resume button safely kept disabled pending verified final asset selection.
+  - Placeholder contact email kept intact without inventing addresses.
+
+### Local Verification Results
+- **TypeScript Check:** `npx tsc --noEmit` passed with 0 errors.
+- **Automated Tests:** `npm test` (Jest) passed with 4 suites, 12 tests passed.
+- **Node 3 Observability Regressions:** `node scripts/node3_parser_offline_test.cjs` passed cleanly.
+- **Production Build:** `npm run build` compiled all 14 routes successfully with Turbopack (exit code 0).
+- **Database & Route Integrity:** Zero database migrations applied, zero Production environment variable modifications, Node 4 JD-Fit routes (`/fit`, `/jdfit/admin`) and Node 5/6 scopes completely untouched.
+
+## 9. Future Nodes
 
 - **Node 5:** Admin, analytics, and stronger rate limiting — planned; separate from the existing Node 4 admin UI/API implementation.
 - **Node 6:** Architecture pages — planned.
 
-## 9. Working Rules
+## 10. Working Rules
 
 1. This file is the central handoff and should be updated in place when an approved milestone changes the project state.
 2. Start with a read-only repository and Git-state audit before editing.
@@ -204,4 +234,4 @@ The user tested `https://portfolio-nu-five-5a7rlm4q24.vercel.app/fit` after Node
 
 ---
 
-*Central handoff updated with reported Node 4 release state and evidence-based record of the two deployed JD-Fit errors. Root causes remain unresolved pending verified Preview runtime evidence.*
+*Central handoff updated with reported Node 4 release state and evidence-based record of the two deployed JD-Fit errors, alongside Option 4 Bold Swiss Editorial redesign implementation on feat/bold-swiss-editorial.*

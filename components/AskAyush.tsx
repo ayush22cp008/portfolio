@@ -104,12 +104,12 @@ function SourcePill({ source, index }: { source: ClientSourceMeta; index: number
   const label = source.section ?? `chunk ${source.chunk_index}`;
   const pct = Math.round(source.similarity * 100);
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#232B36] px-3 py-1 text-xs">
-      <span className="font-medium text-[#5EEAD4]">#{index + 1}</span>
-      <span className="text-[#8B93A1]">·</span>
-      <span className="text-[#8B93A1]">{label}</span>
-      <span className="text-[#232B36]">·</span>
-      <span className="text-[#8B93A1]">{pct}%</span>
+    <span className="inline-flex items-center gap-1.5 border border-[#111111]/20 bg-white px-3 py-1 text-xs">
+      <span className="font-bold text-[#0047FF]">#{index + 1}</span>
+      <span className="text-[#999999]">·</span>
+      <span className="font-medium text-[#333333]">{label}</span>
+      <span className="text-[#999999]">·</span>
+      <span className="text-[#666666]">{pct}% match</span>
     </span>
   );
 }
@@ -150,11 +150,11 @@ export function AskAyush() {
   // ── Character counter colour ─────────────────────────────────────────────
 
   const charCountClass =
-    charCount >= MAX_LENGTH
-      ? "text-red-400"
-      : charCount >= CHAR_DANGER
-      ? "text-[#F0B429]"
-      : "text-[#8B93A1]";
+    charCount >= CHAR_DANGER
+      ? "text-red-600 font-bold"
+      : charCount >= CHAR_WARN
+      ? "text-[#F0B429] font-medium"
+      : "text-[#777777]";
 
   // ── Effects ──────────────────────────────────────────────────────────────
 
@@ -358,351 +358,458 @@ export function AskAyush() {
   // ── Render ───────────────────────────────────────────────────────────────
 
   return (
-    <section id="ask" className="mx-auto max-w-5xl px-6 py-20">
-
-      {/* ── Section heading ─────────────────────────────────────────────── */}
-      <div className="flex items-center gap-2">
-        <Sparkles size={14} className="text-[#5EEAD4]" />
-        <p className="font-display text-xs font-medium uppercase tracking-wide text-[#5EEAD4]">
-          Ask Ayush
-        </p>
-      </div>
-      <h2 className="mt-3 font-display text-2xl font-semibold text-[#E6E8EB]">
-        Have a question about my work?
-      </h2>
-      <div className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[#8B93A1]">
-        <p>
-          Ask Ayush is a grounded AI assistant built to answer questions about Ayush&apos;s selected portfolio projects and engineering methodology. Rather than exposing every repository, Ask Ayush focuses on five selected projects that represent key areas of Ayush&apos;s work, along with his documented engineering and AI-agent methodology.
-        </p>
-
-        <div className="mt-5 rounded-lg border border-[#232B36] bg-[#121821]/50 p-4">
-          <p className="text-sm leading-relaxed">
-            <strong className="font-medium text-[#E6E8EB]">Covers:</strong> ZENI &middot; TableFlow &middot; DeliveryProof &middot; NCERT AI Tutor &middot; Mechanical Part Detection
-          </p>
-          <p className="mt-3 text-sm leading-relaxed">
-            <strong className="font-medium text-[#E6E8EB]">You can ask about:</strong> project architecture, technologies used, engineering decisions, challenges and how they were addressed, comparisons between the selected projects, how Ayush plans and builds projects, how he works with AI coding agents, and how he investigates and verifies engineering work.
-          </p>
-          <p className="mt-3 text-sm italic text-[#8B93A1]/90 leading-relaxed">
-            Current scope: these five selected projects and Ayush&apos;s documented engineering / AI-agent methodology. Other repositories, unrelated general questions, and information outside the portfolio knowledge base are not currently covered.
-          </p>
-        </div>
-      </div>
-
-      {/* ── Example prompts ─────────────────────────────────────────────── */}
-      <div className="mt-6 flex flex-wrap gap-2" aria-label="Example questions">
-        {EXAMPLE_PROMPTS.map((prompt) => (
-          <button
-            key={prompt}
-            type="button"
-            onClick={() => handleExampleClick(prompt)}
-            disabled={isBusy}
-            className="rounded-full border border-[#232B36] px-3.5 py-1.5 text-sm text-[#8B93A1] transition-colors hover:border-[#5EEAD4]/50 hover:text-[#5EEAD4] disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            {prompt}
-          </button>
-        ))}
-      </div>
-
-      {/* ── Input form ──────────────────────────────────────────────────── */}
-      <form
-        aria-label="Ask Ayush a question"
-        className="mt-6"
-        onSubmit={(e) => {
-          e.preventDefault();
-          void handleSubmit();
-        }}
-      >
-        <div
-          className={`rounded-xl border bg-[#121821] transition-colors ${
-            inputError
-              ? "border-red-500/60"
-              : "border-[#232B36] focus-within:border-[#5EEAD4]/50"
-          }`}
-        >
-          {/* Visually-hidden label for accessibility */}
-          <label htmlFor="ask-input">
-            <SrOnly>Your question for Ayush</SrOnly>
-          </label>
-
-          <textarea
-            id="ask-input"
-            ref={textareaRef}
-            value={message}
-            onChange={handleMessageChange}
-            onKeyDown={handleKeyDown}
-            disabled={isBusy}
-            maxLength={MAX_LENGTH}
-            rows={3}
-            placeholder="What would you like to know about my work?"
-            aria-describedby={inputError ? "ask-input-error" : undefined}
-            className="block w-full resize-none rounded-t-xl bg-transparent px-4 pb-2 pt-4 text-[15px] text-[#E6E8EB] placeholder-[#8B93A1]/60 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
-            style={{ minHeight: "80px", maxHeight: "200px" }}
-          />
-
-          {/* Footer row: char counter + submit */}
-          <div className="flex items-center justify-between px-4 pb-3 pt-1">
-            {/* Character counter — visible only when nearing limit */}
-            <span
-              aria-live="polite"
-              className={`text-xs tabular-nums transition-colors ${
-                charCount >= CHAR_WARN ? charCountClass : "invisible select-none"
-              }`}
-            >
-              {charCount}/{MAX_LENGTH}
+    <section id="ask" className="border-b border-[#111111]/15 bg-[#F9F8F6]">
+      <div className="mx-auto max-w-6xl px-6 py-20">
+        {/* ── Section heading ─────────────────────────────────────────────── */}
+        <div className="flex flex-col justify-between gap-4 border-b border-[#111111]/15 pb-6 sm:flex-row sm:items-end">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0047FF]">
+              SECTION // 04 — INTERACTIVE RAG
             </span>
-
-            {/* Submit button */}
-            <button
-              type="submit"
-              disabled={isBusy || charCount === 0}
-              aria-label={isBusy ? "Generating answer…" : "Send question"}
-              className="inline-flex items-center gap-2 rounded-md bg-[#5EEAD4] px-4 py-2 text-sm font-medium text-[#0B0F14] transition-colors hover:bg-[#2DD4BF] disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              {isBusy ? (
-                <>
-                  <Loader2 size={14} className="animate-spin" />
-                  Thinking…
-                </>
-              ) : (
-                <>
-                  <Send size={14} />
-                  Ask
-                </>
-              )}
-            </button>
+            <h2 className="mt-2 font-display text-4xl font-extrabold uppercase tracking-tight text-[#111111] sm:text-5xl">
+              ASK AYUSH
+            </h2>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0047FF]">
+            <Sparkles size={14} />
+            <span>GROUNDED ARCHIVAL ASSISTANT</span>
           </div>
         </div>
 
-        {/* Inline input error */}
-        {inputError && (
-          <p
-            id="ask-input-error"
-            role="alert"
-            className="mt-2 flex items-center gap-1.5 text-sm text-red-400"
-          >
-            <AlertCircle size={13} className="shrink-0" />
-            {inputError}
-          </p>
-        )}
-
-        <p className="mt-2 text-xs text-[#8B93A1]">
-          <kbd className="rounded border border-[#232B36] px-1 py-0.5 font-mono text-[10px]">
-            Enter
-          </kbd>{" "}
-          to send ·{" "}
-          <kbd className="rounded border border-[#232B36] px-1 py-0.5 font-mono text-[10px]">
-            Shift
-          </kbd>
-          {"+"}
-          <kbd className="rounded border border-[#232B36] px-1 py-0.5 font-mono text-[10px]">
-            Enter
-          </kbd>{" "}
-          for new line
-        </p>
-      </form>
-
-      {/* ── Answer area (visible once a request has been made) ──────────── */}
-      {hasResult && (
-        <div
-          ref={answerRef}
-          className="mt-8 rounded-xl border border-[#232B36] bg-[#121821] p-6"
-        >
-          {/* Loading state */}
-          {status === "submitting" && (
-            <div role="status" className="flex items-center gap-2 text-[#8B93A1]">
-              <Loader2 size={15} className="animate-spin text-[#5EEAD4]" />
-              <span className="text-sm">
-                Retrieving context and generating answer…
+        <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          {/* Left Column: Scope & Guidelines */}
+          <div>
+            <div className="border border-[#111111] bg-white p-6 shadow-[6px_6px_0px_0px_#111111]">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#777777]">
+                RETRIEVAL BOUNDARIES
               </span>
-            </div>
-          )}
+              <p className="mt-3 text-sm leading-relaxed text-[#444444]">
+                Ask Ayush is a grounded retrieval-augmented AI assistant designed to
+                answer questions strictly about Ayush&apos;s verified projects,
+                architecture decisions, and agentic workflows.
+              </p>
 
-          {/* Streaming / done answer text */}
-          {(status === "streaming" || status === "done") && answer && (
-            <div
-              role="region"
-              aria-label="Answer"
-              aria-live="polite"
-              aria-atomic="false"
-              aria-busy={status === "streaming"}
-              className="whitespace-pre-wrap text-[15px] leading-relaxed text-[#E6E8EB]"
-            >
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{answer}</ReactMarkdown>
-              {/* Blinking cursor during streaming */}
-              {status === "streaming" && (
-                <span
-                  aria-hidden="true"
-                  className="ml-0.5 inline-block h-[1em] w-0.5 translate-y-[1px] bg-[#5EEAD4] align-middle animate-pulse"
-                />
-              )}
-            </div>
-          )}
+              <div className="mt-5 border-t border-[#111111]/15 pt-4">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-[#111111]">
+                  COVERED PROJECTS:
+                </span>
+                <p className="mt-2 text-xs font-medium text-[#555555]">
+                  TableFlow · DeliveryProof · ZENI · NCERT AI Tutor · Mechanical Part Detection
+                </p>
+              </div>
 
-          {/* Error banner — rendered inside the answer card */}
-          {status === "done" && errorKind !== null && (
-            <div
-              role="alert"
-              className={`flex items-start gap-2 ${answer ? "mt-5 border-t border-[#232B36] pt-5" : ""}`}
-            >
-              <AlertCircle
-                size={15}
-                className={`mt-0.5 shrink-0 ${
-                  errorKind === "rate-limited"
-                    ? "text-[#F0B429]"
-                    : "text-red-400"
-                }`}
-              />
-              <div>
-                {errorKind === "rate-limited" && (
-                  <p className="text-sm text-[#F0B429]">
-                    Request limit reached.{" "}
-                    {(() => {
-                      const mins = extractRetryMinutes(errorMessage);
-                      return mins !== null
-                        ? `Try again in ~${mins} minute${mins === 1 ? "" : "s"}.`
-                        : "Please try again later.";
-                    })()}
-                  </p>
-                )}
-                {errorKind === "validation" && (
-                  <p className="text-sm text-red-400">
-                    {errorMessage
-                      .replace(/^\[rag\/retrieval\]\s*Validation failed:\s*/i, "")
-                      .replace(/^\[rag\/.*?\]\s*/i, "")}
-                  </p>
-                )}
-                {errorKind === "generic" && (
-                  <p className="text-sm text-red-400">
-                    Something went wrong. Please try again.
-                  </p>
-                )}
+              <div className="mt-5 border-t border-[#111111]/15 pt-4">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-[#111111]">
+                  APPROVED TOPICS:
+                </span>
+                <p className="mt-2 text-xs leading-relaxed text-[#555555]">
+                  Database schema design, atomic RPC patterns, RLS policies,
+                  production bug investigations, and AI-agent pair-programming methodology.
+                </p>
               </div>
             </div>
-          )}
 
-          {/* Trace viewer — toggle and details */}
-          {status === "done" && (activityEvents.length > 0 || toolEvents.length > 0 || traceInfo) && (
-            <div className="mt-5 border-t border-[#232B36] pt-4">
-              <button
-                type="button"
-                onClick={() => setShowTrace((s) => !s)}
-                className="flex items-center gap-1.5 text-xs text-[#8B93A1] transition-colors hover:text-[#5EEAD4]"
-                aria-expanded={showTrace}
-                aria-controls="trace-viewer"
-                aria-label="Toggle trace viewer"
+            {/* Example prompts */}
+            <div className="mt-6">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#777777]">
+                SUGGESTED INQUIRIES:
+              </span>
+              <div className="mt-3 flex flex-col gap-2" aria-label="Example questions">
+                {EXAMPLE_PROMPTS.map((prompt) => (
+                  <button
+                    key={prompt}
+                    type="button"
+                    onClick={() => handleExampleClick(prompt)}
+                    disabled={isBusy}
+                    className="border border-[#111111]/20 bg-white p-3 text-left text-xs font-medium text-[#333333] transition-all hover:border-[#0047FF] hover:text-[#0047FF] hover:shadow-[3px_3px_0px_0px_#0047FF] disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    &ldquo;{prompt}&rdquo;
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Interactive Chat Box */}
+          <div>
+            <form
+              aria-label="Ask Ayush a question"
+              onSubmit={(e) => {
+                e.preventDefault();
+                void handleSubmit();
+              }}
+            >
+              <div
+                className={`border bg-white transition-colors ${
+                  inputError
+                    ? "border-red-600"
+                    : "border-[#111111] focus-within:border-[#0047FF] focus-within:shadow-[6px_6px_0px_0px_#0047FF]"
+                }`}
               >
-                {showTrace ? "Hide trace" : "Show trace"}
-              </button>
-              {showTrace && (
-                <div id="trace-viewer" className="mt-3 space-y-4 text-xs text-[#8B93A1]">
-                  {/* Trace Summary */}
-                  {traceInfo && (
-                    <div className="border-b border-[#232B36] pb-2">
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium">Trace ID:</span>
-                        <code className="bg-[#232B36] rounded px-1 py-0.5">{traceInfo.traceId.slice(0, 8)}…</code>
-                        <button
-                          type="button"
-                          onClick={() => navigator.clipboard.writeText(traceInfo.traceId)}
-                          className="text-[#5EEAD4] hover:underline"
-                          aria-label="Copy trace ID"
-                        >
-                          Copy
-                        </button>
-                      </div>
-                      <div>Total duration: {traceInfo.overallDurationMs} ms</div>
-                      {traceInfo.stageDurations && (
-                        <div className="mt-1">
-                          {Object.entries(traceInfo.stageDurations).map(([stage, ms]) => (
-                            <div key={stage}>{stage}: {ms} ms</div>
-                          ))}
-                        </div>
+                <label htmlFor="ask-input">
+                  <SrOnly>Your question for Ayush</SrOnly>
+                </label>
+
+                <textarea
+                  id="ask-input"
+                  ref={textareaRef}
+                  value={message}
+                  onChange={handleMessageChange}
+                  onKeyDown={handleKeyDown}
+                  disabled={isBusy}
+                  maxLength={MAX_LENGTH}
+                  rows={3}
+                  placeholder="Ask a technical or architectural question about Ayush's projects..."
+                  aria-describedby={inputError ? "ask-input-error" : undefined}
+                  className="block w-full resize-none bg-transparent p-4 text-sm font-normal text-[#111111] placeholder-[#777777] focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
+                  style={{ minHeight: "100px", maxHeight: "200px" }}
+                />
+
+                {/* Footer row: char counter + submit */}
+                <div className="flex items-center justify-between border-t border-[#111111]/15 bg-[#F9F8F6] px-4 py-2.5">
+                  <span
+                    aria-live="polite"
+                    className={`text-xs tabular-nums transition-colors ${
+                      charCount >= CHAR_WARN ? charCountClass : "invisible select-none"
+                    }`}
+                  >
+                    {charCount}/{MAX_LENGTH}
+                  </span>
+
+                  <button
+                    type="submit"
+                    disabled={isBusy || charCount === 0}
+                    aria-label={isBusy ? "Generating answer…" : "Send question"}
+                    className="inline-flex items-center gap-2 border border-[#111111] bg-[#111111] px-5 py-2 text-xs font-bold uppercase tracking-wider text-white transition-all hover:border-[#0047FF] hover:bg-[#0047FF] disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    {isBusy ? (
+                      <>
+                        <Loader2 size={13} className="animate-spin" />
+                        Generating…
+                      </>
+                    ) : (
+                      <>
+                        <Send size={13} />
+                        Query Agent
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* Inline input error */}
+              {inputError && (
+                <p
+                  id="ask-input-error"
+                  role="alert"
+                  className="mt-2 flex items-center gap-1.5 text-xs font-bold text-red-600"
+                >
+                  <AlertCircle size={13} className="shrink-0" />
+                  {inputError}
+                </p>
+              )}
+
+              <p className="mt-2 text-[11px] font-medium text-[#777777]">
+                <kbd className="border border-[#111111]/30 bg-white px-1 py-0.5 font-mono text-[10px] text-[#111111]">
+                  Enter
+                </kbd>{" "}
+                to send ·{" "}
+                <kbd className="border border-[#111111]/30 bg-white px-1 py-0.5 font-mono text-[10px] text-[#111111]">
+                  Shift
+                </kbd>
+                {"+"}
+                <kbd className="border border-[#111111]/30 bg-white px-1 py-0.5 font-mono text-[10px] text-[#111111]">
+                  Enter
+                </kbd>{" "}
+                for new line
+              </p>
+            </form>
+
+            {/* ── Answer area (visible once a request has been made) ──────────── */}
+            {hasResult && (
+              <div
+                ref={answerRef}
+                className="mt-6 border border-[#111111] bg-white p-7 shadow-[8px_8px_0px_0px_#111111]"
+              >
+                {/* Loading state */}
+                {status === "submitting" && (
+                  <div role="status" className="flex items-center gap-2 text-[#555555]">
+                    <Loader2 size={16} className="animate-spin text-[#0047FF]" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#111111]">
+                      Searching knowledge embeddings & generating response…
+                    </span>
+                  </div>
+                )}
+
+                {/* Streaming / done answer text with Enhanced Markdown Presentation */}
+                {(status === "streaming" || status === "done") && answer && (
+                  <div
+                    role="region"
+                    aria-label="Answer"
+                    aria-live="polite"
+                    aria-atomic="false"
+                    aria-busy={status === "streaming"}
+                    className="text-[15px] leading-relaxed text-[#222222]"
+                  >
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      components={{
+                        h1: ({ ...props }) => (
+                          <h1 className="mt-4 mb-2 font-display text-2xl font-bold uppercase tracking-tight text-[#111111] border-b border-[#111111]/15 pb-1" {...props} />
+                        ),
+                        h2: ({ ...props }) => (
+                          <h2 className="mt-4 mb-2 font-display text-xl font-bold uppercase tracking-tight text-[#111111] border-b border-[#111111]/10 pb-1" {...props} />
+                        ),
+                        h3: ({ ...props }) => (
+                          <h3 className="mt-3 mb-1.5 font-display text-base font-bold uppercase tracking-tight text-[#111111]" {...props} />
+                        ),
+                        p: ({ ...props }) => (
+                          <p className="mb-3 leading-relaxed text-[#333333]" {...props} />
+                        ),
+                        ul: ({ ...props }) => (
+                          <ul className="my-3 list-disc list-outside pl-5 space-y-1.5 text-[#333333]" {...props} />
+                        ),
+                        ol: ({ ...props }) => (
+                          <ol className="my-3 list-decimal list-outside pl-5 space-y-1.5 text-[#333333]" {...props} />
+                        ),
+                        li: ({ ...props }) => (
+                          <li className="leading-relaxed" {...props} />
+                        ),
+                        blockquote: ({ ...props }) => (
+                          <blockquote className="my-4 border-l-4 border-[#0047FF] bg-[#F9F8F6] p-3 italic text-[#444444]" {...props} />
+                        ),
+                        h4: ({ ...props }) => (
+                          <h4 className="mt-3 mb-1 font-display text-lg font-semibold uppercase text-[#111111]" {...props} />
+                        ),
+                        h5: ({ ...props }) => (
+                          <h5 className="mt-2 mb-1 text-base font-medium uppercase text-[#111111]" {...props} />
+                        ),
+                        h6: ({ ...props }) => (
+                          <h6 className="mt-2 mb-0.5 text-sm font-medium uppercase text-[#111111]" {...props} />
+                        ),
+                        strong: ({ ...props }) => (
+                          <strong className="font-bold text-[#111111]" {...props} />
+                        ),
+                        // img mapping removed to disallow external images
+                        code: ({ className, children, ...props }) => {
+                          const isBlock = className?.includes("language-") || String(children).includes("\n");
+                          if (isBlock) {
+                            return (
+                              <pre className="my-3 overflow-x-auto border border-[#111111] bg-[#111111] p-3 text-xs text-[#F9F8F6] font-mono">
+                                <code className={className} {...props}>
+                                  {children}
+                                </code>
+                              </pre>
+                            );
+                          }
+                          return (
+                            <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono font-medium text-[#111111]" {...props}>
+                              {children}
+                            </code>
+                          );
+                        },
+                        table: ({ ...props }) => (
+                          <div className="my-4 overflow-x-auto border border-[#111111]">
+                            <table className="w-full text-left text-xs" {...props} />
+                          </div>
+                        ),
+                        thead: ({ ...props }) => (
+                          <thead className="border-b border-[#111111] bg-[#F2EFE9] text-[#111111] font-bold uppercase tracking-wider" {...props} />
+                        ),
+                        th: ({ ...props }) => (
+                          <th className="px-3 py-2 font-bold" {...props} />
+                        ),
+                        td: ({ ...props }) => (
+                          <td className="border-t border-[#111111]/15 px-3 py-2 text-[#333333]" {...props} />
+                        ),
+                        a: ({ ...props }) => (
+                          <a className="font-semibold text-[#0047FF] underline hover:text-[#0036CC]" target="_blank" rel="noreferrer" {...props} />
+                        ),
+                      }}
+                    >
+                      {answer}
+                    </ReactMarkdown>
+
+                    {/* Blinking cursor during streaming */}
+                    {status === "streaming" && (
+                      <span
+                        aria-hidden="true"
+                        className="ml-1 inline-block h-[1.1em] w-1.5 translate-y-[2px] bg-[#0047FF] align-middle animate-pulse"
+                      />
+                    )}
+                  </div>
+                )}
+
+                {/* Error banner */}
+                {status === "done" && errorKind !== null && (
+                  <div
+                    role="alert"
+                    className={`flex items-start gap-2.5 ${answer ? "mt-5 border-t border-[#111111]/15 pt-5" : ""}`}
+                  >
+                    <AlertCircle
+                      size={16}
+                      className={`mt-0.5 shrink-0 ${
+                        errorKind === "rate-limited"
+                          ? "text-[#F0B429]"
+                          : "text-red-600"
+                      }`}
+                    />
+                    <div>
+                      {errorKind === "rate-limited" && (
+                        <p className="text-xs font-bold text-[#F0B429]">
+                          RATE LIMIT REACHED.{" "}
+                          {(() => {
+                            const mins = extractRetryMinutes(errorMessage);
+                            return mins !== null
+                              ? `TRY AGAIN IN ~${mins} MINUTE${mins === 1 ? "" : "S"}.`
+                              : "PLEASE TRY AGAIN LATER.";
+                          })()}
+                        </p>
+                      )}
+                      {errorKind === "validation" && (
+                        <p className="text-xs font-bold text-red-600">
+                          {errorMessage
+                            .replace(/^\[rag\/retrieval\]\s*Validation failed:\s*/i, "")
+                            .replace(/^\[rag\/.*?\]\s*/i, "")}
+                        </p>
+                      )}
+                      {errorKind === "generic" && (
+                        <p className="text-xs font-bold text-red-600">
+                          AN UNEXPECTED ERROR OCCURRED. PLEASE TRY AGAIN.
+                        </p>
                       )}
                     </div>
-                  )}
-
-                  {/* Activity Timeline */}
-                  {activityEvents.length > 0 && (
-                    <div className="border-b border-[#232B36] pb-2">
-                      <div className="font-medium mb-1">Activity</div>
-                      <ul className="list-disc list-inside space-y-1">
-                        {Object.values(
-                          activityEvents.reduce((acc, ev) => {
-                            const key = ev.stage;
-                            const existing = acc[key] || {};
-                            const status = ev.status === "completed" ? "completed" : existing.status || ev.status;
-                            const duration = ev.durationMs ?? existing.duration;
-                            const error = ev.errorCode ?? existing.error;
-                            acc[key] = { stage: ev.stage, status, duration, error };
-                            return acc;
-                          }, {} as Record<string, { stage: string; status: string; duration?: number; error?: string }>)
-                        ).map((item) => (
-                          <li key={item.stage}>
-                            <span className="capitalize">{item.stage.replace("_", " ")}</span>: {item.status}
-                            {item.duration !== undefined && <span> ({item.duration} ms)</span>}
-                            {item.error && <span className="text-red-400"> – error: {item.error}</span>}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Tool Activity */}
-                  {toolEvents.length > 0 && (
-                    <div>
-                      <div className="font-medium mb-1">Tools</div>
-                      <ul className="list-disc list-inside space-y-1">
-                        {toolEvents.map((t, i) => (
-                          <li key={i}>
-                            <span className="font-medium">{t.name}</span>: {t.status} {t.durationMs} ms
-                            {t.errorCode && <span className="text-red-400"> – error: {t.errorCode}</span>}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Sources disclosure — shown after a successful completion */}
-          {status === "done" && sources.length > 0 && errorKind === null && (
-            <div className="mt-5 border-t border-[#232B36] pt-4">
-              <button
-                type="button"
-                onClick={() => setShowSources((s) => !s)}
-                className="flex items-center gap-1.5 text-xs text-[#8B93A1] transition-colors hover:text-[#5EEAD4]"
-                aria-expanded={showSources}
-                aria-controls="ask-sources-list"
-              >
-                {showSources ? (
-                  <ChevronUp size={13} />
-                ) : (
-                  <ChevronDown size={13} />
+                  </div>
                 )}
-                {showSources ? "Hide" : "Show"} retrieved sources (
-                {sources.length})
-              </button>
 
-              {showSources && (
-                <div
-                  id="ask-sources-list"
-                  className="mt-3 flex flex-wrap gap-2"
-                  role="list"
-                  aria-label="Retrieved sources"
-                >
-                  {sources.map((src, i) => (
-                    <span key={`${src.chunk_index}-${i}`} role="listitem">
-                      <SourcePill source={src} index={i} />
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+                {/* Trace viewer — toggle and details */}
+                {status === "done" && (activityEvents.length > 0 || toolEvents.length > 0 || traceInfo) && (
+                  <div className="mt-5 border-t border-[#111111]/15 pt-4">
+                    <button
+                      type="button"
+                      onClick={() => setShowTrace((s) => !s)}
+                      className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#555555] transition-colors hover:text-[#0047FF]"
+                      aria-expanded={showTrace}
+                      aria-controls="trace-viewer"
+                      aria-label="Toggle trace viewer"
+                    >
+                      {showTrace ? "Hide Observability Trace" : "View Observability Trace"}
+                    </button>
+                    {showTrace && (
+                      <div id="trace-viewer" className="mt-3 border border-[#111111]/20 bg-[#F9F8F6] p-4 text-xs font-mono text-[#444444]">
+                        {/* Trace Summary */}
+                        {traceInfo && (
+                          <div className="border-b border-[#111111]/15 pb-2">
+                            <div className="flex items-center gap-2">
+                              <span className="font-bold text-[#111111]">Trace ID:</span>
+                              <code className="border border-[#111111]/20 bg-white px-1.5 py-0.5">{traceInfo.traceId.slice(0, 10)}…</code>
+                              <button
+                                type="button"
+                                onClick={() => navigator.clipboard.writeText(traceInfo.traceId)}
+                                className="font-bold text-[#0047FF] hover:underline"
+                                aria-label="Copy trace ID"
+                              >
+                                Copy
+                              </button>
+                            </div>
+                            <div className="mt-1">Total Duration: {traceInfo.overallDurationMs} ms</div>
+                            {traceInfo.stageDurations && (
+                              <div className="mt-1 text-[11px] text-[#666666]">
+                                {Object.entries(traceInfo.stageDurations).map(([stage, ms]) => (
+                                  <div key={stage}>{stage}: {ms} ms</div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Activity Timeline */}
+                        {activityEvents.length > 0 && (
+                          <div className="border-b border-[#111111]/15 py-2">
+                            <div className="font-bold text-[#111111] uppercase tracking-wider mb-1">Stage Activity</div>
+                            <ul className="space-y-1">
+                              {Object.values(
+                                activityEvents.reduce((acc, ev) => {
+                                  const key = ev.stage;
+                                  const existing = acc[key] || {};
+                                  const status = ev.status === "completed" ? "completed" : existing.status || ev.status;
+                                  const duration = ev.durationMs ?? existing.duration;
+                                  const error = ev.errorCode ?? existing.error;
+                                  acc[key] = { stage: ev.stage, status, duration, error };
+                                  return acc;
+                                }, {} as Record<string, { stage: string; status: string; duration?: number; error?: string }>)
+                              ).map((item) => (
+                                <li key={item.stage} className="flex items-center gap-2">
+                                  <span className="inline-block h-1.5 w-1.5 bg-[#0047FF]" />
+                                  <span className="font-semibold text-[#111111]">{item.stage}</span>: {item.status}
+                                  {item.duration !== undefined && <span className="text-[#666666]">({item.duration} ms)</span>}
+                                  {item.error && <span className="font-bold text-red-600"> – error: {item.error}</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {/* Tool Activity */}
+                        {toolEvents.length > 0 && (
+                          <div className="pt-2">
+                            <div className="font-bold text-[#111111] uppercase tracking-wider mb-1">Tool Executions</div>
+                            <ul className="space-y-1">
+                              {toolEvents.map((t, i) => (
+                                <li key={i} className="flex items-center gap-2">
+                                  <span className="inline-block h-1.5 w-1.5 bg-[#0047FF]" />
+                                  <span className="font-semibold text-[#111111]">{t.name}</span>: {t.status} ({t.durationMs} ms)
+                                  {t.errorCode && <span className="font-bold text-red-600"> – error: {t.errorCode}</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Sources disclosure */}
+                {status === "done" && sources.length > 0 && errorKind === null && (
+                  <div className="mt-5 border-t border-[#111111]/15 pt-4">
+                    <button
+                      type="button"
+                      onClick={() => setShowSources((s) => !s)}
+                      className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#555555] transition-colors hover:text-[#0047FF]"
+                      aria-expanded={showSources}
+                      aria-controls="ask-sources-list"
+                    >
+                      {showSources ? (
+                        <ChevronUp size={13} />
+                      ) : (
+                        <ChevronDown size={13} />
+                      )}
+                      {showSources ? "Hide" : "View"} Grounding Sources (
+                      {sources.length})
+                    </button>
+
+                    {showSources && (
+                      <div
+                        id="ask-sources-list"
+                        className="mt-3 flex flex-wrap gap-2"
+                        role="list"
+                        aria-label="Retrieved sources"
+                      >
+                        {sources.map((src, i) => (
+                          <span key={`${src.chunk_index}-${i}`} role="listitem">
+                            <SourcePill source={src} index={i} />
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
-      )}
+      </div>
     </section>
   );
 }

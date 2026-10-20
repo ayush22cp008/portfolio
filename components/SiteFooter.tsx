@@ -1,42 +1,63 @@
-import { GitBranch, Mail } from "lucide-react";
+import { GitBranch, Mail, ArrowUpRight } from "lucide-react";
 
 export function SiteFooter() {
   return (
-    <footer id="contact" className="border-t border-[#232B36]/70">
-      <div className="mx-auto max-w-5xl px-6 py-14">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+    <footer id="contact" className="border-t-2 border-[#111111] bg-white">
+      <div className="mx-auto max-w-6xl px-6 py-16">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
-            <h2 className="font-display text-2xl font-semibold text-[#E6E8EB]">
-              Building something worth talking about?
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0047FF]">
+              SECTION // 06 — CONTACT & INQUIRIES
+            </span>
+            <h2 className="mt-3 font-display text-4xl font-extrabold uppercase tracking-tight text-[#111111] sm:text-5xl">
+              BUILDING SOMETHING <br />
+              WORTH TALKING ABOUT?
             </h2>
-            <p className="mt-2 max-w-md text-sm text-[#8B93A1]">
-              Open to full-stack and GenAI roles, and to freelance builds.
-              Based in Gujarat, happy to relocate for the right team.
+            <p className="mt-4 max-w-md text-base leading-relaxed text-[#555555]">
+              Open to full-stack, GenAI, and agentic engineering roles. Based in
+              Gujarat, India — open to relocate for the right engineering team.
             </p>
           </div>
-          <div className="flex gap-3">
-            <a
-              href="https://github.com/ayush22cp008"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-[#232B36] px-4 py-2 text-sm text-[#E6E8EB] hover:border-[#5EEAD4]/50 hover:text-[#5EEAD4] transition-colors"
-            >
-              <GitBranch size={16} />
-              GitHub
-            </a>
-            <a
-              href="mailto:YOUR_EMAIL"
-              className="inline-flex items-center gap-2 rounded-md bg-[#5EEAD4] px-4 py-2 text-sm font-medium text-[#0B0F14] hover:bg-[#2DD4BF] transition-colors"
-            >
-              <Mail size={16} />
-              Get in touch
-            </a>
+
+          <div className="flex flex-col justify-between border-t border-[#111111]/15 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+            <div className="space-y-4">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#777777]">
+                DIRECT CHANNELS
+              </span>
+              <div className="flex flex-col gap-3">
+                <a
+                  href="https://github.com/ayush22cp008"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-center justify-between border border-[#111111] bg-[#F9F8F6] p-4 text-xs font-bold uppercase tracking-wider text-[#111111] transition-all hover:border-[#0047FF] hover:bg-[#0047FF] hover:text-white"
+                >
+                  <span className="flex items-center gap-2">
+                    <GitBranch size={16} />
+                    GITHUB // AYUSH22CP008
+                  </span>
+                  <ArrowUpRight size={16} />
+                </a>
+
+                <a
+                  href="mailto:YOUR_EMAIL"
+                  className="group flex items-center justify-between border border-[#111111] bg-[#111111] p-4 text-xs font-bold uppercase tracking-wider text-white transition-all hover:border-[#0047FF] hover:bg-[#0047FF]"
+                >
+                  <span className="flex items-center gap-2">
+                    <Mail size={16} />
+                    GET IN TOUCH VIA EMAIL
+                  </span>
+                  <ArrowUpRight size={16} />
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-8 border-t border-[#111111]/15 pt-6 text-xs text-[#777777]">
+              <span>AYUSH HALPATI — GUJARAT, INDIA. BOLD SWISS EDITORIAL // NEXT.JS.</span>
+            </div>
           </div>
         </div>
-        <p className="mt-12 text-xs text-[#8B93A1]">
-          Ayush Halpati — Gujarat, India. Built with Next.js.
-        </p>
       </div>
     </footer>
   );
 }
+
