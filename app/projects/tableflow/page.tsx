@@ -22,12 +22,14 @@ export default function TableFlowPage() {
         <CaseStudyHeader
           eyebrow="Full-Stack · Solo build"
           title="TableFlow — Smart Restaurant Management System"
-          tagline="A full-stack SaaS for the operational chaos inside a restaurant — queues, table allocation, kitchen flow, billing — not the delivery-app problem everyone else solves."
+          tagline="A single-restaurant operations platform for queues, table allocation, kitchen workflows, and billing—not another delivery app."
           liveUrl="https://table-flow-nu.vercel.app"
           repoUrl="https://github.com/ayush22cp008/TableFlow"
           status="VibeAthon 6.0 (NxtGenSec), Professional Category — result pending"
         />
-
+<CaseStudySection title="Project overview">
+  <p>A single-restaurant, full-stack platform for managing live menus, digital orders, table allocation, reservations, kitchen workflows, billing, staff operations, and AI-driven menu intelligence.</p>
+</CaseStudySection>
         <StackRow
           stack={[
             "Next.js 14 (App Router)",
@@ -94,7 +96,17 @@ export default function TableFlowPage() {
           </p>
         </CaseStudySection>
 
-        <CaseStudySection title="Tech decisions & why">
+        <CaseStudySection title="Core capabilities">
+          <ol className="list-decimal list-inside space-y-2 text-[#111111]">
+            <li>Live menu and availability management.</li>
+            <li>Digital ordering, table allocation, and billing.</li>
+            <li>Gemini‑powered Menu Intelligence AI.</li>
+            <li>Reservation workflows.</li>
+            <li>Staff roles and onboarding.</li>
+            <li>Order claiming and notifications.</li>
+          </ol>
+        </CaseStudySection>
+        <CaseStudySection title="Selected engineering decisions">
           <p>
             <strong className="text-[#111111]">Single-restaurant model.</strong>{" "}
             No multi-tenancy — simplifies the schema and matches the scope
@@ -147,110 +159,32 @@ export default function TableFlowPage() {
           </p>
         </CaseStudySection>
 
-        <CaseStudySection title="What broke, and how I fixed it">
+        <CaseStudySection title="Selected debugging stories">
           <div className="space-y-6 not-prose">
-            <BugCard title="A 'fixed' mobile navbar took down three roles' dashboards in production">
-              <p>
-                A mobile-responsive pass duplicated the{" "}
-                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
-                  NotificationBell
-                </code>{" "}
-                component — one instance for desktop nav, one for mobile —
-                hidden from each other with CSS. The mistake: CSS controls
-                visibility, not mounting. React mounted both regardless, and
-                both opened a Supabase realtime subscription on the same
-                channel. The second subscription tried to attach its callback
-                after the channel had already subscribed, threw, and crashed
-                the React tree — reproducible only on phones.
-              </p>
-              <p>
-                I ran a structured root-cause investigation before touching
-                code: reproduce on both breakpoints, capture the exact
-                console error, binary-isolate the changed components. That
-                process is what surfaced the duplicate-mount +
-                duplicate-subscription combination, not a vague
-                &quot;something&apos;s wrong with mobile CSS.&quot;
-              </p>
-              <p>
-                <strong className="text-[#111111]">Fix:</strong> exactly one
-                mounted{" "}
-                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
-                  NotificationBell
-                </code>{" "}
-                per navbar, with responsive positioning instead of two
-                components gated by display rules.
-              </p>
+            <BugCard title="Duplicate NotificationBell causing crash">
+              <p><strong>Problem:</strong> Mobile navbar duplicated the NotificationBell component, crashing authenticated dashboards.</p>
+              <p><strong>Root cause:</strong> CSS‑hidden desktop and mobile instances were both mounted, creating duplicate Supabase Realtime subscriptions.</p>
+              <p><strong>Fix:</strong> Use a single NotificationBell instance with responsive positioning.</p>
             </BugCard>
-
             <BugCard title="A manager-only RLS policy that recursively queried its own table">
-              <p>
-                A policy to let managers see staff profiles queried{" "}
-                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
-                  profiles
-                </code>{" "}
-                from within its own{" "}
-                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
-                  USING
-                </code>{" "}
-                clause on{" "}
-                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
-                  profiles
-                </code>{" "}
-                — evaluating the policy re-triggered the policy, forever.
-                Postgres threw{" "}
-                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
-                  42P17: infinite recursion detected
-                </code>
-                .
-              </p>
-              <p>
-                The blast radius was bigger than it looked: middleware
-                queries the user&apos;s profile on every request to route by
-                role, falling back to{" "}
-                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
-                  customer
-                </code>{" "}
-                if that query fails. So every authenticated role — Owner,
-                Manager, Cook, Waiter — silently fell back to customer and got
-                redirected to <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">/order</code> on
-                refresh, with no visible error, just repeated 500s in the
-                Supabase logs.
-              </p>
-              <p>
-                <strong className="text-[#111111]">Fix:</strong> route the
-                policy through the existing{" "}
-                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
-                  has_role()
-                </code>{" "}
-                helper, marked{" "}
-                <code className="border border-[#111111]/20 bg-[#F2EFE9] px-1.5 py-0.5 text-xs font-mono text-[#111111]">
-                  SECURITY DEFINER
-                </code>{" "}
-                — it runs with the function owner&apos;s privileges, bypassing
-                RLS on its internal lookup instead of re-triggering it.
-              </p>
+              <p><strong>Problem:</strong> PostgreSQL returned <code>42P17: infinite recursion detected</code>.</p>
+<p><strong>Root cause:</strong> The <code>profiles</code> RLS policy queried <code>profiles</code> within its own <code>USING</code> expression, recursively triggering the policy. The failed profile lookup also broke middleware role routing.</p>
+<p><strong>Fix:</strong> Use the existing <code>has_role()</code> helper marked <code>SECURITY DEFINER</code> so the internal role lookup does not recursively trigger the same RLS policy.</p>
             </BugCard>
           </div>
         </CaseStudySection>
 
-        <CaseStudySection title="Known limitations (documented, shipped anyway)">
+        <CaseStudySection title="Scope & engineering trade‑offs">
           <ul className="list-disc space-y-2 pl-5">
+            <li>A used reservation code may leave a stale “Reserved for …” label on the table until billing; this cosmetic limitation does not affect the underlying occupancy state.</li>
             <li>
-              A used reservation code can leave the table cosmetically showing
-              &quot;Reserved for {"{time}"}&quot; until billing, even though
-              occupancy is already correct.
+              The owner‑dashboard order cancellation flow was omitted in this release; a proper seat‑release mechanism has been deferred.
             </li>
-            <li>
-              Order cancellation from the owner dashboard was pulled from
-              this release rather than ship a flow that doesn&apos;t
-              correctly release seats.
-            </li>
-            <li>
-              No in-app notification after a reservation&apos;s arrival is
-              confirmed — the customer navigates to the order page manually,
-              same as a walk-in.
-            </li>
+            <li>No customer‑facing in‑app notification after a reservation’s arrival is confirmed; staff notification features are implemented, but the customer must navigate to the order page manually, same as a walk‑in.</li>
           </ul>
+        </CaseStudySection>
+        <CaseStudySection title="Explore further">
+          <p>For the full feature history, post‑hackathon enhancements, and detailed architecture, see the <a href="https://github.com/ayush22cp008/TableFlow/blob/main/README.md" className="text-[#0047FF] underline" target="_blank">TableFlow README</a>.</p>
         </CaseStudySection>
       </main>
       <SiteFooter />
