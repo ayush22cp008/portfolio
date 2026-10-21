@@ -1,0 +1,203 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.276 841.89] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R /Annots [7 0 R 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 16 0 R 17 0 R 18 0 R 19 0 R 20 0 R 21 0 R 22 0 R 23 0 R] >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 9892 >>
+stream
+0.114 0.161 0.208 rg BT /F2 18.2 Tf 1 0 0 1 172.42 799.00 Tm (AYUSH JAYESHBHAI HALPATI) Tj ET
+0.08 0.36 0.54 rg BT /F2 9.7 Tf 1 0 0 1 171.73 780.00 Tm (FULL-STACK DEVELOPER  |  GENAI & RAG INTEGRATION) Tj ET
+0.28 0.33 0.4 rg BT /F1 8.3 Tf 1 0 0 1 169.53 764.00 Tm (Navsari, Gujarat, India  |  +91 8320193553  |  ayushhalpati09@gmail.com) Tj ET
+0.08 0.36 0.54 rg BT /F1 8.2 Tf 1 0 0 1 243.97 752.00 Tm (LinkedIn) Tj ET
+0.08 0.36 0.54 RG 0.35 w 243.97 750.90 m 273.32 750.90 l S
+0.28 0.33 0.4 rg BT /F1 8.2 Tf 1 0 0 1 276.32 752.00 Tm (|) Tj ET
+0.08 0.36 0.54 rg BT /F1 8.2 Tf 1 0 0 1 283.41 752.00 Tm (GitHub) Tj ET
+0.08 0.36 0.54 RG 0.35 w 283.41 750.90 m 307.76 750.90 l S
+0.28 0.33 0.4 rg BT /F1 8.2 Tf 1 0 0 1 310.76 752.00 Tm (|) Tj ET
+0.08 0.36 0.54 rg BT /F1 8.2 Tf 1 0 0 1 317.85 752.00 Tm (Portfolio) Tj ET
+0.08 0.36 0.54 RG 0.35 w 317.85 750.90 m 351.31 750.90 l S
+0.08 0.36 0.54 rg BT /F2 10 Tf 1 0 0 1 38.00 736.80 Tm (PROFESSIONAL SUMMARY) Tj ET
+0.84 0.88 0.91 RG 0.45 w 38 733.10 m 557.276 733.10 l S
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 38.00 722.60 Tm (Computer Engineering graduate \(2026\) focused on building full-stack web applications with React/Next.js, TypeScript, APIs and) Tj ET
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 38.00 712.90 Tm (PostgreSQL/Supabase. Extends web products with GenAI capabilities including LLM API integration, RAG pipelines, embeddings and) Tj ET
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 38.00 703.20 Tm (retrieval. Built role-based operational workflows, database-enforced order claiming, realtime notifications and LLM-powered) Tj ET
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 38.00 693.50 Tm (applications; also brings hands-on computer-vision model training and deployment experience.) Tj ET
+0.08 0.36 0.54 rg BT /F2 10 Tf 1 0 0 1 38.00 680.60 Tm (TECHNICAL SKILLS) Tj ET
+0.84 0.88 0.91 RG 0.45 w 38 676.90 m 557.276 676.90 l S
+0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 666.40 Tm (Frontend & Web: JavaScript, TypeScript, React.js, Next.js, HTML, CSS, responsive web UI) Tj ET
+0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 655.85 Tm (Backend & Data: Node.js, Express.js, REST APIs, SQL, PostgreSQL, MySQL, MongoDB, Supabase Auth/Realtime/RLS/RPCs, Git/GitHub,) Tj ET
+0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 646.30 Tm (Vercel) Tj ET
+0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 635.75 Tm (GenAI & RAG: Groq API, Gemini API, Ollama, RAG, prompt engineering, embeddings, semantic retrieval, LangChain, ChromaDB, Sentence) Tj ET
+0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 626.20 Tm (Transformers) Tj ET
+0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 615.65 Tm (Python & ML: Python, PyTorch, YOLOv8, OpenCV, SAM, DINOv2, K-Means, scikit-learn, NumPy, Roboflow, dataset curation/augmentation) Tj ET
+0.08 0.36 0.54 rg BT /F2 10 Tf 1 0 0 1 38.00 602.90 Tm (SELECTED PROJECTS) Tj ET
+0.84 0.88 0.91 RG 0.45 w 38 599.20 m 557.276 599.20 l S
+0.114 0.161 0.208 rg BT /F2 8.05 Tf 1 0 0 1 38.00 588.70 Tm (TableFlow) Tj ET
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 74.39 588.70 Tm (  |  Next.js, TypeScript, Supabase, PostgreSQL, Gemini  |  ) Tj ET
+0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 276.92 588.70 Tm (GitHub) Tj ET
+0.08 0.36 0.54 RG 0.35 w 276.92 587.60 m 300.83 587.60 l S
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 300.83 588.70 Tm ( / ) Tj ET
+0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 308.88 588.70 Tm (Live) Tj ET
+0.08 0.36 0.54 RG 0.35 w 308.88 587.60 m 323.78 587.60 l S
+0.08 0.36 0.54 rg 40 581.00 2.1 2.1 re f
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 578.50 Tm (Solo-built for VibeAthon 6.0 and extended over the following month: staff roles, Row-Level Security, realtime notifications,) Tj ET
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 569.05 Tm (Web Push and Gemini-powered demand forecasting.) Tj ET
+0.08 0.36 0.54 rg 40 561.75 2.1 2.1 re f
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 559.25 Tm (Implemented database-enforced exclusive order claiming with row-locking PostgreSQL RPCs and verified behaviour against) Tj ET
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 549.80 Tm (simultaneous claim attempts.) Tj ET
+0.114 0.161 0.208 rg BT /F2 8.05 Tf 1 0 0 1 38.00 540.00 Tm (DeliveryProof) Tj ET
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 88.23 540.00 Tm (  |  Next.js, Supabase, PostgreSQL, Groq API  |  ) Tj ET
+0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 254.79 540.00 Tm (GitHub) Tj ET
+0.08 0.36 0.54 RG 0.35 w 254.79 538.90 m 278.70 538.90 l S
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 278.70 540.00 Tm ( / ) Tj ET
+0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 286.75 540.00 Tm (Live demo) Tj ET
+0.08 0.36 0.54 RG 0.35 w 286.75 538.90 m 322.00 538.90 l S
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 322.00 540.00 Tm ( / ) Tj ET
+0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 330.05 540.00 Tm (Video) Tj ET
+0.08 0.36 0.54 RG 0.35 w 330.05 538.90 m 348.97 538.90 l S
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 348.97 540.00 Tm ( / ) Tj ET
+0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 357.02 540.00 Tm (Devpost) Tj ET
+0.08 0.36 0.54 RG 0.35 w 357.02 538.90 m 386.16 538.90 l S
+0.08 0.36 0.54 rg 40 532.30 2.1 2.1 re f
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 529.80 Tm (Solo-built for the AI Builders Hackathon 2026: implemented Company, Driver and Reviewer workflows around a chronological) Tj ET
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 520.35 Tm (delivery-evidence timeline; AI summaries use structured events while timestamps and state transitions remain deterministic.) Tj ET
+0.114 0.161 0.208 rg BT /F2 8.05 Tf 1 0 0 1 38.00 510.55 Tm (ZENI - Private AI Thinking Partner) Tj ET
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 161.81 510.55 Tm (  |  React, Vite, Ollama, Groq  |  ) Tj ET
+0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 269.28 510.55 Tm (GitHub) Tj ET
+0.08 0.36 0.54 RG 0.35 w 269.28 509.45 m 293.19 509.45 l S
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 293.19 510.55 Tm ( / ) Tj ET
+0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 301.24 510.55 Tm (Live) Tj ET
+0.08 0.36 0.54 RG 0.35 w 301.24 509.45 m 316.13 509.45 l S
+0.08 0.36 0.54 rg 40 502.85 2.1 2.1 re f
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 500.35 Tm (Built an LLM workspace with project-context-aware prompts, streaming responses, structured-output parsing and prompt) Tj ET
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 490.90 Tm (compilation from multi-turn sessions; supports local Ollama and cloud Groq modes.) Tj ET
+0.114 0.161 0.208 rg BT /F2 8.05 Tf 1 0 0 1 38.00 481.10 Tm (NCERT AI Tutor) Tj ET
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 96.04 481.10 Tm (  |  Python, LangChain, ChromaDB, Groq, Streamlit  |  ) Tj ET
+0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 281.92 481.10 Tm (GitHub) Tj ET
+0.08 0.36 0.54 RG 0.35 w 281.92 480.00 m 305.82 480.00 l S
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 305.82 481.10 Tm ( / ) Tj ET
+0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 313.87 481.10 Tm (Live) Tj ET
+0.08 0.36 0.54 RG 0.35 w 313.87 480.00 m 328.77 480.00 l S
+0.08 0.36 0.54 rg 40 473.40 2.1 2.1 re f
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 470.90 Tm (Built a RAG pipeline over Class 10 NCERT Maths and Science PDFs using chunking, local Sentence-Transformer embeddings,) Tj ET
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 461.45 Tm (subject-filtered ChromaDB retrieval and Groq \(Llama 3.1\) generation in English and Hindi; added layered fallback handling for) Tj ET
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 452.00 Tm (out-of-syllabus questions.) Tj ET
+0.08 0.36 0.54 rg BT /F2 10 Tf 1 0 0 1 38.00 440.00 Tm (EXPERIENCE) Tj ET
+0.84 0.88 0.91 RG 0.45 w 38 436.30 m 557.276 436.30 l S
+0.114 0.161 0.208 rg BT /F2 8.05 Tf 1 0 0 1 38.00 425.80 Tm (AI/ML Intern \(Full-Semester External Project\) - Invisible Fiction) Tj ET
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 274.03 425.80 Tm (  |  15 Dec 2025 - 10 Apr 2026) Tj ET
+0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 415.60 Tm (V.V. Nagar, Anand, Gujarat  |  ) Tj ET
+0.08 0.36 0.54 rg BT /F1 8 Tf 1 0 0 1 142.00 415.60 Tm (Project repository) Tj ET
+0.08 0.36 0.54 RG 0.35 w 142.00 414.50 m 210.80 414.50 l S
+0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 210.80 415.60 Tm ( / ) Tj ET
+0.08 0.36 0.54 rg BT /F1 8 Tf 1 0 0 1 218.80 415.60 Tm (Demo video) Tj ET
+0.08 0.36 0.54 RG 0.35 w 218.80 414.50 m 257.84 414.50 l S
+0.08 0.36 0.54 rg 40 408.10 2.1 2.1 re f
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 405.60 Tm (Trained a YOLOv8 Nano segmentation model for 25 mechanical-part classes on a 6,000-image dataset \(real images, Blender CAD) Tj ET
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 396.15 Tm (renders and background-replacement composites\).) Tj ET
+0.08 0.36 0.54 rg 40 388.85 2.1 2.1 re f
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 386.35 Tm (Diagnosed background overfitting and applied background-replacement augmentation, reducing false positives by 30%+; built a) Tj ET
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 376.90 Tm (data pipeline with Roboflow labels, SAM-assisted masks, manual review and DINOv2/K-Means near-duplicate filtering.) Tj ET
+0.08 0.36 0.54 rg 40 369.60 2.1 2.1 re f
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 367.10 Tm (Integrated the lightweight model into an Android app using Unity/AR Foundation with stability-gated inference and) Tj ET
+0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 357.65 Tm (General/Specific detection modes.) Tj ET
+0.08 0.36 0.54 rg BT /F2 10 Tf 1 0 0 1 38.00 345.65 Tm (ACHIEVEMENT & EDUCATION) Tj ET
+0.84 0.88 0.91 RG 0.45 w 38 341.95 m 557.276 341.95 l S
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 38.00 331.45 Tm (VibeAthon 6.0 \(NXTGENSEC, 25-27 Jul 2026\): Certificate of Achievement; Top 60 of 800+ submissions for TableFlow.) Tj ET
+0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 38.00 320.85 Tm (B.Tech, Computer Engineering - Birla Vishvakarma Mahavidyalaya \(BVM\) Engineering College, Anand, Gujarat | 2022-2026) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Annot /Subtype /Link /Rect [260.82 761.00 320.84 774.00] /Border [0 0 0] /A << /S /URI /URI (tel:+918320193553) >> >>
+endobj
+8 0 obj
+<< /Type /Annot /Subtype /Link /Rect [329.05 761.00 426.75 774.00] /Border [0 0 0] /A << /S /URI /URI (mailto:ayushhalpati09@gmail.com) >> >>
+endobj
+9 0 obj
+<< /Type /Annot /Subtype /Link /Rect [242.97 749.00 274.32 762.20] /Border [0 0 0] /A << /S /URI /URI (https://www.linkedin.com/in/ayush-halpati-886527260/) >> >>
+endobj
+10 0 obj
+<< /Type /Annot /Subtype /Link /Rect [282.41 749.00 308.76 762.20] /Border [0 0 0] /A << /S /URI /URI (https://github.com/ayush22cp008) >> >>
+endobj
+11 0 obj
+<< /Type /Annot /Subtype /Link /Rect [316.85 749.00 352.31 762.20] /Border [0 0 0] /A << /S /URI /URI (https://portfolio-nu-five-5a7rlm4q24.vercel.app/) >> >>
+endobj
+12 0 obj
+<< /Type /Annot /Subtype /Link /Rect [275.92 585.70 301.83 598.75] /Border [0 0 0] /A << /S /URI /URI (https://github.com/ayush22cp008/TableFlow) >> >>
+endobj
+13 0 obj
+<< /Type /Annot /Subtype /Link /Rect [307.88 585.70 324.78 598.75] /Border [0 0 0] /A << /S /URI /URI (https://table-flow-nu.vercel.app/) >> >>
+endobj
+14 0 obj
+<< /Type /Annot /Subtype /Link /Rect [253.79 537.00 279.70 550.05] /Border [0 0 0] /A << /S /URI /URI (https://github.com/ayush22cp008/DeliveryProof_hackathon) >> >>
+endobj
+15 0 obj
+<< /Type /Annot /Subtype /Link /Rect [285.75 537.00 323.00 550.05] /Border [0 0 0] /A << /S /URI /URI (https://deliveryproofhackathon.vercel.app/) >> >>
+endobj
+16 0 obj
+<< /Type /Annot /Subtype /Link /Rect [329.05 537.00 349.97 550.05] /Border [0 0 0] /A << /S /URI /URI (https://youtu.be/z_IU7KhAKrE) >> >>
+endobj
+17 0 obj
+<< /Type /Annot /Subtype /Link /Rect [356.02 537.00 387.16 550.05] /Border [0 0 0] /A << /S /URI /URI (https://devpost.com/software/freight) >> >>
+endobj
+18 0 obj
+<< /Type /Annot /Subtype /Link /Rect [268.28 507.55 294.19 520.60] /Border [0 0 0] /A << /S /URI /URI (https://github.com/ayush22cp008/ZENI-thinking-partner) >> >>
+endobj
+19 0 obj
+<< /Type /Annot /Subtype /Link /Rect [300.24 507.55 317.13 520.60] /Border [0 0 0] /A << /S /URI /URI (https://zeni-thinking-partner.vercel.app/) >> >>
+endobj
+20 0 obj
+<< /Type /Annot /Subtype /Link /Rect [280.92 478.10 306.82 491.15] /Border [0 0 0] /A << /S /URI /URI (https://github.com/ayush22cp008/NCERT-AI-Tutor) >> >>
+endobj
+21 0 obj
+<< /Type /Annot /Subtype /Link /Rect [312.87 478.10 329.77 491.15] /Border [0 0 0] /A << /S /URI /URI (https://ncert-ai-tutor-appdhcgh4agx3ppbvxt4y7j.streamlit.app/) >> >>
+endobj
+22 0 obj
+<< /Type /Annot /Subtype /Link /Rect [141.00 412.60 211.80 425.60] /Border [0 0 0] /A << /S /URI /URI (https://github.com/ayush22cp008/AI-Based-Mechanical-Part-Detection) >> >>
+endobj
+23 0 obj
+<< /Type /Annot /Subtype /Link /Rect [217.80 412.60 258.84 425.60] /Border [0 0 0] /A << /S /URI /URI (https://www.youtube.com/shorts/NPIHQJ7QCFs) >> >>
+endobj
+xref
+0 24
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000384 00000 n 
+0000000481 00000 n 
+0000000583 00000 n 
+0000010526 00000 n 
+0000010669 00000 n 
+0000010826 00000 n 
+0000011004 00000 n 
+0000011162 00000 n 
+0000011337 00000 n 
+0000011505 00000 n 
+0000011665 00000 n 
+0000011847 00000 n 
+0000012016 00000 n 
+0000012171 00000 n 
+0000012334 00000 n 
+0000012514 00000 n 
+0000012682 00000 n 
+0000012855 00000 n 
+0000013043 00000 n 
+0000013236 00000 n 
+trailer
+<< /Size 24 /Root 1 0 R >>
+startxref
+13405
+%%EOF
