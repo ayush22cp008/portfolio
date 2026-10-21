@@ -2,7 +2,7 @@ import {
   ArrowUpRight,
   FileDown,
   GitBranch,
-  Linkedin,
+  Link2,
   Mail,
   Phone,
 } from "lucide-react";
@@ -57,7 +57,7 @@ export function SiteFooter() {
                   className={channelClass}
                 >
                   <span className="flex items-center gap-2">
-                    <Linkedin size={16} />
+                    <Link2 size={16} />
                     LINKEDIN // AYUSH HALPATI
                   </span>
                   <ArrowUpRight size={16} />
