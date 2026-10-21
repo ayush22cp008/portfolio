@@ -22,7 +22,7 @@ export default function DeliveryProofPage() {
         <CaseStudyHeader
           eyebrow="GenAI · Solo build"
           title="DeliveryProof — AI-Assisted Evidence & Accountability Platform"
-          tagline="An evidence-first accountability layer for logistics: a verifiable, chronological timeline of every facility interaction, summarized by AI into a narrative that can settle a dispute."
+          tagline="An evidence-first accountability layer for logistics: a verifiable, chronological timeline of every facility interaction, summarized by AI into a narrative that supports dispute resolution."
           liveUrl="https://deliveryproofhackathon.vercel.app"
           repoUrl="https://github.com/ayush22cp008/DeliveryProof_hackathon"
           status="AI Builders Hackathon — result pending"
@@ -93,9 +93,7 @@ export default function DeliveryProofPage() {
               Onboarding verification is fully separate from the delivery
               chain.
             </strong>{" "}
-            The Reviewer examines identity documents with zero access to
-            operational trip data. A bug or scope change in one chain can
-            never leak permissions into the other.
+            The Reviewer examines identity documents with zero access to operational trip data. Role-aware authorization separates onboarding-verification permissions from operational delivery permissions.
           </p>
           <p>
             <strong className="text-[#111111]">Atomic driver claim.</strong>{" "}
