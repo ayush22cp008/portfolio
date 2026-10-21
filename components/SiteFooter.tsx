@@ -1,4 +1,15 @@
-import { GitBranch, Mail, ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  FileDown,
+  GitBranch,
+  Linkedin,
+  Mail,
+  Phone,
+} from "lucide-react";
+import { profile } from "@/lib/data";
+
+const channelClass =
+  "group flex items-center justify-between border border-[#111111] bg-[#F9F8F6] p-4 text-xs font-bold uppercase tracking-wider text-[#111111] transition-all hover:border-[#0047FF] hover:bg-[#0047FF] hover:text-white";
 
 export function SiteFooter() {
   return (
@@ -14,8 +25,9 @@ export function SiteFooter() {
               WORTH TALKING ABOUT?
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-[#555555]">
-              Open to full-stack, GenAI, and agentic engineering roles. Based in
-              Gujarat, India — open to relocate for the right engineering team.
+              Open to full-stack development and web engineering roles, with
+              additional experience in GenAI and RAG applications. Based in
+              Gujarat, India.
             </p>
           </div>
 
@@ -26,10 +38,10 @@ export function SiteFooter() {
               </span>
               <div className="flex flex-col gap-3">
                 <a
-                  href="https://github.com/ayush22cp008"
+                  href={profile.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-center justify-between border border-[#111111] bg-[#F9F8F6] p-4 text-xs font-bold uppercase tracking-wider text-[#111111] transition-all hover:border-[#0047FF] hover:bg-[#0047FF] hover:text-white"
+                  className={channelClass}
                 >
                   <span className="flex items-center gap-2">
                     <GitBranch size={16} />
@@ -39,12 +51,42 @@ export function SiteFooter() {
                 </a>
 
                 <a
-                  href="mailto:YOUR_EMAIL"
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={channelClass}
+                >
+                  <span className="flex items-center gap-2">
+                    <Linkedin size={16} />
+                    LINKEDIN // AYUSH HALPATI
+                  </span>
+                  <ArrowUpRight size={16} />
+                </a>
+
+                <a href={`mailto:${profile.email}`} className={channelClass}>
+                  <span className="flex items-center gap-2">
+                    <Mail size={16} />
+                    {profile.email}
+                  </span>
+                  <ArrowUpRight size={16} />
+                </a>
+
+                <a href={profile.phoneHref} className={channelClass}>
+                  <span className="flex items-center gap-2">
+                    <Phone size={16} />
+                    {profile.phone}
+                  </span>
+                  <ArrowUpRight size={16} />
+                </a>
+
+                <a
+                  href={profile.resumePath}
+                  download="Ayush_Halpati_Full_Stack_GenAI_Resume.pdf"
                   className="group flex items-center justify-between border border-[#111111] bg-[#111111] p-4 text-xs font-bold uppercase tracking-wider text-white transition-all hover:border-[#0047FF] hover:bg-[#0047FF]"
                 >
                   <span className="flex items-center gap-2">
-                    <Mail size={16} />
-                    GET IN TOUCH VIA EMAIL
+                    <FileDown size={16} />
+                    DOWNLOAD RESUME (PDF)
                   </span>
                   <ArrowUpRight size={16} />
                 </a>
@@ -60,4 +102,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-

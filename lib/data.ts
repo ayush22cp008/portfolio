@@ -5,6 +5,11 @@ export const profile = {
   location: "Gujarat, India",
   relocate: ["Bangalore", "Hyderabad", "Pune", "Delhi-NCR", "Mumbai"],
   github: "https://github.com/ayush22cp008",
+  linkedin: "https://www.linkedin.com/in/ayush-halpati-886527260/",
+  email: "ayushhalpati09@gmail.com",
+  phone: "+91 8320193553",
+  phoneHref: "tel:+918320193553",
+  resumePath: "/resume.pdf",
 };
 
 export type Project = {

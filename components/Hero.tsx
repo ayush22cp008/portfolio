@@ -52,14 +52,14 @@ export function Hero() {
                   className="transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5"
                 />
               </a>
-              <button
-                disabled
-                title="Verified resume asset pending verification"
-                className="inline-flex cursor-not-allowed items-center gap-2 rounded-none border border-[#111111]/25 bg-transparent px-5 py-3.5 text-xs font-bold uppercase tracking-wider text-[#888888]"
+              <a
+                href={profile.resumePath}
+                download="Ayush_Halpati_Full_Stack_GenAI_Resume.pdf"
+                className="inline-flex items-center gap-2 rounded-none border border-[#111111] bg-transparent px-5 py-3.5 text-xs font-bold uppercase tracking-wider text-[#111111] transition-all hover:border-[#0047FF] hover:bg-[#0047FF] hover:text-white"
               >
                 <FileDown size={15} />
-                <span>Resume (Pending)</span>
-              </button>
+                <span>Download Resume</span>
+              </a>
             </div>
           </div>
 
@@ -87,4 +87,3 @@ export function Hero() {
     </section>
   );
 }
-
