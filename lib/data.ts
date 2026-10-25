@@ -37,7 +37,7 @@ export const projects: Project[] = [
     liveUrl: "https://table-flow-nu.vercel.app",
     repoUrl: "https://github.com/ayush22cp008/TableFlow",
     featured: true,
-    status: "VibeAthon 6.0 — result pending",
+    status: "VibeAthon 6.0 — Top 60 of 800+ submissions",
   },
   {
     slug: "deliveryproof",
@@ -46,11 +46,11 @@ export const projects: Project[] = [
     description:
       "An evidence-first accountability layer for freight: captures the chronological timeline of a trip and uses AI to summarize raw events into a defensible narrative for dispute resolution.",
     stack: ["Next.js", "React", "Supabase", "Postgres", "Groq", "Vercel"],
-    category: "GenAI",
+    category: "Full-Stack",
     liveUrl: "https://deliveryproofhackathon.vercel.app",
     repoUrl: "https://github.com/ayush22cp008/DeliveryProof_hackathon",
     featured: true,
-    status: "AI Builders Hackathon — result pending",
+    status: "AI Builders Hackathon — submission completed",
   },
   {
     slug: "zeni",

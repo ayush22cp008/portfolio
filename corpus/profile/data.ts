@@ -32,7 +32,7 @@ export const projects: Project[] = [
     liveUrl: "https://table-flow-nu.vercel.app",
     repoUrl: "https://github.com/ayush22cp008/TableFlow",
     featured: true,
-    status: "VibeAthon 6.0 — result pending",
+    status: "VibeAthon 6.0 — Top 60 of 800+ submissions",
   },
   {
     slug: "deliveryproof",
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     liveUrl: "https://deliveryproofhackathon.vercel.app",
     repoUrl: "https://github.com/ayush22cp008/DeliveryProof_hackathon",
     featured: true,
-    status: "AI Builders Hackathon — result pending",
+    status: "AI Builders Hackathon — submission completed",
   },
   {
     slug: "zeni",

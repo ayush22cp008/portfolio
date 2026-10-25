@@ -25,7 +25,7 @@ export default function TableFlowPage() {
           tagline="A single-restaurant operations platform for queues, table allocation, kitchen workflows, and billing—not another delivery app."
           liveUrl="https://table-flow-nu.vercel.app"
           repoUrl="https://github.com/ayush22cp008/TableFlow"
-          status="VibeAthon 6.0 (NxtGenSec), Professional Category — result pending"
+          status="VibeAthon 6.0 — Top 60 of 800+ submissions"
         />
 <CaseStudySection title="Project overview">
   <p>A single-restaurant, full-stack platform for managing live menus, digital orders, table allocation, reservations, kitchen workflows, billing, staff operations, and AI-driven menu intelligence.</p>

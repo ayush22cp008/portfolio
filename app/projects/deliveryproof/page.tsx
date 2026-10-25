@@ -20,12 +20,12 @@ export default function DeliveryProofPage() {
       <SiteHeader />
       <main className="flex-1">
         <CaseStudyHeader
-          eyebrow="GenAI · Solo build"
+          eyebrow="Full-Stack · Solo build"
           title="DeliveryProof — AI-Assisted Evidence & Accountability Platform"
           tagline="An evidence-first accountability layer for logistics: a verifiable, chronological timeline of every facility interaction, summarized by AI into a narrative that supports dispute resolution."
           liveUrl="https://deliveryproofhackathon.vercel.app"
           repoUrl="https://github.com/ayush22cp008/DeliveryProof_hackathon"
-          status="AI Builders Hackathon — result pending"
+          status="AI Builders Hackathon — submission completed"
         />
 
         <StackRow
