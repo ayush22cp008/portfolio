@@ -28,7 +28,7 @@ export default function AppliedAIPage() {
               <strong>Solution:</strong> Refactored the architecture to a clear separation: a backend Next.js API route for model inference, a React context for shared state, and incremental static regeneration for caching heavy results.
             </p>
             <p className="mt-4 text-base text-[#333333]">
-              <strong>Verification:</strong> Measured end‑to‑end latency drop from ~1.8 s to ~0.6 s, verified through automated integration tests and manual UI walkthroughs.
+              <strong>Verification:</strong> Confirmed latency improvements and state stability through integration tests and manual UI walkthroughs.
             </p>
             <p className="mt-4 text-base text-[#333333]">
               <strong>What I Learned:</strong> Decoupling AI inference from UI logic is critical for scalability; leveraging Next.js ISR provides a sweet spot between freshness and performance; clear type contracts prevent subtle bugs in data handling.

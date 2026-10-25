@@ -19,7 +19,7 @@ export default function MechanicalPartDetectionPage() {
             <p className="mt-4 text-base text-[#333333]"><strong>Investigation:</strong> Benchmarked YOLOv8 Nano vs. larger models, evaluated data augmentation pipelines, and profiled inference latency on Android devices.</p>
             <p className="mt-4 text-base text-[#333333]"><strong>Root Cause:</strong> Initial training on raw images suffered from class imbalance and poor lighting variance, causing low mAP and unstable segmentation.</p>
             <p className="mt-4 text-base text-[#333333]"><strong>Solution:</strong> Implemented a balanced sampling strategy, synthetic lighting augmentation, and fine‑tuned YOLOv8 Nano with a custom loss weighting for small objects.</p>
-            <p className="mt-4 text-base text-[#333333]"><strong>Verification:</strong> Achieved {"&gt;"}92% mAP on validation set, deployed a Unity plugin with on‑device inference {"<"} 30 ms per frame, and validated on‑device with real‑world AR scenes.</p>
+            <p className="mt-4 text-base text-[#333333]"><strong>Verification:</strong> Demonstrated functional segmentation and real‑time inference within the Unity AR prototype, confirming stability in on‑device testing.</p>
             <p className="mt-4 text-base text-[#333333]"><strong>What I Learned:</strong> Careful dataset curation is vital for small‑object detection; lightweight models can meet strict latency budgets when paired with targeted augmentations; integration testing on the target platform surfaces hidden performance bottlenecks early.</p>
           </div>
         </section>

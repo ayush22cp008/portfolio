@@ -20,8 +20,8 @@ export default function HackathonsPage() {
             <p className="mt-4 text-base text-[#333333]"><strong>Root Cause:</strong> Initial prototype suffered from state‑drift due to unsynchronized client caches and ad‑hoc API contracts, leading to inconsistent order status displays.</p>
             <p className="mt-4 text-base text-[#333333]"><strong>Solution:</strong> Adopted a contract‑first design with OpenAPI, introduced Supabase Realtime for authoritative state propagation, and modularized UI components with React Server Components for better streaming.
             </p>
-            <p className="mt-4 text-base text-[#333333]"><strong>Verification:</strong> Conducted load testing with 200 simulated users, observed {"<"} 100 ms latency for state updates, and validated data consistency across mobile and web clients.
-            </p>
+            <p className="mt-4 text-base text-[#333333]"><strong>Verification:</strong> Performed load testing with simulated users, observed low latency for state updates, and confirmed data consistency across mobile and web clients.</p>
+
             <p className="mt-4 text-base text-[#333333]"><strong>What I Learned:</strong> Real‑time consistency requires a single source of truth and event‑driven updates; early definition of API contracts prevents downstream integration bugs; hackathon constraints foster creative engineering solutions that can transition to production.
             </p>
           </div>
