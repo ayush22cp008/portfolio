@@ -25,7 +25,7 @@ export default function DeliveryProofPage() {
           tagline="An evidence-first accountability layer for logistics: a verifiable, chronological timeline of every facility interaction, summarized by AI into a narrative that supports dispute resolution."
           liveUrl="https://deliveryproofhackathon.vercel.app"
           repoUrl="https://github.com/ayush22cp008/DeliveryProof_hackathon"
-          status="AI Builders Hackathon — submission completed"
+          status="AI Builders Hackathon — Results announced"
         />
 
         <StackRow

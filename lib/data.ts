@@ -50,7 +50,7 @@ export const projects: Project[] = [
     liveUrl: "https://deliveryproofhackathon.vercel.app",
     repoUrl: "https://github.com/ayush22cp008/DeliveryProof_hackathon",
     featured: true,
-    status: "AI Builders Hackathon — submission completed",
+    status: "AI Builders Hackathon — Results announced",
   },
   {
     slug: "zeni",
