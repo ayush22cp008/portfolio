@@ -14,6 +14,7 @@ export default function AppliedAIPage() {
       <main className="flex-1">
         <section className="border-b border-[#111111]/15 bg-[#F9F8F6]" id="applied-ai">
           <div className="mx-auto max-w-4xl px-6 py-20">
+          <a href="/#experience" className="inline-block mb-4 text-sm font-medium text-[#0047FF] underline">← Back to Experience</a>
             <h1 className="font-display text-4xl font-extrabold text-[#111111] sm:text-5xl">Applied AI & Full‑Stack Projects</h1>
             <p className="mt-4 text-base text-[#333333]">
               <strong>Problem:</strong> Building end‑to‑end AI‑enhanced applications that combine custom recommendation engines, data analytics dashboards, and real‑time user interfaces while keeping code maintainable and performant.
