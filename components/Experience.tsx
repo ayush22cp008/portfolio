@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export function Experience() {
   return (
@@ -15,49 +16,72 @@ export function Experience() {
             </h2>
           </div>
           <p className="max-w-md text-sm text-[#555555]">
-            A brief overview of my applied AI, full‑stack development and computer‑vision engineering work.
+            I build and iterate on applied AI and full-stack projects spanning recommendation systems, data analytics, computer vision, retrieval-augmented generation (RAG), local and cloud AI workflows, and role-aware operational applications.
           </p>
         </div>
+
+        {/* Approach note */}
+        <div className="mt-8 border-l-2 border-[#0047FF] pl-4 text-sm text-[#444444]">
+          My working approach focuses on understanding the user problem, defining scope, breaking work into manageable steps, investigating source code, reviewing changes, coordinating AI tools, and checking application workflows before submission.
+        </div>
+
         {/* Entries */}
         <div className="mt-12 space-y-8">
           {/* Entry 1 */}
           <div className="border-b border-[#111111]/15 pb-6 last:border-0">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
               <div>
-                <span className="text-sm font-medium uppercase text-[#0047FF]">Independent Project Work</span>
-                <h3 className="mt-1 text-xl font-bold text-[#111111]">Applied AI & Full‑Stack Projects</h3>
+                <span className="text-sm font-medium uppercase text-[#0047FF]">Overview</span>
+                <h3 className="mt-1 text-xl font-bold text-[#111111]">Applied AI & Full-Stack Projects</h3>
               </div>
-              <span className="mt-2 text-sm text-[#555555] sm:mt-0">2025 – 2026</span>
             </div>
             <p className="mt-4 text-base text-[#333333]">
-              Built and iterated on applied AI and full‑stack projects spanning recommendation prototypes, data analytics, computer vision, retrieval‑augmented generation (RAG), local/cloud AI workflows and role‑aware operational applications. Emphasised requirements decomposition, architecture and data/state boundaries, debugging, AI‑agent coordination, change review and verification.
-            </p><a href="/experience/applied-ai-full-stack" className="inline-block mt-2 text-sm font-medium text-[#0047FF] underline">Explore Lessons ↗</a>
+              Worked on recommendation and analytics prototypes, LLM-based applications, RAG systems, local/cloud AI workflows, and full-stack applications. My experience includes working with data processing, APIs, model integration, application state, debugging, and AI-assisted development.
+            </p>
+            <Link
+              href="/experience/applied-ai-full-stack"
+              className="inline-block mt-3 text-sm font-semibold text-[#0047FF] hover:underline"
+            >
+              Explore Lessons →
+            </Link>
           </div>
+
           {/* Entry 2 */}
           <div className="border-b border-[#111111]/15 pb-6 last:border-0">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
               <div>
                 <span className="text-sm font-medium uppercase text-[#0047FF]">Internship</span>
-                <h3 className="mt-1 text-xl font-bold text-[#111111]">AI‑Based Mechanical Part Detection</h3>
+                <h3 className="mt-1 text-xl font-bold text-[#111111]">AI-Based Mechanical Part Detection</h3>
               </div>
-              <span className="mt-2 text-sm text-[#555555] sm:mt-0">2025 – 2026</span>
             </div>
             <p className="mt-4 text-base text-[#333333]">
-              Contributed to a computer‑vision project integrating YOLOv8 Nano segmentation into a Unity Android/AR workflow. The pipeline processed a dataset of ~6,000 images across 25 classes, handling training, evaluation and deployment workflows.
-            </p><a href="/experience/mechanical-part-detection" className="inline-block mt-2 text-sm font-medium text-[#0047FF] underline">Explore Lessons ↗</a>
+              Contributed to a computer-vision project integrating YOLOv8 Nano segmentation into a Unity Android/AR application. The project used a dataset of approximately 6,000 images across 25 mechanical component classes, combining synthetic and real-world data.
+            </p>
+            <Link
+              href="/experience/mechanical-part-detection"
+              className="inline-block mt-3 text-sm font-semibold text-[#0047FF] hover:underline"
+            >
+              Explore Lessons →
+            </Link>
           </div>
+
           {/* Entry 3 */}
           <div className="pb-6">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
               <div>
-                <span className="text-sm font-medium uppercase text-[#0047FF]">Hackathon Projects</span>
+                <span className="text-sm font-medium uppercase text-[#0047FF]">Full-Stack Projects</span>
                 <h3 className="mt-1 text-xl font-bold text-[#111111]">TableFlow & DeliveryProof</h3>
               </div>
-              <span className="mt-2 text-sm text-[#555555] sm:mt-0">2026</span>
             </div>
             <p className="mt-4 text-base text-[#333333]">
-              Developed operational application workflows involving role‑aware access, state handling, order claiming, chronological delivery evidence and AI‑assisted summaries. Addressed engineering challenges around real‑time data flow and verification without duplicating the detailed project cards shown in the Work section.
-            </p><a href="/experience/hackathons" className="inline-block mt-2 text-sm font-medium text-[#0047FF] underline">Explore Lessons ↗</a>
+              Worked on two distinct full-stack projects: TableFlow, a restaurant-operations application, and DeliveryProof, an evidence-first logistics workflow. The projects involved role-aware workflows, application state, database operations, delivery-event records, and AI-assisted summaries.
+            </p>
+            <Link
+              href="/experience/hackathons"
+              className="inline-block mt-3 text-sm font-semibold text-[#0047FF] hover:underline"
+            >
+              Explore Lessons →
+            </Link>
           </div>
         </div>
       </div>
