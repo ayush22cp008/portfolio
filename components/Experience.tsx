@@ -31,7 +31,7 @@ export function Experience() {
             </div>
             <p className="mt-4 text-base text-[#333333]">
               Built and iterated on applied AI and full‑stack projects spanning recommendation prototypes, data analytics, computer vision, retrieval‑augmented generation (RAG), local/cloud AI workflows and role‑aware operational applications. Emphasised requirements decomposition, architecture and data/state boundaries, debugging, AI‑agent coordination, change review and verification.
-            </p>
+            </p><a href="/experience/applied-ai-full-stack" className="inline-block mt-2 text-sm font-medium text-[#0047FF] underline">Explore Lessons ↗</a>
           </div>
           {/* Entry 2 */}
           <div className="border-b border-[#111111]/15 pb-6 last:border-0">
@@ -44,7 +44,7 @@ export function Experience() {
             </div>
             <p className="mt-4 text-base text-[#333333]">
               Contributed to a computer‑vision project integrating YOLOv8 Nano segmentation into a Unity Android/AR workflow. The pipeline processed a dataset of ~6,000 images across 25 classes, handling training, evaluation and deployment workflows.
-            </p>
+            </p><a href="/experience/mechanical-part-detection" className="inline-block mt-2 text-sm font-medium text-[#0047FF] underline">Explore Lessons ↗</a>
           </div>
           {/* Entry 3 */}
           <div className="pb-6">
@@ -57,7 +57,7 @@ export function Experience() {
             </div>
             <p className="mt-4 text-base text-[#333333]">
               Developed operational application workflows involving role‑aware access, state handling, order claiming, chronological delivery evidence and AI‑assisted summaries. Addressed engineering challenges around real‑time data flow and verification without duplicating the detailed project cards shown in the Work section.
-            </p>
+            </p><a href="/experience/hackathons" className="inline-block mt-2 text-sm font-medium text-[#0047FF] underline">Explore Lessons ↗</a>
           </div>
         </div>
       </div>
