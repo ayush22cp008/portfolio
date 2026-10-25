@@ -1,6 +1,6 @@
 import { SiteHeader } from "@/components/SiteHeader";
 import { Hero } from "@/components/Hero";
-
+import { Experience } from "@/components/Experience";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { Skills } from "@/components/Skills";
 import { AskAyush } from "@/components/AskAyush";
@@ -14,6 +14,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <FeaturedProjects />
+        <Experience />
         <Skills />
         <AskAyush />
         <About />

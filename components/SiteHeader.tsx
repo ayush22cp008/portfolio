@@ -19,6 +19,12 @@ export function SiteHeader() {
             Work
           </a>
           <a
+            href="/#experience"
+            className="transition-colors hover:text-[#0047FF]"
+          >
+            Experience
+          </a>
+          <a
             href="/#stack"
             className="transition-colors hover:text-[#0047FF]"
           >
