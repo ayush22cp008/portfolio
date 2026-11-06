@@ -14,27 +14,22 @@ export function FeaturedProjects() {
               SECTION // 01 — WORK
             </span>
             <h2 className="mt-2 font-display text-4xl font-extrabold uppercase tracking-tight text-[#111111] sm:text-5xl">
-              FEATURED CASE STUDIES
+              FULL-STACK PROJECTS
             </h2>
           </div>
           <p className="max-w-md text-sm text-[#555555]">
-            Two full-stack & AI production builds I stand behind — problem breakdown,
-            architectural decisions, and exact bugs fixed.
+            Selected applications demonstrating frontend development, backend
+            integration, database design, application workflows and practical
+            AI features.
           </p>
         </div>
 
-        {/* Numbered Case Studies */}
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
           {featured.map((project, index) => (
-            <FeaturedProjectCard
-              key={project.slug}
-              project={project}
-              index={index + 1}
-            />
+            <FeaturedProjectCard key={project.slug} project={project} index={index + 1} />
           ))}
         </div>
 
-        {/* Additional Projects Divider */}
         <div className="mt-20 border-t border-[#111111]/15 pt-12">
           <div className="mb-6 flex items-center justify-between">
             <div>
@@ -42,7 +37,7 @@ export function FeaturedProjects() {
                 ARCHIVE // 02 — REPOSITORIES
               </span>
               <h3 className="mt-1 font-display text-2xl font-bold uppercase tracking-tight text-[#111111]">
-                ADDITIONAL SYSTEMS & EXPERIMENTS
+                ADDITIONAL SOFTWARE & AI PROJECTS
               </h3>
             </div>
           </div>
@@ -52,4 +47,3 @@ export function FeaturedProjects() {
     </section>
   );
 }
-
