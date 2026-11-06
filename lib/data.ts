@@ -1,6 +1,6 @@
 export const profile = {
   name: "Ayush Halpati",
-  tagline: "Full-Stack Developer building AI-powered products",
+  tagline: "Entry-Level Software Developer focused on full-stack web development",
   grad: "B.Tech Computer Engineering, BVM Engineering College, Anand — 2026",
   location: "Gujarat, India",
   relocate: ["Bangalore", "Hyderabad", "Pune", "Delhi-NCR", "Mumbai"],
@@ -29,9 +29,9 @@ export const projects: Project[] = [
   {
     slug: "tableflow",
     name: "TableFlow",
-    tagline: "Smart restaurant management SaaS — live menu, queueing, seat-level tables, AI demand forecasting, billing.",
+    tagline: "Full-stack restaurant operations application with role-based workflows, live updates and demand forecasting.",
     description:
-      "Full-stack SaaS for a single restaurant's internal operations: live menu, digital ordering, seat-level table allocation, Gemini-powered menu intelligence, reservations, and itemized billing.",
+      "A restaurant operations application covering staff roles, digital ordering, seat-level table allocation, reservations, billing and Gemini-powered demand forecasting.",
     stack: ["Next.js 14", "TypeScript", "Supabase", "Postgres RLS", "Gemini API", "Resend", "Vercel"],
     category: "Full-Stack",
     liveUrl: "https://table-flow-nu.vercel.app",
@@ -42,10 +42,10 @@ export const projects: Project[] = [
   {
     slug: "deliveryproof",
     name: "DeliveryProof",
-    tagline: "AI-assisted evidence platform for logistics — chronological, verifiable proof of every facility interaction.",
+    tagline: "Full-stack logistics workflow for chronological delivery evidence and review.",
     description:
-      "An evidence-first accountability layer for freight: captures the chronological timeline of a trip and uses AI to summarize raw events into a defensible narrative for dispute resolution.",
-    stack: ["Next.js", "React", "Supabase", "Postgres", "Groq", "Vercel"],
+      "An evidence-first logistics workflow with Company, Driver and Reviewer roles. It captures trip events in a chronological timeline and uses Groq API to generate evidence summaries.",
+    stack: ["Next.js", "React", "Supabase", "Postgres", "Groq API", "Vercel"],
     category: "Full-Stack",
     liveUrl: "https://deliveryproofhackathon.vercel.app",
     repoUrl: "https://github.com/ayush22cp008/DeliveryProof_hackathon",
@@ -86,21 +86,21 @@ export const projects: Project[] = [
     category: "Computer Vision",
     repoUrl: "https://github.com/ayush22cp008/AI-Based-Mechanical-Part-Detection",
     featured: false,
-    status: "Personal project",
+    status: "Internship project",
   },
 ];
 
 export const skillGroups = [
   {
-    label: "Frontend / Backend",
-    items: ["Next.js", "TypeScript", "React", "Supabase", "Postgres", "Tailwind CSS", "Python"],
+    label: "Frontend",
+    items: ["JavaScript", "TypeScript", "React.js", "Next.js", "HTML", "CSS", "Tailwind CSS"],
   },
   {
-    label: "AI / ML",
-    items: ["LangChain", "RAG", "ChromaDB", "Groq API", "Ollama", "PyTorch", "YOLOv8", "SAM", "DINOv2"],
+    label: "Backend & Data",
+    items: ["Node.js", "Express.js", "REST APIs", "PostgreSQL", "MySQL", "MongoDB", "Supabase"],
   },
   {
-    label: "Tools",
-    items: ["Vercel", "Git/GitHub", "Claude", "ChatGPT", "Resend"],
+    label: "AI / ML & Tools",
+    items: ["Python", "LangChain", "RAG", "ChromaDB", "Groq API", "Ollama", "PyTorch", "YOLOv8", "Git/GitHub", "Vercel"],
   },
 ];
