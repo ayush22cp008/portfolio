@@ -1,203 +1,203 @@
 %PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document (opensource)
 1 0 obj
-<< /Type /Catalog /Pages 2 0 R >>
+<<
+/F1 2 0 R /F2 3 0 R
+>>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
 endobj
 3 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.276 841.89] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R /Annots [7 0 R 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 16 0 R 17 0 R 18 0 R 19 0 R 20 0 R 21 0 R 22 0 R 23 0 R] >>
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
 endobj
 4 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+<<
+/A <<
+/S /URI /Type /Action /URI (tel:+918320193553)
+>> /Border [ 0 0 0 ] /Rect [ 254.1526 766.3298 320.4518 776.8898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 5 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+<<
+/A <<
+/S /URI /Type /Action /URI (mailto:ayushhalpati09@gmail.com)
+>> /Border [ 0 0 0 ] /Rect [ 327.6326 766.3298 435.8462 776.8898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 6 0 obj
-<< /Length 9892 >>
-stream
-0.114 0.161 0.208 rg BT /F2 18.2 Tf 1 0 0 1 172.42 799.00 Tm (AYUSH JAYESHBHAI HALPATI) Tj ET
-0.08 0.36 0.54 rg BT /F2 9.7 Tf 1 0 0 1 171.73 780.00 Tm (FULL-STACK DEVELOPER  |  GENAI & RAG INTEGRATION) Tj ET
-0.28 0.33 0.4 rg BT /F1 8.3 Tf 1 0 0 1 169.53 764.00 Tm (Navsari, Gujarat, India  |  +91 8320193553  |  ayushhalpati09@gmail.com) Tj ET
-0.08 0.36 0.54 rg BT /F1 8.2 Tf 1 0 0 1 243.97 752.00 Tm (LinkedIn) Tj ET
-0.08 0.36 0.54 RG 0.35 w 243.97 750.90 m 273.32 750.90 l S
-0.28 0.33 0.4 rg BT /F1 8.2 Tf 1 0 0 1 276.32 752.00 Tm (|) Tj ET
-0.08 0.36 0.54 rg BT /F1 8.2 Tf 1 0 0 1 283.41 752.00 Tm (GitHub) Tj ET
-0.08 0.36 0.54 RG 0.35 w 283.41 750.90 m 307.76 750.90 l S
-0.28 0.33 0.4 rg BT /F1 8.2 Tf 1 0 0 1 310.76 752.00 Tm (|) Tj ET
-0.08 0.36 0.54 rg BT /F1 8.2 Tf 1 0 0 1 317.85 752.00 Tm (Portfolio) Tj ET
-0.08 0.36 0.54 RG 0.35 w 317.85 750.90 m 351.31 750.90 l S
-0.08 0.36 0.54 rg BT /F2 10 Tf 1 0 0 1 38.00 736.80 Tm (PROFESSIONAL SUMMARY) Tj ET
-0.84 0.88 0.91 RG 0.45 w 38 733.10 m 557.276 733.10 l S
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 38.00 722.60 Tm (Computer Engineering graduate \(2026\) focused on building full-stack web applications with React/Next.js, TypeScript, APIs and) Tj ET
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 38.00 712.90 Tm (PostgreSQL/Supabase. Extends web products with GenAI capabilities including LLM API integration, RAG pipelines, embeddings and) Tj ET
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 38.00 703.20 Tm (retrieval. Built role-based operational workflows, database-enforced order claiming, realtime notifications and LLM-powered) Tj ET
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 38.00 693.50 Tm (applications; also brings hands-on computer-vision model training and deployment experience.) Tj ET
-0.08 0.36 0.54 rg BT /F2 10 Tf 1 0 0 1 38.00 680.60 Tm (TECHNICAL SKILLS) Tj ET
-0.84 0.88 0.91 RG 0.45 w 38 676.90 m 557.276 676.90 l S
-0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 666.40 Tm (Frontend & Web: JavaScript, TypeScript, React.js, Next.js, HTML, CSS, responsive web UI) Tj ET
-0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 655.85 Tm (Backend & Data: Node.js, Express.js, REST APIs, SQL, PostgreSQL, MySQL, MongoDB, Supabase Auth/Realtime/RLS/RPCs, Git/GitHub,) Tj ET
-0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 646.30 Tm (Vercel) Tj ET
-0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 635.75 Tm (GenAI & RAG: Groq API, Gemini API, Ollama, RAG, prompt engineering, embeddings, semantic retrieval, LangChain, ChromaDB, Sentence) Tj ET
-0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 626.20 Tm (Transformers) Tj ET
-0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 615.65 Tm (Python & ML: Python, PyTorch, YOLOv8, OpenCV, SAM, DINOv2, K-Means, scikit-learn, NumPy, Roboflow, dataset curation/augmentation) Tj ET
-0.08 0.36 0.54 rg BT /F2 10 Tf 1 0 0 1 38.00 602.90 Tm (SELECTED PROJECTS) Tj ET
-0.84 0.88 0.91 RG 0.45 w 38 599.20 m 557.276 599.20 l S
-0.114 0.161 0.208 rg BT /F2 8.05 Tf 1 0 0 1 38.00 588.70 Tm (TableFlow) Tj ET
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 74.39 588.70 Tm (  |  Next.js, TypeScript, Supabase, PostgreSQL, Gemini  |  ) Tj ET
-0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 276.92 588.70 Tm (GitHub) Tj ET
-0.08 0.36 0.54 RG 0.35 w 276.92 587.60 m 300.83 587.60 l S
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 300.83 588.70 Tm ( / ) Tj ET
-0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 308.88 588.70 Tm (Live) Tj ET
-0.08 0.36 0.54 RG 0.35 w 308.88 587.60 m 323.78 587.60 l S
-0.08 0.36 0.54 rg 40 581.00 2.1 2.1 re f
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 578.50 Tm (Solo-built for VibeAthon 6.0 and extended over the following month: staff roles, Row-Level Security, realtime notifications,) Tj ET
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 569.05 Tm (Web Push and Gemini-powered demand forecasting.) Tj ET
-0.08 0.36 0.54 rg 40 561.75 2.1 2.1 re f
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 559.25 Tm (Implemented database-enforced exclusive order claiming with row-locking PostgreSQL RPCs and verified behaviour against) Tj ET
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 549.80 Tm (simultaneous claim attempts.) Tj ET
-0.114 0.161 0.208 rg BT /F2 8.05 Tf 1 0 0 1 38.00 540.00 Tm (DeliveryProof) Tj ET
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 88.23 540.00 Tm (  |  Next.js, Supabase, PostgreSQL, Groq API  |  ) Tj ET
-0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 254.79 540.00 Tm (GitHub) Tj ET
-0.08 0.36 0.54 RG 0.35 w 254.79 538.90 m 278.70 538.90 l S
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 278.70 540.00 Tm ( / ) Tj ET
-0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 286.75 540.00 Tm (Live demo) Tj ET
-0.08 0.36 0.54 RG 0.35 w 286.75 538.90 m 322.00 538.90 l S
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 322.00 540.00 Tm ( / ) Tj ET
-0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 330.05 540.00 Tm (Video) Tj ET
-0.08 0.36 0.54 RG 0.35 w 330.05 538.90 m 348.97 538.90 l S
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 348.97 540.00 Tm ( / ) Tj ET
-0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 357.02 540.00 Tm (Devpost) Tj ET
-0.08 0.36 0.54 RG 0.35 w 357.02 538.90 m 386.16 538.90 l S
-0.08 0.36 0.54 rg 40 532.30 2.1 2.1 re f
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 529.80 Tm (Solo-built for the AI Builders Hackathon 2026: implemented Company, Driver and Reviewer workflows around a chronological) Tj ET
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 520.35 Tm (delivery-evidence timeline; AI summaries use structured events while timestamps and state transitions remain deterministic.) Tj ET
-0.114 0.161 0.208 rg BT /F2 8.05 Tf 1 0 0 1 38.00 510.55 Tm (ZENI - Private AI Thinking Partner) Tj ET
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 161.81 510.55 Tm (  |  React, Vite, Ollama, Groq  |  ) Tj ET
-0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 269.28 510.55 Tm (GitHub) Tj ET
-0.08 0.36 0.54 RG 0.35 w 269.28 509.45 m 293.19 509.45 l S
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 293.19 510.55 Tm ( / ) Tj ET
-0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 301.24 510.55 Tm (Live) Tj ET
-0.08 0.36 0.54 RG 0.35 w 301.24 509.45 m 316.13 509.45 l S
-0.08 0.36 0.54 rg 40 502.85 2.1 2.1 re f
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 500.35 Tm (Built an LLM workspace with project-context-aware prompts, streaming responses, structured-output parsing and prompt) Tj ET
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 490.90 Tm (compilation from multi-turn sessions; supports local Ollama and cloud Groq modes.) Tj ET
-0.114 0.161 0.208 rg BT /F2 8.05 Tf 1 0 0 1 38.00 481.10 Tm (NCERT AI Tutor) Tj ET
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 96.04 481.10 Tm (  |  Python, LangChain, ChromaDB, Groq, Streamlit  |  ) Tj ET
-0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 281.92 481.10 Tm (GitHub) Tj ET
-0.08 0.36 0.54 RG 0.35 w 281.92 480.00 m 305.82 480.00 l S
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 305.82 481.10 Tm ( / ) Tj ET
-0.08 0.36 0.54 rg BT /F1 8.05 Tf 1 0 0 1 313.87 481.10 Tm (Live) Tj ET
-0.08 0.36 0.54 RG 0.35 w 313.87 480.00 m 328.77 480.00 l S
-0.08 0.36 0.54 rg 40 473.40 2.1 2.1 re f
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 470.90 Tm (Built a RAG pipeline over Class 10 NCERT Maths and Science PDFs using chunking, local Sentence-Transformer embeddings,) Tj ET
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 461.45 Tm (subject-filtered ChromaDB retrieval and Groq \(Llama 3.1\) generation in English and Hindi; added layered fallback handling for) Tj ET
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 452.00 Tm (out-of-syllabus questions.) Tj ET
-0.08 0.36 0.54 rg BT /F2 10 Tf 1 0 0 1 38.00 440.00 Tm (EXPERIENCE) Tj ET
-0.84 0.88 0.91 RG 0.45 w 38 436.30 m 557.276 436.30 l S
-0.114 0.161 0.208 rg BT /F2 8.05 Tf 1 0 0 1 38.00 425.80 Tm (AI/ML Intern \(Full-Semester External Project\) - Invisible Fiction) Tj ET
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 274.03 425.80 Tm (  |  15 Dec 2025 - 10 Apr 2026) Tj ET
-0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 38.00 415.60 Tm (V.V. Nagar, Anand, Gujarat  |  ) Tj ET
-0.08 0.36 0.54 rg BT /F1 8 Tf 1 0 0 1 142.00 415.60 Tm (Project repository) Tj ET
-0.08 0.36 0.54 RG 0.35 w 142.00 414.50 m 210.80 414.50 l S
-0.114 0.161 0.208 rg BT /F1 8 Tf 1 0 0 1 210.80 415.60 Tm ( / ) Tj ET
-0.08 0.36 0.54 rg BT /F1 8 Tf 1 0 0 1 218.80 415.60 Tm (Demo video) Tj ET
-0.08 0.36 0.54 RG 0.35 w 218.80 414.50 m 257.84 414.50 l S
-0.08 0.36 0.54 rg 40 408.10 2.1 2.1 re f
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 405.60 Tm (Trained a YOLOv8 Nano segmentation model for 25 mechanical-part classes on a 6,000-image dataset \(real images, Blender CAD) Tj ET
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 396.15 Tm (renders and background-replacement composites\).) Tj ET
-0.08 0.36 0.54 rg 40 388.85 2.1 2.1 re f
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 386.35 Tm (Diagnosed background overfitting and applied background-replacement augmentation, reducing false positives by 30%+; built a) Tj ET
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 376.90 Tm (data pipeline with Roboflow labels, SAM-assisted masks, manual review and DINOv2/K-Means near-duplicate filtering.) Tj ET
-0.08 0.36 0.54 rg 40 369.60 2.1 2.1 re f
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 367.10 Tm (Integrated the lightweight model into an Android app using Unity/AR Foundation with stability-gated inference and) Tj ET
-0.114 0.161 0.208 rg BT /F1 7.95 Tf 1 0 0 1 49.00 357.65 Tm (General/Specific detection modes.) Tj ET
-0.08 0.36 0.54 rg BT /F2 10 Tf 1 0 0 1 38.00 345.65 Tm (ACHIEVEMENT & EDUCATION) Tj ET
-0.84 0.88 0.91 RG 0.45 w 38 341.95 m 557.276 341.95 l S
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 38.00 331.45 Tm (VibeAthon 6.0 \(NXTGENSEC, 25-27 Jul 2026\): Certificate of Achievement; Top 60 of 800+ submissions for TableFlow.) Tj ET
-0.114 0.161 0.208 rg BT /F1 8.05 Tf 1 0 0 1 38.00 320.85 Tm (B.Tech, Computer Engineering - Birla Vishvakarma Mahavidyalaya \(BVM\) Engineering College, Anand, Gujarat | 2022-2026) Tj ET
-endstream
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.linkedin.com/in/ayush-halpati-886527260/)
+>> /Border [ 0 0 0 ] /Rect [ 243.993 754.3298 277.257 764.8898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 7 0 obj
-<< /Type /Annot /Subtype /Link /Rect [260.82 761.00 320.84 774.00] /Border [0 0 0] /A << /S /URI /URI (tel:+918320193553) >> >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/ayush22cp008)
+>> /Border [ 0 0 0 ] /Rect [ 284.4378 754.3298 311.8234 764.8898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 8 0 obj
-<< /Type /Annot /Subtype /Link /Rect [329.05 761.00 426.75 774.00] /Border [0 0 0] /A << /S /URI /URI (mailto:ayushhalpati09@gmail.com) >> >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://portfolio-nu-five-5a7rlm4q24.vercel.app/)
+>> /Border [ 0 0 0 ] /Rect [ 319.0042 754.3298 351.2826 764.8898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 9 0 obj
-<< /Type /Annot /Subtype /Link /Rect [242.97 749.00 274.32 762.20] /Border [0 0 0] /A << /S /URI /URI (https://www.linkedin.com/in/ayush-halpati-886527260/) >> >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/ayush22cp008/TableFlow)
+>> /Border [ 0 0 0 ] /Rect [ 302.3726 544.6498 329.447 555.0898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 10 0 obj
-<< /Type /Annot /Subtype /Link /Rect [282.41 749.00 308.76 762.20] /Border [0 0 0] /A << /S /URI /URI (https://github.com/ayush22cp008) >> >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://table-flow-nu.vercel.app/)
+>> /Border [ 0 0 0 ] /Rect [ 336.7028 544.6498 352.6586 555.0898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 11 0 obj
-<< /Type /Annot /Subtype /Link /Rect [316.85 749.00 352.31 762.20] /Border [0 0 0] /A << /S /URI /URI (https://portfolio-nu-five-5a7rlm4q24.vercel.app/) >> >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/ayush22cp008/DeliveryProof_hackathon)
+>> /Border [ 0 0 0 ] /Rect [ 278.2127 485.1498 305.2871 495.5898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 12 0 obj
-<< /Type /Annot /Subtype /Link /Rect [275.92 585.70 301.83 598.75] /Border [0 0 0] /A << /S /URI /URI (https://github.com/ayush22cp008/TableFlow) >> >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://deliveryproofhackathon.vercel.app/)
+>> /Border [ 0 0 0 ] /Rect [ 312.5429 485.1498 352.676 495.5898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 13 0 obj
-<< /Type /Annot /Subtype /Link /Rect [307.88 585.70 324.78 598.75] /Border [0 0 0] /A << /S /URI /URI (https://table-flow-nu.vercel.app/) >> >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://youtu.be/z_IU7KhAKrE)
+>> /Border [ 0 0 0 ] /Rect [ 359.9318 485.1498 382.1777 495.5898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 14 0 obj
-<< /Type /Annot /Subtype /Link /Rect [253.79 537.00 279.70 550.05] /Border [0 0 0] /A << /S /URI /URI (https://github.com/ayush22cp008/DeliveryProof_hackathon) >> >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/ayush22cp008/ZENI-thinking-partner)
+>> /Border [ 0 0 0 ] /Rect [ 296.5523 448.1498 323.6267 458.5898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 15 0 obj
-<< /Type /Annot /Subtype /Link /Rect [285.75 537.00 323.00 550.05] /Border [0 0 0] /A << /S /URI /URI (https://deliveryproofhackathon.vercel.app/) >> >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://zeni-thinking-partner.vercel.app/)
+>> /Border [ 0 0 0 ] /Rect [ 330.8825 448.1498 346.8383 458.5898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 16 0 obj
-<< /Type /Annot /Subtype /Link /Rect [329.05 537.00 349.97 550.05] /Border [0 0 0] /A << /S /URI /URI (https://youtu.be/z_IU7KhAKrE) >> >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/ayush22cp008/NCERT-AI-Tutor)
+>> /Border [ 0 0 0 ] /Rect [ 309.1151 411.1498 336.1895 421.5898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 17 0 obj
-<< /Type /Annot /Subtype /Link /Rect [356.02 537.00 387.16 550.05] /Border [0 0 0] /A << /S /URI /URI (https://devpost.com/software/freight) >> >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://ncert-ai-tutor-appdhcgh4agx3ppbvxt4y7j.streamlit.app/)
+>> /Border [ 0 0 0 ] /Rect [ 343.4453 411.1498 359.4011 421.5898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 18 0 obj
-<< /Type /Annot /Subtype /Link /Rect [268.28 507.55 294.19 520.60] /Border [0 0 0] /A << /S /URI /URI (https://github.com/ayush22cp008/ZENI-thinking-partner) >> >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/ayush22cp008/AI-Based-Mechanical-Part-Detection)
+>> /Border [ 0 0 0 ] /Rect [ 157.0043 331.5498 224.6903 341.9898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 19 0 obj
-<< /Type /Annot /Subtype /Link /Rect [300.24 507.55 317.13 520.60] /Border [0 0 0] /A << /S /URI /URI (https://zeni-thinking-partner.vercel.app/) >> >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.youtube.com/shorts/NPIHQJ7QCFs)
+>> /Border [ 0 0 0 ] /Rect [ 231.9461 331.5498 278.3606 341.9898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 20 0 obj
-<< /Type /Annot /Subtype /Link /Rect [280.92 478.10 306.82 491.15] /Border [0 0 0] /A << /S /URI /URI (https://github.com/ayush22cp008/NCERT-AI-Tutor) >> >>
+<<
+/Annots [ 4 0 R 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 
+  14 0 R 15 0 R 16 0 R 17 0 R 18 0 R 19 0 R ] /Contents 24 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 23 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
 endobj
 21 0 obj
-<< /Type /Annot /Subtype /Link /Rect [312.87 478.10 329.77 491.15] /Border [0 0 0] /A << /S /URI /URI (https://ncert-ai-tutor-appdhcgh4agx3ppbvxt4y7j.streamlit.app/) >> >>
+<<
+/PageMode /UseNone /Pages 23 0 R /Type /Catalog
+>>
 endobj
 22 0 obj
-<< /Type /Annot /Subtype /Link /Rect [141.00 412.60 211.80 425.60] /Border [0 0 0] /A << /S /URI /URI (https://github.com/ayush22cp008/AI-Based-Mechanical-Part-Detection) >> >>
+<<
+/Author (Ayush Halpati) /CreationDate (D:20261106055525+00'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20261106055525+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (\(unspecified\)) /Title (Ayush Halpati - Resume) /Trapped /False
+>>
 endobj
 23 0 obj
-<< /Type /Annot /Subtype /Link /Rect [217.80 412.60 258.84 425.60] /Border [0 0 0] /A << /S /URI /URI (https://www.youtube.com/shorts/NPIHQJ7QCFs) >> >>
+<<
+/Count 1 /Kids [ 20 0 R ] /Type /Pages
+>>
+endobj
+24 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 3654
+>>
+stream
+Gb!#]>BAN>&q801ka.KRc6Aso7.PA/ODV:R$-:uJ.DH:#J;JDQ?#Zar+29r`!@#A4EH94";WS0u2!X>nn*@/i<)E(V.fKVa^pt!C$PcVMqus$RCk+_Mc[YQ<)mp`$(goFclo6!jhnTJSG`XN7i4J8l3Z\,(Vp[i<`)Ia@OfB@@a"eZ_makk9rHpE7Jrf>4DgHPTjn@ZU*K4:=rsnr[i;Xal_sqE[-iA1%MJYN6P`Dt9j-Jo/Cao)/&9$W*5"c"Hef2EsqSN9MSTrNA5Hi,a"TF.6S&%@YqJQ%Opqo1K]<d@WG5W28]K^i?itO/LH_.a7hMg93GO""tgTBJn>=TK<)3%)+WhOYf'kCV73/RaBV:gU&_W:8^%%=3;Wi9-oaXT]OiUZN,,CYA$jWbaN[e/A]]q``1@;3=cLTZasmMo4aAOGc#Q&1c]GT'tW\]_F!KsM@ok9OOh\1GCVN"dl-a)a_s6XmHaREf1<Xb660)@k+g;]!@Go0-dgZ75CqMM*E-R*tfV1*S96K-]/`bJ>Zg3ni)TlY*]TOZOS3lXq5$A_Kj;)iAIq[^-u^fs7C;7WX6"b)0YAgH[0qX>tE.*XtO9e`1X/jdcF1n*.J,^VI+@XLK`m06hK,AAo`!=gAQ(e,H*Sd#BFCWpQ`Pf`Uqa4Lr2qVUPP;a@23I%#=93oCff:^P"f,a4c+MI/:,IU^/]iLqr(kYtYUUn>L^nO+e.oT!6kOjI0V(XDD=Q.]i%b;-F_l"#!udR*pr493>e:?BTmaO(aD_h7\G0&sPDI6P@;<ADs&>>*NGDjTPtYiIT:)UhRmObl&g4iIM^oQr"D0m1K;#aC"KRpm[LCK8cX_8pB(:J]./^K.p8MZ-;G(e"AiU;_fRXQ,3?$d!2.?l-h2OQU+JEI7[qEj+-&Y(:&P>**=26V(c^>)"J3qSV#j!\4&!:\<i;_P_Q\?1knIU3p3:0SI&s>A@0Dp?'A*>F'N>Y=V=Vh>D$]eBf-b7i??>2(Lclb1X/K7b`ukS8@!aVbi\-9+=&MT&%$:R&f*$m&17Wcm!QadLSd[Xnj#"BG=BuC++T#i!](m`**2i,/n#0?3bm*3jZ![CA55K?1;[Mg!'^"EVI?ceBNtQ9MO$%:#O'SbV>#?ChTn)X8D!WCSh,a(P0og(F+-2B`QLiA,)XOQE\[s,,gTn],r#p)$YC6)EP]ECa9]@Q-i"G`Y]r@"]uT[*Hek`"^WXIeH[d`:T)OTn>JC5TL>J<\d)ZQ&'s+pM29toSF\t40hSL@Vp0QD+!9>#F,\s[h8/!NU7fl"=/7&(h5mt9Q.F5.Z`Cs]U.WBFW5NrGJI;Aqaro=F3X'jrhHC4=p<\VBQ'_ZfZ;m\%kf+W)f$c&P4pk2]:U#(C[VYVs&QV$Wc#LqB2[k(SI8I_3`A2%jr`ne;892VbsmA_eGi0GSR_GeW9OnN.rm##W9EXFh4k0#=OM_>Su#=Z;3lM<OM8ON^KZoE7uC!jjePCQhudtkpG$hj5AJcU^ph%]u0_n<k\$+acYqC1No'N"9T''DeI&^Bm1%^>>mE56]sXH7#M_JjJ4!S(,-lc)Ho>IED\p#(/`TFXp=GAf47m]Zl.roe[1[GZ7C8C;$SFMR<IJJ:L-I!J[\isiRMR3eA).pC23Z!26F<oi!^jcU:@pi1>rAi&R6_CSW(i,sIO#?]D=imgV80p089?U-3?@5R.-WNkuW\rB<VPr2Pt\[liY=W7#-7]l,?RVXLCZQH%pNf8X,295Y<M>:ZtdL2#\pNc6e*%ghf807oJ`la4i?i0((#=s\!,DTO&*5dH@_h;\\)l^)$i(g[s0fdO,/@SU?@$1W>-(C2!4I[[+,0bed5RbO^Ro*60c&rf=:oP!k>Z.Y#;%tO<j$IiOYM^!nPLY#qEk>EZRDPp]H&r6)VGAWBL)$2ue45GKTUdW7Fs`3RLCp/]!ji[i-mp39iKK3),VP`=lUJpWbuaRT5>";cM1Q]HSOB5[;(RTnGpq5nFd\pB_^#d[BqMcJ/!060"p7#Fe'.$5XBAG55aFskH#^ct3K)%a+>HU5]_W,"U7bU"o$]45N.q^9'*:'D#\^h9#Sp`-[e^FX=;Ve>5eg_1gH$=OA"VK&eL#;"Nf69/ItBY+W4^MrRrO`>Mj*5l#[u4op4#gT4OoW3]R.ia1cZFMN61BpU2"Ceb=?#PL0hkE+u4I2f8Lp%pPfWD/1L)qJH4e%N(gWImKh3%<?*<4@kKSD-PtW>I/p`0/SWG@,S%*Uq(YF);+*1r:LI+X%$k=3=(^G4">%!+.i)1W,.g9X"Zj<7NjR_rLK+d_L7H1kZj8`::0'nY_.cFXp9PoRC9hPgH37&'l3Y`3[`CLWIh.#e+Jm2?mcZldQ2c0*5"IBIq!^/9q".W=Y3:[P"a]q\J4,lWC7#`XY<N2,?F.cmRdklioct=M!^+6hP[N2PVFP4sKa*5FnCHrA+VEQ9f6X!'e,l\KW!da77B;o#^.Lt"?lok-ams<+?+kS1l$:V#6;`/Vru;%m$V\Eo@Vc&8]P@34;Y8^(@/WBu<FHRT#@UNUX*F2Ys,#a/.aQC^bEQ#W<#_6c_GPG:k-oB:K,W3T+G/2O6W)C+aRi?]S+n2Db9As8e_BNO=?e(DJH\D/.:gDu-G")!O!QhRi9(ce3Q]B25M58$P[cWtH-Re:r&l=EWZou-+SLLsgq2KTb`b"gQ%EaSFUE#59rZNU2S7S9r&tdm>+e#F4`2LQDf@4daclPgC`mb'Qdr]l:tH3f&u9\(?A>NsUfT+=ZO]=`>RuU#,:6`Y0]ZG7@V[M/]97:TnX^?O.4#?Nh]RegW4r6\Z(Q'+S]$P+2RVk31lgFb@rKfid)i3K\)bgfkSSG0CWuC+Sau2fl#>P3mC.iQk[S:gIO)Sa4,MVD_$(4"p\tHJKH:Rf;\7Xq?`9H+r0MPHEOsS'grU3<Ui&UU)MFhGMJRDLrK)8'a-Je8Sf.`cH<7S?BD8[rpV_,'ho[W>eXj1aN="LYXH/=3Fg+]-%8>qA5rFg9RhlW.%s95#T2LYRTm'hNIenFrR;sTUD=!qMiWMp*IN,0@J*&mFNt2[2NEe#,=;VG&oAj$3pt5ZKX/.5%`$2L_gFXIW!8aK&\;BnO4QJYDG(`r.D@^$u+'.aIOhVSc<Ph:[=OkBV26XAL/2Y+gG7s.F]G[p<gE%T_38pbCqm?^P?Eg0V8d]P\5Ta9LF$knqqsuQS6qBWYf>8,%\T4'S0UMe3gBXZ8*68`lnpp'W7s0PbDoa*^c=iT'brc<mM..DUMF`2WpEC6:(r/g%&]3UD\$'(Up-DAD-I'a!>_>@C(S9>Jcn,-\1V[9=+Q5rghFkqUX5\^$^NIQ&\4F-8FQ7Y40G1:qMVc:QfX0H@>juu<-kQs.2F\ZhD5="qR)KH7A@r+*Nl)bi\J,3%CemtJnEh1BmK>W$SM"KB@30W$?,<rs\D''QpRg3Rl?g"scl;fM(;/KufCf$mUXL;P<rN8F:".Y44?k5B&,+Aaf9:DkUHe]MD`%-u/`\BQZf,C36?UHH*kF2/pW-/j/\hfr-rpJn5(K9$?n)#^UF<mN:nL1X;XK)2FrR3S"/74t?e`-X;ng"qm*,2#V+P^PZB/HYR'5*%Sn+e)L4o"sbr5du'1$9$h[WM)2333u8Jol%4]3!A8"+Oqr55"R!;9bo<r~>endstream
 endobj
 xref
-0 24
+0 25
 0000000000 65535 f 
-0000000009 00000 n 
-0000000058 00000 n 
-0000000115 00000 n 
-0000000384 00000 n 
-0000000481 00000 n 
-0000000583 00000 n 
-0000010526 00000 n 
-0000010669 00000 n 
-0000010826 00000 n 
-0000011004 00000 n 
-0000011162 00000 n 
-0000011337 00000 n 
-0000011505 00000 n 
-0000011665 00000 n 
-0000011847 00000 n 
-0000012016 00000 n 
-0000012171 00000 n 
-0000012334 00000 n 
-0000012514 00000 n 
-0000012682 00000 n 
-0000012855 00000 n 
-0000013043 00000 n 
-0000013236 00000 n 
+0000000061 00000 n 
+0000000102 00000 n 
+0000000209 00000 n 
+0000000321 00000 n 
+0000000490 00000 n 
+0000000673 00000 n 
+0000000875 00000 n 
+0000001058 00000 n 
+0000001258 00000 n 
+0000001450 00000 n 
+0000001636 00000 n 
+0000001844 00000 n 
+0000002038 00000 n 
+0000002219 00000 n 
+0000002425 00000 n 
+0000002619 00000 n 
+0000002818 00000 n 
+0000003032 00000 n 
+0000003251 00000 n 
+0000003446 00000 n 
+0000003773 00000 n 
+0000003843 00000 n 
+0000004133 00000 n 
+0000004194 00000 n 
 trailer
-<< /Size 24 /Root 1 0 R >>
+<<
+/ID 
+[<7bc180956e1d0670da3a8a3b8ebe4a0f><7bc180956e1d0670da3a8a3b8ebe4a0f>]
+% ReportLab generated PDF document -- digest (opensource)
+
+/Info 22 0 R
+/Root 21 0 R
+/Size 25
+>>
 startxref
-13405
+7940
 %%EOF

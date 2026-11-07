@@ -81,7 +81,7 @@ export function SiteFooter() {
 
                 <a
                   href={profile.resumePath}
-                  download="Ayush_Halpati_Full_Stack_GenAI_Resume.pdf"
+                  download="Ayush_Halpati_Entry_Level_Software_Developer_Resume.pdf"
                   className="group flex items-center justify-between border border-[#111111] bg-[#111111] p-4 text-xs font-bold uppercase tracking-wider text-white transition-all hover:border-[#0047FF] hover:bg-[#0047FF]"
                 >
                   <span className="flex items-center gap-2">
